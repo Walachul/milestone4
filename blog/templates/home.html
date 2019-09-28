@@ -4,9 +4,21 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">This is the home page of the blog</h1>
+            <h1 class="text-center">Blog</h1>
         </div>
     </div>
 </div>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            {% for post in posts %}
+            <h2>{{ post.title }}</h2>
+            <p><small>{{ post.dateAdded }}</small>
+                <span> {{post.authorPost }}</span>
+            </p>
+            <p class="text-justify">{{ post.content }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
