@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+            <h1>{{ post.title }}</h1>
+            <p><small>{{ post.dateAdded }}</small>
+                <span> {{post.authorPost }}</span>
+            </p>
+            <p class="text-justify">{{ post.content }}</p>
+            <p class="text-justify">{{ post.category }}</p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
