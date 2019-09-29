@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from home import urls as urls_home
 from blog import urls as urls_blog
+from users import views as user_views
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^", include(urls_home)),
     url(r"blog/", include(urls_blog)),
+    url(r"^register/", user_views.register, name="register"),
 ]
 
