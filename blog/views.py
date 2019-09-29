@@ -26,7 +26,7 @@ def create_edit_post(request, pk=None):
 
     post = get_object_or_404(Post, pk=pk) if pk else None
     if request.method == "POST":
-        form = BlogForm(request.POST, request.FILES, instance=post)
+        form = BlogForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect(details_one_post, post.pk)
