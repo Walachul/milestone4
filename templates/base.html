@@ -63,6 +63,17 @@
     </header>
     <!-- MAIN -->
     <main id="main" class="content">
+        <!-- Display flash messages from backend if present
+             The users gets notified with success,
+            warning or error message-->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+
+        {% endfor %}
+        {% endif %}
         {% block content %}
         {% endblock content%}
     </main>
