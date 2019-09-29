@@ -4,16 +4,16 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <h1>Register</h1>
+            <h1>Login</h1>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
-                <button type="submit" class="btn btn-info">Register</button>
+                <button type="submit" class="btn btn-info">Login</button>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
-                    Do you already have an account?</small>
-                <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                    Do you need an account?</small>
+                <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
             </div>
         </div>
     </div>

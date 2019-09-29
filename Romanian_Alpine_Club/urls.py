@@ -27,12 +27,12 @@ urlpatterns = [
     url(r"^register/", user_views.register, name="register"),
     url(
         r"^login/",
-        auth_views.LoginView.as_view(template_name="users/login.html"),
+        auth_views.LoginView.as_view(template_name="users/templates/login.html"),
         name="login",
     ),
     url(
         r"^logout/",
-        auth_views.LogoutView.as_view(template_name="users/logout.html"),
+        auth_views.LogoutView.as_view(template_name="users/templates/logout.html"),
         name="logout",
     ),
 ]
