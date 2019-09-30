@@ -25,15 +25,6 @@ urlpatterns = [
     url(r"^", include(urls_home)),
     url(r"blog/", include(urls_blog)),
     url(r"^register/", user_views.register, name="register"),
-    url(
-        r"^login/",
-        auth_views.LoginView.as_view(template_name="users/templates/login.html"),
-        name="login",
-    ),
-    url(
-        r"^logout/",
-        auth_views.LogoutView.as_view(template_name="users/templates/logout.html"),
-        name="logout",
-    ),
+    url(r"^login/", user_views.login, name="login"),
 ]
 
