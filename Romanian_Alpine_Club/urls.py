@@ -18,13 +18,12 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from home import urls as urls_home
 from blog import urls as urls_blog
-from users import views as user_views
+from users import urls as urls_users
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^", include(urls_home)),
-    url(r"blog/", include(urls_blog)),
-    url(r"^register/", user_views.register, name="register"),
-    url(r"^login/", user_views.login, name="login"),
+    url(r"^blog/", include(urls_blog)),
+    url(r"^users/", include(urls_users)),
 ]
 

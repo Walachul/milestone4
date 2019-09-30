@@ -4,25 +4,8 @@ from django.contrib.auth.models import User
 from .forms import RegisterUserForm, UserLoginForm
 
 
-def register(request):
-    """Register users view"""
-    if request.method == "POST":
-        form = RegisterUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get("username")
-            messages.success(
-                request,
-                f"The account for {username} was created successfully! You are now able to login",
-            )
-            return redirect("login")
-    else:
-        form = RegisterUserForm()
-    return render(request, "register.html", {"form": form})
-
-
 def login(request):
-    """ Return login page """
+    """ Return to home page if user is authenticated """
     if request.user.is_authenticated:
         return redirect(reverse("home-home"))
     if request.method == "POST":
@@ -41,3 +24,21 @@ def login(request):
         form = UserLoginForm()
 
     return render(request, "login.html", {"form": form})
+
+
+def register(request):
+    """Register users view"""
+    if request.method == "POST":
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            messages.success(
+                request,
+                f"The account for {username} was created successfully! You are now able to login",
+            )
+            return redirect("login")
+    else:
+        form = RegisterUserForm()
+    return render(request, "register.html", {"form": form})
+
