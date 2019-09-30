@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import RegisterUserForm
+from django.shortcuts import render, redirect, reverse
+from django.contrib import auth, messages
+from django.contrib.auth.models import User
+from .forms import RegisterUserForm, UserLoginForm
 
 
 def register(request):
@@ -19,6 +20,7 @@ def register(request):
         form = RegisterUserForm()
     return render(request, "register.html", {"form": form})
 
+
 def login(request):
     """ Return login page """
     if request.user.is_authenticated:
@@ -32,7 +34,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
-                return redirect(reverse("home"))
+                return redirect(reverse("home-home"))
             else:
                 form.add_error(None, "Your username or password is incorrect!")
     else:
