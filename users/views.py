@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import RegisterUserForm, UserLoginForm
+
+
+@login_required
+def logout(request):
+    """Logout the user if he is already authenticated"""
+    auth.logout(request)
+    messages.success(request, f"You have successfully been logged out!")
+    return redirect(reverse("home-home"))
 
 
 def login(request):
@@ -16,10 +25,10 @@ def login(request):
             )
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully logged in!")
+                messages.success(request, f"You have successfully logged in!")
                 return redirect(reverse("home-home"))
             else:
-                form.add_error(None, "Your username or password is incorrect!")
+                form.add_error(None, f"Your username or password is incorrect!")
     else:
         form = UserLoginForm()
 
