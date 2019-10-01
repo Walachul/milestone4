@@ -51,3 +51,8 @@ def register(request):
         form = RegisterUserForm()
     return render(request, "register.html", {"form": form})
 
+
+def account(request):
+    """User account view"""
+
+    return render(request, "account.html")
