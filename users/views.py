@@ -52,6 +52,7 @@ def register(request):
     return render(request, "register.html", {"form": form})
 
 
+@login_required
 def account(request):
     """User account view"""
 
