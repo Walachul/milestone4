@@ -32,7 +32,7 @@ def login(request):
     else:
         form = UserLoginForm()
 
-    return render(request, "login.html", {"form": form})
+    return render(request, "users/login.html", {"form": form})
 
 
 def register(request):
@@ -49,11 +49,11 @@ def register(request):
             return redirect("login")
     else:
         form = RegisterUserForm()
-    return render(request, "register.html", {"form": form})
+    return render(request, "users/register.html", {"form": form})
 
 
 @login_required
 def profile(request):
     """User account view"""
 
-    return render(request, "profile.html")
+    return render(request, "users/profile.html")
