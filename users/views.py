@@ -53,7 +53,7 @@ def register(request):
 
 
 @login_required
-def account(request):
+def profile(request):
     """User account view"""
 
-    return render(request, "account.html")
+    return render(request, "profile.html")
