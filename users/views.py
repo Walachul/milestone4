@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import RegisterUserForm, UserLoginForm
+from .forms import RegisterUserForm, UserLoginForm, UpdateUserForm, UpdateProfileForm
 
 
 @login_required
@@ -55,5 +55,10 @@ def register(request):
 @login_required
 def profile(request):
     """User account view"""
-
-    return render(request, "users/profile.html")
+    updateForm = UpdateUserForm()
+    profileUpdateForm = UpdateProfileForm()
+    return render(
+        request,
+        "users/profile.html",
+        {"updateForm": updateForm, "profileUpdateForm": profileUpdateForm},
+    )
