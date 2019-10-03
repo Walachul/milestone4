@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ user.username }}</h1>>
+
+<div class="container">
+    <div class="col-12">
+        <img class="rounded-circle" src="{% user.profile.profileImage.url %}">
+        <h1>{{ user.username }}</h1>>
+    </div>
+    <div class="col-6">
+        <p class="text-center">{{ user.email }}</p>
+        <p class="text-center">{{ user.homeAddress }}</p>
+        <p class="text-center">{{ user.firstName }} {{ user.lastName }}</p>
+        <p class="text-center">{{ user.profileImage }}</p>
+    </div>
+</div>
 
 {% endblock %}
