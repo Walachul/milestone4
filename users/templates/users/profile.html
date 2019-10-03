@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block content %}
 
 <div class="container">
@@ -12,6 +12,16 @@
         <p class="text-center">{{ user.homeAddress }}</p>
         <p class="text-center">{{ user.firstName }} {{ user.lastName }}</p>
         <p class="text-center">{{ user.profileImage }}</p>
+    </div>
+
+    <div class="col-6">
+        <h3>Update</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ updateForm | as_bootstrap }}
+            {{ profileUpdateForm | as_bootstrap }}
+            <button type="submit" class="btn btn-info">Update</button>
+        </form>
     </div>
 </div>
 
