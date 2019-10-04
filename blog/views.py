@@ -85,6 +85,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """To render this template, 
     I am going to stick to the Django convention: 
     <app>/<model>_<viewtype>.html"""
+    success_url = "/blog/"
 
     def test_func(self):
         post = self.get_object()
