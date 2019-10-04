@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
-from .forms import BlogForm
 
 
 def render_posts(request):
@@ -42,6 +41,15 @@ class PostCreateView(CreateView):
 
     model = Post
     fields = ["title", "content", "category"]
+    """Method to validate author of the post, before the form is posted.
+        Otherwise, Django raises Integrity Error"""
+
+    def form_valid(self, valid):
+        """Author of the instance is set as the current logged in user, 
+        before submitting the form."""
+        form.instance.author = self.request.user
+        """validate now the form, after the author is set to current auth user."""
+        return super().form_valid(form)
 
 
 def create_edit_post(request, pk=None):
