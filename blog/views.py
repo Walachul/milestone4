@@ -12,14 +12,18 @@ def render_posts(request):
 
 
 class PostListView(ListView):
-    
-""" Render all posts as list using class-based view offered by django"""
+
+    """Render all posts as list using class-based view offered by django"""
+
     model = Post
-""" Changed the template name.
+    """Changed the template name.
      Convention for Django is to use <app>/<mode>_<viewtype>.html"""
-    template_name = "blog/home.html" 
-"""Renamed variable objectList which ListView expects when passing it to the template."""
+
+    template_name = "blog/home.html"
+    """Renamed variable objectList which ListView expects when passing it to the template."""
+
     context_object_name = "posts"
+
 
 def details_one_post(request, pk):
 
