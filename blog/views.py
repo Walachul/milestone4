@@ -3,13 +3,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 
-def render_posts(request):
-    """Render all posts in the home page template of the Blog app"""
-
-    posts = Post.objects.all()
-    return render(request, "home.html", {"posts": posts})
-
-
 class PostListView(ListView):
 
     """Render all posts as list using class-based view offered by django"""
@@ -51,17 +44,3 @@ class PostCreateView(CreateView):
         """validate now the form, after the author is set to current auth user."""
         return super().form_valid(form)
 
-
-def create_edit_post(request, pk=None):
-
-    """Create a post or edit one based on ID status if null or not."""
-
-    post = get_object_or_404(Post, pk=pk) if pk else None
-    if request.method == "POST":
-        form = BlogForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save()
-            return redirect(details_one_post, post.pk)
-    else:
-        form = BlogForm(instance=post)
-    return render(request, "blog_form.html", {"form": form})
