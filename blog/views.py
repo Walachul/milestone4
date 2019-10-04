@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
 
 
@@ -32,6 +32,22 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     """Create new post"""
+
+    model = Post
+    fields = ["title", "content", "category"]
+    """Method to validate author of the post, before the form is posted.
+        Otherwise, Django raises Integrity Error"""
+
+    def form_valid(self, form):
+        """Author of the instance is set as the current logged in user, 
+        before submitting the form."""
+        form.instance.authorPost = self.request.user
+        """validate now the form, after the author is set to current auth user."""
+        return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, CreateView):
+    """Update post"""
 
     model = Post
     fields = ["title", "content", "category"]
