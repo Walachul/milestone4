@@ -1,5 +1,11 @@
 from django.conf.urls import url
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView
+from .views import (
+    PostListView,
+    PostDetailView,
+    PostCreateView,
+    PostUpdateView,
+    PostDeleteView,
+)
 from . import views
 
 urlpatterns = [
@@ -7,5 +13,6 @@ urlpatterns = [
     url(r"^(?P<pk>\d+)/$", PostDetailView.as_view(), name="blog-details-post"),
     url(r"^new/$", PostCreateView.as_view(), name="blog-new-post"),
     url(r"^(?P<pk>\d+)/update/$", PostUpdateView.as_view(), name="blog-update-post"),
+    url(r"^(?P<pk>\d+)/delete/$", PostDeleteView.as_view(), name="blog-delete-post"),
 ]
 
