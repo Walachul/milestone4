@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
@@ -29,7 +30,7 @@ class PostDetailView(DetailView):
     <app>/<model>_<viewtype>.html"""
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     """Create new post"""
 
     model = Post
