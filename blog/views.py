@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from .models import Post
 
 
@@ -68,6 +74,23 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
         if self.request.user == post.authorPost:
             return True
-        else:
-            return False
+        return False
 
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+
+    """Delete a post"""
+
+    model = Post
+    """To render this template, 
+    I am going to stick to the Django convention: 
+    <app>/<model>_<viewtype>.html"""
+
+    def test_func(self):
+        post = self.get_object()
+        """Check to see that the auth user is 
+        the author of the post that is being updated."""
+
+        if self.request.user == post.authorPost:
+            return True
+        return False
