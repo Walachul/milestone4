@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 from .forms import BlogForm
 
@@ -17,7 +17,7 @@ class PostListView(ListView):
 
     model = Post
     """Changed the template name.
-     Convention for Django is to use <app>/<mode>_<viewtype>.html"""
+     Convention for Django is to use <app>/<model>_<viewtype>.html"""
 
     template_name = "blog/home.html"
     """Renamed variable objectList which ListView expects when passing it to the template."""
@@ -27,14 +27,14 @@ class PostListView(ListView):
     ordering = ["-dateAdded"]
 
 
-def details_one_post(request, pk):
+class PostDetailView(DetailView):
 
-    """Render a single post with more details
-     about it based  on ID or return 404 if not found"""
+    """Render all posts as list using class-based view offered by django"""
 
-    post = get_object_or_404(Post, pk=pk)
-    post.save()
-    return render(request, "post_details.html", {"post": post})
+    model = Post
+    """To render this template, 
+    I am going to stick to the Django convention: 
+    <app>/<model>_<viewtype>.html"""
 
 
 def create_edit_post(request, pk=None):
