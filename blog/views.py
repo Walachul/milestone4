@@ -46,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, CreateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     """Update post"""
 
     model = Post
