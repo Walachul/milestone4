@@ -24,6 +24,7 @@ class PostListView(ListView):
     context_object_name = "posts"
 
     ordering = ["-dateAdded"]
+    paginate_by = 3
 
 
 class PostDetailView(DetailView):

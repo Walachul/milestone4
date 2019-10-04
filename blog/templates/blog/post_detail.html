@@ -11,7 +11,11 @@
             <p class="text-justify">Content: {{ object.content }}</p>
             <p class="text-justify">Category: {{ object.category }}</p>
             <a href="{% url 'blog-home' %}">Back to blog</a>
+            {% if object.authorPost == user %}
+            <a class="btn btn-success" href="{% url 'blog-update-post' object.id %}">Update</a>
+            <a class="btn btn-warning" href="{% url 'blog-delete-post' object.id %}">Delete</a>
 
+            {% endif %}
         </div>
     </div>
 </div>
