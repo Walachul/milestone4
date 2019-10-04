@@ -44,10 +44,10 @@ class PostCreateView(CreateView):
     """Method to validate author of the post, before the form is posted.
         Otherwise, Django raises Integrity Error"""
 
-    def form_valid(self, valid):
+    def form_valid(self, form):
         """Author of the instance is set as the current logged in user, 
         before submitting the form."""
-        form.instance.author = self.request.user
+        form.instance.authorPost = self.request.user
         """validate now the form, after the author is set to current auth user."""
         return super().form_valid(form)
 
