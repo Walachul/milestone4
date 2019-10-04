@@ -24,6 +24,8 @@ class PostListView(ListView):
 
     context_object_name = "posts"
 
+    ordering = ["-dateAdded"]
+
 
 def details_one_post(request, pk):
 
