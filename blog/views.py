@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -25,6 +26,25 @@ class PostListView(ListView):
 
     ordering = ["-dateAdded"]
     paginate_by = 3
+
+
+class UserPostListView(ListView):
+
+    """Render all posts of a user based on filter."""
+
+    model = Post
+    """Changed the template name.
+     Convention for Django is to use <app>/<model>_<viewtype>.html"""
+
+    template_name = "blog/user_posts.html"
+    """Renamed variable objectList which ListView expects when passing it to the template."""
+
+    context_object_name = "posts"
+    paginate_by = 5
+
+    def get_query_set(self):
+        user = get_object_or_404(User, username=self.kwargs.get("username"))
+        return Post.objects.filter(authorPost=user).order_by("-dateAdded")
 
 
 class PostDetailView(DetailView):
