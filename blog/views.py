@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 from .forms import BlogForm
 
@@ -35,6 +35,13 @@ class PostDetailView(DetailView):
     """To render this template, 
     I am going to stick to the Django convention: 
     <app>/<model>_<viewtype>.html"""
+
+
+class PostCreateView(CreateView):
+    """Create new post"""
+
+    model = Post
+    fields = ["title", "content", "category"]
 
 
 def create_edit_post(request, pk=None):
