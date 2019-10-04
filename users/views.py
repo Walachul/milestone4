@@ -55,8 +55,19 @@ def register(request):
 @login_required
 def profile(request):
     """User account view"""
-    updateForm = UpdateUserForm()
-    profileUpdateForm = UpdateProfileForm()
+    if request.method == "POST":
+        updateForm = UpdateUserForm(request.POST, instance=request.user)
+        profileUpdateForm = UpdateProfileForm(
+            request.POST, request.FILES, instance=request.user.profile
+        )
+        if updateForm.is_valid() and profileUpdateForm.is_valid():
+            updateForm.save()
+            profileUpdateForm.save()
+            messages.success(request, f"You have successfully updated your acount!")
+            return redirect("profile")
+    else:
+        updateForm = UpdateUserForm(instance=request.user)
+        profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
     return render(
         request,
         "users/profile.html",
