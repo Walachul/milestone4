@@ -6,7 +6,7 @@
 
             <h1>{{ object.title }}</h1>
             <p><small>{{ object.dateAdded }}</small>
-                <span> {{object.authorPost }}</span>
+                <a href="{% url 'blog-user-posts' object.authorPost.username %}"> {{object.authorPost }}</a>
             </p>
             <p class="text-justify">Content: {{ object.content }}</p>
             <p class="text-justify">Category: {{ object.category }}</p>
