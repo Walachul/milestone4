@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
 
@@ -46,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update post"""
 
     model = Post
@@ -60,4 +60,14 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.authorPost = self.request.user
         """validate now the form, after the author is set to current auth user."""
         return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        """Check to see that the auth user is 
+        the author of the post that is being updated."""
+
+        if self.request.user == post.authorPost:
+            return True
+        else:
+            return False
 
