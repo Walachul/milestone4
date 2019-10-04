@@ -12,10 +12,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <p>Here we are displaying blog posts</p>
+
             {% for post in posts %}
             <h2>{{ post.title }}</h2>
             <p><small>{{ post.dateAdded }}</small>
+                <img class="rounded-circle" src="{{ post.authorPost.profile.profileImage.url }}"
+                    alt="Profile image of the author of the post">
                 <span> {{post.authorPost }}</span>
                 <span> {{post.category }}</span>
             </p>
