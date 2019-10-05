@@ -49,6 +49,13 @@ urlpatterns = [
         ),
         name="password_reset_done",
     ),
+    url(
+        "password-reset-confirm/(?P<uidb64>[0-9A-Za-z]+) - (?P<token>.+)/$",
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="users/password_reset_confirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
     url(r"^blog/", include(urls_blog)),
 ]
 
