@@ -31,13 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home-home' %}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'blog-home'%}">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog-new-post' %}">New post</a>
+                        <a class="nav-link" href="{% url 'home-home' %}">Home</a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">
@@ -56,6 +50,12 @@
                     <!--If the user is authenticated, logout and profile templates will become available.
                     Else display Login and Register-->
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'blog-home'%}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog-new-post' %}">New post</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
