@@ -11,7 +11,7 @@ from django.views.generic import (
 from .models import Post
 
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
 
     """Render all posts as list using class-based view offered by django"""
 
@@ -28,7 +28,7 @@ class PostListView(ListView):
     paginate_by = 3
 
 
-class UserPostListView(ListView):
+class UserPostListView(LoginRequiredMixin, ListView):
 
     """Render all posts of a user based on filter."""
 
@@ -47,7 +47,7 @@ class UserPostListView(ListView):
         return Post.objects.filter(authorPost=user).order_by("-dateAdded")
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
 
     """Render all posts as list using class-based view offered by django"""
 
