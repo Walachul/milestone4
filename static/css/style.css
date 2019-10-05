@@ -1,3 +1,6 @@
+/**** Font ****/
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap');
+
 /**** Sticky footer ****/
 html, body {
     height: 100%
@@ -19,4 +22,21 @@ body {
     font-size: 24px;
     color: green;
     font-weight: 400
+}
+
+/** Style for name of the site  **/
+#blue, #yellow, #red{
+    
+    font-family: 'Averia Serif Libre', cursive;
+    font-size:40px;
+}
+#blue{
+    color: blue    
+}
+#yellow{
+    color: yellow
+}
+
+#red{
+    color:red
 }
