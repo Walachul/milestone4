@@ -39,20 +39,24 @@ urlpatterns = [
         name="logout",
     ),
     url(
-        r"^password-reset/",
-        auth_views.PasswordResetView.as_view(template_name="users/password_reset.html"),
+        r"^password-reset/$",
+        auth_views.PasswordResetView.as_view(
+            template_name="registration/password_reset.html"
+        ),
         {"post_reset_redirect": reverse_lazy("PasswordResetDoneView")},
         name="password_reset",
     ),
     url(
-        r"^password-reset/done/",
-        auth_views.PasswordResetDoneView.as_view(template_name="users/profile.html"),
+        r"^password-reset/done/$",
+        auth_views.PasswordResetDoneView.as_view(
+            template_name="registration/password_reset_done.html"
+        ),
         name="password_reset_done",
     ),
     url(
         r"^password-reset-confirm/(?P<uidb64>[0-9A-Za-z]+) - (?P<token>.+)/$",
         auth_views.PasswordResetConfirmView.as_view(
-            template_name="users/password_reset_confirm.html"
+            template_name="registration/password_reset_confirm.html"
         ),
         name="password_reset_confirm",
     ),
