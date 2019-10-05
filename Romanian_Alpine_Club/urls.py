@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.core.urlresolvers import reverse_lazy
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -25,32 +26,31 @@ from users import views as user_views
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^", include(urls_home)),
-    url("register/", user_views.register, name="register"),
-    url("profile/", user_views.profile, name="profile"),
+    url(r"^register/", user_views.register, name="register"),
+    url(r"^profile/", user_views.profile, name="profile"),
     url(
-        "login/",
+        r"^login/",
         auth_views.LoginView.as_view(template_name="users/login.html"),
         name="login",
     ),
     url(
-        "logout/",
+        r"^logout/",
         auth_views.LogoutView.as_view(template_name="users/logout.html"),
         name="logout",
     ),
     url(
-        "password-reset/",
+        r"^password-reset/",
         auth_views.PasswordResetView.as_view(template_name="users/password_reset.html"),
+        {"post_reset_redirect": reverse_lazy("PasswordResetDoneView")},
         name="password_reset",
     ),
     url(
-        "password-reset/done/",
-        auth_views.PasswordResetDoneView.as_view(
-            template_name="users/password_reset_done.html"
-        ),
+        r"^password-reset/done/",
+        auth_views.PasswordResetDoneView.as_view(template_name="users/profile.html"),
         name="password_reset_done",
     ),
     url(
-        "password-reset-confirm/(?P<uidb64>[0-9A-Za-z]+) - (?P<token>.+)/$",
+        r"^password-reset-confirm/(?P<uidb64>[0-9A-Za-z]+) - (?P<token>.+)/$",
         auth_views.PasswordResetConfirmView.as_view(
             template_name="users/password_reset_confirm.html"
         ),
