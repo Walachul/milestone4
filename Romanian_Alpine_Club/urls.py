@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.core.urlresolvers import reverse_lazy
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -43,7 +42,6 @@ urlpatterns = [
         auth_views.PasswordResetView.as_view(
             template_name="registration/password_reset.html"
         ),
-        {"post_reset_redirect": reverse_lazy("PasswordResetDoneView")},
         name="password_reset",
     ),
     url(

@@ -9,6 +9,9 @@
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 <button type="submit" class="btn btn-info">Login</button>
+                <small class="text-muted">
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                </small>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
