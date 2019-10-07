@@ -18,17 +18,13 @@ body {
 /**** end of sticky footer ****/
 
 /**** Main style ****/
-#heading_one {
-    font-size: 24px;
-    color: green;
-    font-weight: 400
-}
 
+/*** Header ***/
+/*** Navbar ***/
 /** Style for name of the site  **/
 #blue, #yellow, #red{
-    
     font-family: 'Averia Serif Libre', cursive;
-    font-size:40px;
+    font-size:30px;
 }
 #blue{
     color: blue    
@@ -39,4 +35,16 @@ body {
 
 #red{
     color:red
+}
+/*** Navbar ***/
+/** Navbar background **/
+.navbar-black{
+    background-color: black
+}
+
+/*** H1 ***/
+#heading_one {
+    font-size: 24px;
+    color: green;
+    font-weight: 400
 }
