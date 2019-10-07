@@ -6,6 +6,7 @@ html, body {
     height: 100%
 }
 body {
+    font-family: 'Averia Serif Libre', cursive;
     display: flex;
     flex-direction: column
 }
@@ -23,7 +24,6 @@ body {
 /*** Navbar ***/
 /** Style for name of the site  **/
 #blue, #yellow, #red{
-    font-family: 'Averia Serif Libre', cursive;
     font-size:30px;
 }
 #blue{
@@ -40,6 +40,16 @@ body {
 /** Navbar background **/
 .navbar-black{
     background-color: black
+}
+/** Navbar link **/
+.navItems{
+    color: white;
+    font-size: 22px;
+    transition: all 1s
+}
+.navItems:hover{
+    transform: scale(0.8);
+    color: grey
 }
 
 /*** H1 ***/
