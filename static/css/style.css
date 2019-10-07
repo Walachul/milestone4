@@ -24,7 +24,7 @@ body {
 /*** Navbar ***/
 /** Style for name of the site  **/
 #blue, #yellow, #red{
-    font-size:30px;
+    font-size:22px;
 }
 #blue{
     color: blue    
@@ -54,7 +54,11 @@ body {
 
 /*** H1 ***/
 #heading_one {
-    font-size: 24px;
-    color: green;
+    font-size: 26px;
+    color:black;
     font-weight: 400
+}
+/*** Footer ***/
+footer{
+    background-color: black
 }
