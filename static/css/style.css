@@ -62,3 +62,13 @@ body {
 footer{
     background-color: black
 }
+
+/**Social Media **/
+.sIcons{
+    color:white;
+    transition: all .5s
+}
+.sIcons:hover{
+    transform: scale(0.8);
+    color: blue
+}
