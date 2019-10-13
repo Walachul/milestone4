@@ -26,7 +26,7 @@ SECRET_KEY = "&&xb+b-d^g8lxmo)bi^h%nq)=ga5cwim)3905^nn71_dgijigq"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["clubul-alpin-roman.herokuapp.com"]
 
 
 # Application definition
