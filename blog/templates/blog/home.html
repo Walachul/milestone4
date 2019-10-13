@@ -14,37 +14,49 @@
         <div class="col-12 col-lg-6 mx-auto">
             <!-- Render the posts from users -->
             {% for post in posts %}
-            <div class="blogPosts my-4">
-                <h2 class="blogTitle text-center">{{ post.title }}</h2>
-                <p><small>{{ post.dateAdded }}</small>
-                    <img class="rounded-circle" src="{{ post.authorPost.profile.profileImage.url }}"
-                        alt="Profile image of the author of the post">
-                    <a href="{% url 'blog-user-posts' post.authorPost.username %}"> {{post.authorPost }}</a>
-                    <span> {{post.category }}</span>
-                </p>
-                <a class="my-2 align-right" href="{% url 'blog-details-post' post.id %}">Read more</a>
+            <div class="blogPosts media my-4">
+                <img class="ml-2 align-self-center rounded-circle" src="{{ post.authorPost.profile.profileImage.url }}"
+                    alt="Profile image of the author of the post">
+
+                <div class="media-body ml-2">
+                    <h2 class="blogTitle text-left p-4 my-1">{{ post.title }}</h2>
+                    <span class="text-left p-4"><small>Date added: {{ post.dateAdded }}</small></span>
+                    <span class=" text-left">By
+                        <a href="{% url 'blog-user-posts' post.authorPost.username %}">
+                            {{post.authorPost }}</a></span>
+                    <span class="text-left p-2">Category: {{post.category }}</span>
+                    <p class="my-2 p-4 text-left">
+
+                        {{ post.content|truncatewords:30 }}
+                    </p>
+                    <p class="text-right"><a class="mr-2" href="{% url 'blog-details-post' post.id %}">Read more</a></p>
+
+                </div>
             </div>
             {% endfor %}
-            {% if is_paginated %}
-            {% if page_obj.has_previous %}
-            <a class="btn btn-info" href="?page=1">First</a>
-            <a class="btn btn-info" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-            {% endif %}
-            {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-            <a class="btn btn-success" href="?page={{ num }}">{{num}}</a>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'-3' %}
-            <a class="btn btn-outline-info" href="?page={{ num }}">{{num}}</a>
+            <!-- Pagination -->
+            <nav aria-label="Blog Posts" class="text-center my-3 p-2">
+                {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                <a class="btn btn-paginate" href="?page=1">First</a>
+                <a class="btn btn-paginate" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <a class="btn btn btn-warning" href="?page={{ num }}">{{num}}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'-3' %}
+                <a class="btn btn-paginate" href="?page={{ num }}">{{num}}</a>
 
-            {% endif %}
+                {% endif %}
 
-            {% endfor %}
-            {% if page_obj.has_next %}
-            <a class="btn btn-info" href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a class="btn btn-info" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-            {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <a class="btn btn-paginate" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-paginate" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                {% endif %}
 
-            {% endif %}
+                {% endif %}
+            </nav>
         </div>
     </div>
 </div>
