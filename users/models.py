@@ -18,13 +18,13 @@ class Profile(models.Model):
         so that the file system will not get loaded with big files,
         affecting performance."""
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
 
-        imgProfile = Image.open(self.profileImage.path)
+    #     imgProfile = Image.open(self.profileImage.path)
 
-        if imgProfile.height > 300 or imgProfile.width > 300:
-            outputSize = (300, 300)
-            imgProfile.thumbnail(outputSize)
-            imgProfile.save(self.profileImage.path)
+    #     if imgProfile.height > 300 or imgProfile.width > 300:
+    #         outputSize = (300, 300)
+    #         imgProfile.thumbnail(outputSize)
+    #         imgProfile.save(self.profileImage.path)
 
