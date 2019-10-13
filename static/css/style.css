@@ -39,7 +39,7 @@ body {
 /*** Navbar ***/
 /** Navbar background **/
 .navbar-black{
-    background-color: black
+    background-color: #414042
 }
 /** Navbar link **/
 .navItems{
@@ -80,7 +80,7 @@ body {
 }
 /*** Footer ***/
 footer{
-    background-color: black
+    background-color: #414042
 }
 /** Footer Titles **/
 .h2Footer{
