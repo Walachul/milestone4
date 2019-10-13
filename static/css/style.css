@@ -54,7 +54,7 @@ body {
 
 /*** H1 ***/
 #heading_one {
-    font-size: 26px;
+    font-size: 30px;
     color:black;
     font-weight: 400
 }
@@ -83,7 +83,7 @@ footer{
     background-color: #414042
 }
 /** Footer Titles **/
-.h2Footer{
+.h3Footer{
     color:white;
     font-size: 20px;
 }
