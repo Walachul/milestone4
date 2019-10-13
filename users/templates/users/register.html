@@ -3,12 +3,14 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6">
-            <h1>Register</h1>
+        <div class="col-6 mx-auto my-4">
+            <h1 class="text-center mb-3" id="heading_one">Register</h1>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
-                <button type="submit" class="btn btn-info">Register</button>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </div>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
