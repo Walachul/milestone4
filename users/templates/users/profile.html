@@ -3,25 +3,21 @@
 {% block content %}
 
 <div class="container">
-    <div class="col-12">
-        <img class="rounded-circle" src="{{user.profile.profileImage.url }}">
-        <h1>{{ user.username }}</h1>
-    </div>
-    <div class="col-6">
-        <p class="text-center">{{ user.email }}</p>
-        <p class="text-center">{{ user.homeAddress }}</p>
-        <p class="text-center">{{ user.firstName }} {{ user.lastName }}</p>
-        <p class="text-center">{{ user.profileImage }}</p>
-    </div>
+    <div class="row">
+        <div class="col-12 mx-auto my-4">
 
-    <div class="col-6">
-        <h3>Update</h3>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ updateForm | as_bootstrap }}
-            {{ profileUpdateForm | as_bootstrap }}
-            <button type="submit" class="btn btn-info">Update</button>
-        </form>
+            <h1 class="text-center mb-3" id="heading_one"><img class="rounded-circle mr-2"
+                    src="{{user.profile.profileImage.url }}">{{ user.username }}'s Profile</h1>
+        </div>
+        <div class="col-12 my-2">
+            <h2 class="my-2">Current profile information</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ updateForm | as_bootstrap }}
+                {{ profileUpdateForm | as_bootstrap }}
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
     </div>
 </div>
 
