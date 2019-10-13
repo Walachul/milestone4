@@ -58,6 +58,17 @@ body {
     color:black;
     font-weight: 400
 }
+/*** Blog home page ***/
+/** Title H2 from blog posts **/
+.blogPosts{
+    -webkit-box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
+-moz-box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
+box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
+}
+.blogTitle{
+    font-size: 22px;
+}
+
 /*** Login page ***/
 #forgotPwd{
     color: silver;
