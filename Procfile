@@ -1,0 +1,1 @@
+web:gunicorn clubul-alpin-roman.wsgi:application
