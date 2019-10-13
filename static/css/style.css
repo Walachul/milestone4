@@ -62,7 +62,11 @@ body {
 footer{
     background-color: black
 }
-
+/** Footer Titles **/
+.h2Footer{
+    color:white;
+    font-size: 20px;
+}
 /**Social Media **/
 .sIcons{
     color:white;
@@ -70,5 +74,16 @@ footer{
 }
 .sIcons:hover{
     transform: scale(0.8);
-    color: blue
+    color: grey
+}
+/** Partners **/
+.partners{
+    color: white;
+    font-size: 16px;
+    transition: all .4s
+}
+.partners:hover{
+    color:grey;
+    text-decoration: none;
+  
 }
