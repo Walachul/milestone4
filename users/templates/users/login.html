@@ -3,15 +3,19 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6">
-            <h1>Login</h1>
+        <div class="col-6 col-md-4 align-middle mx-auto my-4">
+            <h1 class="text-center  mb-3" id="heading_one">Login</h1>
             <form method="POST">
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
-                <button type="submit" class="btn btn-info">Login</button>
-                <small class="text-muted">
-                    <a href="{% url 'password_reset' %}">Forgot password?</a>
-                </small>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+                <div class="my-2">
+                    <small class="text-muted">
+                        <a class="text-decoration-none" href="{% url 'password_reset' %}">Forgot password?</a>
+                    </small>
+                </div>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
