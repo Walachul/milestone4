@@ -69,6 +69,15 @@ body {
     color:black;
     transform:translateX(10px)
 }
+#signUp{
+    transition: all .6s;
+    text-decoration: none;
+    display: inline-block
+}
+#signUp:hover{
+    color:#279fff;
+    transform:translateX(10px)
+}
 /*** Footer ***/
 footer{
     background-color: black
