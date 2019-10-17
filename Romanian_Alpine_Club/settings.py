@@ -79,17 +79,21 @@ WSGI_APPLICATION = "Romanian_Alpine_Club.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-DATABASES = {
-    "default": dj_database_url.parse(
-        "postgres://caohrvshgxddjv:ffa080a0c04545d02a9adeb81c88c2101e1e1d335d5ae748da9412d18ffd4110@ec2-46-137-188-105.eu-west-1.compute.amazonaws.com:5432/de0a30l0tu89ra"
-    )
-}
+
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            "postgres://caohrvshgxddjv:ffa080a0c04545d02a9adeb81c88c2101e1e1d335d5ae748da9412d18ffd4110@ec2-46-137-188-105.eu-west-1.compute.amazonaws.com:5432/de0a30l0tu89ra"
+        )
+    }
+else:
+    print("Database URL not found. Using SQLite instead")
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
