@@ -8,7 +8,7 @@ class RegisterUserForm(UserCreationForm):
 
     firstName = forms.CharField(max_length=50)
     lastName = forms.CharField(max_length=50)
-    birthDate = forms.DateField(help_text="Required. Format: DD-MM-YYYY")
+    birthDate = forms.DateField(help_text="Required. Format: YYYY-MM-DD")
     homeAddress = forms.CharField(max_length=200)
     phoneNumber = forms.CharField(max_length=20)
     email = forms.EmailField()

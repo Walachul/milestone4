@@ -40,8 +40,16 @@ def register(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            """This will load the Profile instance created by the signal in the models.py"""
+            user.refresh_from_db()
+            user.profile.firstName = form.cleaned_data.get("firstName")
+            user.profile.lastName = form.cleaned_data.get("lastName")
+            user.profile.birthDate = form.cleaned_data.get("birthDate")
+            user.profile.homeAddress = form.cleaned_data.get("homeAddress")
+            user.profile.phoneNumber = form.cleaned_data.get("phoneNumber")
             username = form.cleaned_data.get("username")
+            user.save()
             messages.success(
                 request,
                 f"The account for {username} was created successfully! You are now able to login",
