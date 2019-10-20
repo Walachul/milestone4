@@ -10,8 +10,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Additional information required for registration
-    firstName = models.CharField(max_length=50, default="First Name")
-    lastName = models.CharField(max_length=50, default="Last Name")
     birthDate = models.DateField(blank=True, null=True)
     homeAddress = models.CharField(max_length=200, default="Your home address")
     phoneNumber = models.CharField(max_length=20, default="0766 xxx xxx")

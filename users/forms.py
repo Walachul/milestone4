@@ -6,10 +6,29 @@ from .models import Profile
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField()
+    firstName = forms.CharField(max_length=50)
+    lastName = forms.CharField(max_length=100)
 
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2"]
+        fields = [
+            "username",
+            "email",
+            "firstName",
+            "lastName",
+            "password1",
+            "password2",
+        ]
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data["email"]
+        user.firstName = self.cleaned_data["firstName"]
+        user.lastName = self.cleaned_data["lastName"]
+
+        if commit:
+            user.save()
+        return user
 
 
 """Extend the user table with additional information"""
@@ -18,7 +37,7 @@ class RegisterUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("firstName", "lastName", "birthDate", "homeAddress", "phoneNumber")
+        fields = ("birthDate", "homeAddress", "phoneNumber")
 
 
 class UserLoginForm(forms.Form):
@@ -32,11 +51,11 @@ class UpdateUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["username", "email"]
+        fields = ["username", "email", "firstName", "lastName"]
 
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ["profileImage", "firstName", "lastName", "homeAddress", "phoneNumber"]
+        fields = ["profileImage", "homeAddress", "phoneNumber"]
 
