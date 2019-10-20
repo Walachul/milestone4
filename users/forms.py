@@ -29,25 +29,14 @@ class UserLoginForm(forms.Form):
 
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField()
-    homeAddress = forms.CharField(max_length=200)
-    firstName = forms.CharField(max_length=50)
-    lastName = forms.CharField(max_length=50)
-    phoneNumber = forms.CharField(max_length=20)
 
     class Meta:
         model = User
-        fields = [
-            "username",
-            "email",
-            "firstName",
-            "lastName",
-            "homeAddress",
-            "phoneNumber",
-        ]
+        fields = ["username", "email"]
 
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ["profileImage"]
+        fields = ["profileImage", "firstName", "lastName", "homeAddress", "phoneNumber"]
 
