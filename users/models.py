@@ -6,7 +6,7 @@ from PIL import Image
 
 
 class Profile(models.Model):
-    """Extending the user profile by adding image field.
+    """Extending the user profile by adding additional information.
         On delete argument CASCADE > when the user is deleted, his profile is deleted also,
         but if profile is deleted, user is not."""
 
@@ -27,10 +27,14 @@ class Profile(models.Model):
     """
 
     @receiver(post_save, sender=User)
-    def update_profile(sender, instance, created, **kwargs):
+    def create_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
-        instance.profile.save()
+
+    @receiver(post_save, sender=User)
+    def update_profile(sender, instance, created, **kwargs):
+        if created:
+            instance.profile.save()
 
     """Override save function in order to resize the image,
         so that the file system will not get loaded with big files,

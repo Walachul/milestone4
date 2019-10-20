@@ -5,27 +5,20 @@ from .models import Profile
 
 
 class RegisterUserForm(UserCreationForm):
-
-    firstName = forms.CharField(max_length=50)
-    lastName = forms.CharField(max_length=50)
-    birthDate = forms.DateField(help_text="Required. Format: YYYY-MM-DD")
-    homeAddress = forms.CharField(max_length=200)
-    phoneNumber = forms.CharField(max_length=20)
     email = forms.EmailField()
 
     class Meta:
         model = User
-        fields = [
-            "username",
-            "email",
-            "firstName",
-            "lastName",
-            "birthDate",
-            "homeAddress",
-            "phoneNumber",
-            "password1",
-            "password2",
-        ]
+        fields = ["username", "email", "password1", "password2"]
+
+
+"""Extend the user table with additional information"""
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("firstName", "lastName", "birthDate", "homeAddress", "phoneNumber")
 
 
 class UserLoginForm(forms.Form):

@@ -2,7 +2,13 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import RegisterUserForm, UserLoginForm, UpdateUserForm, UpdateProfileForm
+from .forms import (
+    RegisterUserForm,
+    ProfileForm,
+    UserLoginForm,
+    UpdateUserForm,
+    UpdateProfileForm,
+)
 
 
 @login_required
@@ -39,17 +45,17 @@ def register(request):
     """Register users view"""
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
-        if form.is_valid():
+        profile_form = ProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
             user = form.save()
-            """This will load the Profile instance created by the signal in the models.py"""
-            user.refresh_from_db()
-            user.profile.firstName = form.cleaned_data.get("firstName")
-            user.profile.lastName = form.cleaned_data.get("lastName")
-            user.profile.birthDate = form.cleaned_data.get("birthDate")
-            user.profile.homeAddress = form.cleaned_data.get("homeAddress")
-            user.profile.phoneNumber = form.cleaned_data.get("phoneNumber")
+            profile = profile_form.save(
+                commit=False
+            )  # This is not save to DB right away.
+            profile.user = user
+
+            profile.save()
+
             username = form.cleaned_data.get("username")
-            user.save()
             messages.success(
                 request,
                 f"The account for {username} was created successfully! You are now able to login",
@@ -57,7 +63,10 @@ def register(request):
             return redirect("login")
     else:
         form = RegisterUserForm()
-    return render(request, "users/register.html", {"form": form})
+        profile_form = ProfileForm(request.POST)
+    return render(
+        request, "users/register.html", {"form": form, "profile_form": profile_form}
+    )
 
 
 @login_required
