@@ -6,16 +6,16 @@ from .models import Profile
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField()
-    firstName = forms.CharField(max_length=50)
-    lastName = forms.CharField(max_length=100)
+    first_name = forms.CharField(max_length=50)
+    last_name = forms.CharField(max_length=100)
 
     class Meta:
         model = User
         fields = [
             "username",
             "email",
-            "firstName",
-            "lastName",
+            "first_name",
+            "last_name",
             "password1",
             "password2",
         ]
@@ -23,8 +23,8 @@ class RegisterUserForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
-        user.firstName = self.cleaned_data["firstName"]
-        user.lastName = self.cleaned_data["lastName"]
+        user.firstName = self.cleaned_data["first_name"]
+        user.lastName = self.cleaned_data["last_name"]
 
         if commit:
             user.save()
@@ -51,7 +51,7 @@ class UpdateUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["username", "email", "firstName", "lastName"]
+        fields = ["username", "email", "first_name", "last_name"]
 
 
 class UpdateProfileForm(forms.ModelForm):
