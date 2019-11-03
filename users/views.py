@@ -56,6 +56,7 @@ def register(request):
             profile.save()
 
             username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
             messages.success(
                 request,
                 f"The account for {username} was created successfully! You are now able to login",
@@ -63,7 +64,7 @@ def register(request):
             return redirect("login")
     else:
         form = RegisterUserForm()
-        profile_form = ProfileForm(request.POST)
+        profile_form = ProfileForm()
     return render(
         request, "users/register.html", {"form": form, "profile_form": profile_form}
     )

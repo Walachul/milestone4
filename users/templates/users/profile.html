@@ -10,8 +10,9 @@
                     src="{{user.profile.profileImage.url }}">{{ user.username }}'s Profile</h1>
         </div>
         <div class="col-12 mx-auto my-4">
-            <p>First name: {{ user.profile.firstName }}</p>
-            <p>Last name: {{ user.profile.lastName }}</p>
+            <p>First name: {{ user.first_name }}</p>
+            <p>Last name: {{ user.last_name }}</p>
+            <p>Email: {{user.email }}</p>
             <p>Birth date: {{ user.profile.birthDate }}</p>
             <p>Address: {{ user.profile.homeAddress }}</p>
             <p>Phone: {{ user.profile.phoneNumber }}</p>
