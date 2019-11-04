@@ -48,11 +48,8 @@ def register(request):
         profile_form = ProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
-            profile = profile_form.save(
-                commit=False
-            )  # This is not save to DB right away.
+            profile = profile_form.save(commit=False)
             profile.user = user
-
             profile.save()
 
             username = form.cleaned_data.get("username")

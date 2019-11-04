@@ -38,6 +38,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ("birthDate", "homeAddress", "phoneNumber")
+        exclude = ["user"]
 
 
 class UserLoginForm(forms.Form):

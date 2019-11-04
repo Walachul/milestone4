@@ -14,7 +14,7 @@ class Profile(models.Model):
     homeAddress = models.CharField(
         blank=True, max_length=200, default="Your home address"
     )
-    phoneNumber = models.IntegerField(blank=True, max_length=20, default="0766 xxx xxx")
+    phoneNumber = models.CharField(blank=True, max_length=20, default="0766 xxx xxx")
     profileImage = models.ImageField(default="default.jpg", upload_to="profile_images")
 
     def __str__(self):
