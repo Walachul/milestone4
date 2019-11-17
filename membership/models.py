@@ -20,7 +20,17 @@ class Membership(models.Model):
         return self.membership_type
 
 
+"""User and the type of membership for that user"""
+
+
 class UserMembership(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     stripe_customer_id = models.CharField(max_length=40)
     membership = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
+
+
+class Subscription(models.Model):
+    user_membership = models.ForeignKey(UserMembership, on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=40)
+    active = models.BooleanField(default=True)
+
