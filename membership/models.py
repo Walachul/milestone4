@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 Membership_Choices = ["Regular membership", "Student membership", "Retired membership"]
 
@@ -17,3 +19,8 @@ class Membership(models.Model):
     def __str__(self):
         return self.membership_type
 
+
+class UserMembership(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=40)
+    membership = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
