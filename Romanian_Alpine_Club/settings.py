@@ -135,9 +135,6 @@ DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
-STRIPE_SECRET = os.getenv("STRIPE_SECRET")
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 LOGIN_REDIRECT_URL = "home-home"
@@ -166,3 +163,12 @@ AWS_DEFAULT_ACL = None
 
 STATICFILES_LOCATION = "static"
 STATICFILES_STORAGE = "custom_storages.StaticStorage"
+
+
+if DEBUG:
+    STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
+    STRIPE_SECRET = os.getenv("STRIPE_SECRET")
+else:
+    # Production
+    STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
+    STRIPE_SECRET = os.getenv("STRIPE_SECRET")
