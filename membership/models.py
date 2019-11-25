@@ -1,8 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+import stripe
 
-
-Membership_Choices = ["Regular membership", "Student membership", "Retired membership"]
+Membership_Choices = (
+    ("Regular Membership", "Regular"),
+    ("Student Membership", "Student"),
+    ("Retired Membership", "Retired"),
+)
 
 """Membership based on 3 choices. 
    The users will have the same access to the app,
@@ -28,9 +33,33 @@ class UserMembership(models.Model):
     stripe_customer_id = models.CharField(max_length=40)
     membership = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.user.username
+
+
+def post_save_usermembership_create(sender, instance, *args, **kwargs):
+    if created:
+        UserMembership.objects.get_or_create(user=instance)
+    user_membership, created = UserMembership.objects.get_or_create(user=instance)
+    if (
+        user_membership.stripe_customer_id is None
+        or user_membership.stripe_customer_id == ""
+    ):
+        new_customer_id = stripe.Customer.create(email=instance.email)
+        user_membership.stripe_customer_id = new_customer_id["id"]
+        user_membership.save()
+
+
+post_save.connect(post_save_usermembership_create, sender=User)
+
+
+"""After paying, the user subscription becomes active"""
+
 
 class Subscription(models.Model):
     user_membership = models.ForeignKey(UserMembership, on_delete=models.CASCADE)
     stripe_customer_id = models.CharField(max_length=40)
     active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.user_membership.user.username
