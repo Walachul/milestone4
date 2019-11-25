@@ -37,7 +37,7 @@ class UserMembership(models.Model):
         return self.user.username
 
 
-def post_save_usermembership_create(sender, instance, *args, **kwargs):
+def post_save_usermembership_create(sender, instance, created, *args, **kwargs):
     if created:
         UserMembership.objects.get_or_create(user=instance)
     user_membership, created = UserMembership.objects.get_or_create(user=instance)
