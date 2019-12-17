@@ -16,7 +16,7 @@ Membership_Choices = (
 
 """Membership based on 3 choices. 
    The users will have the same access to the app,
-   only the price will be different based on their status."""
+   only the price will be different based on their membership choice."""
 
 
 class Membership(models.Model):
@@ -40,6 +40,13 @@ class UserMembership(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+# Tell Django to create user membership through signal
+"""If database exists until this point where creating with the signal
+    the usermembership, delete the db, migrations and __pycache__ 
+    in order to have the objects registered and created in the admin site.
+"""
 
 
 def post_save_usermembership_create(sender, instance, created, *args, **kwargs):

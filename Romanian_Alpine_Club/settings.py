@@ -146,7 +146,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASS")
-
+# Connect to AWS S3 to store static files and media
 # Allow boto to cache static files
 AWS_S3_OBJECT_PARAMETERS = {
     "Expires": "Monday, 31 Dec 2100 20:00:00 GMT",
@@ -164,7 +164,7 @@ AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = "static"
 STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
-
+# For stripe
 if DEBUG:
     STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
     STRIPE_SECRET = os.getenv("STRIPE_SECRET")
