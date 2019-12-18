@@ -12,7 +12,13 @@
 
                 <button class="btn btn-primary" type="submit">Register</button>
             </form>
-
+            <div class="col-6 mx-auto my-4">
+                <div class="row">
+                    {% for membership in memberships %}
+                    {{ membership.membership_type}}
+                    {% endfor %}
+                </div>
+            </div>
             <div class="border-top pt-3">
                 <small class="text-muted">
                     Do you already have an account?</small>
