@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 {% load bootstrap_tags %}
-{% block head %}
+{% block head_js %}
 <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
 <script type="text/javascript">
     //<![CDATA[
@@ -8,27 +9,19 @@
     //]]
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock head %}
+{% endblock head_js %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-6 mx-auto my-4">
             <h1 class="text-center mb-3" id="heading_one">Register</h1>
-            <form method="POST">
+            <form method="POST" id="register-form">
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 {{ profile_form | as_bootstrap }}
 
                 <button class="btn btn-primary" type="submit">Register</button>
             </form>
-            <div class="col-6 mx-auto my-4">
-                <div class="row">
-                    <p>Select membership</p>
-                    {% for object in object_list %}
-                    <p>{{ object.membership_type}}</p>
-                    {% endfor %}
-                </div>
-            </div>
             <div class="border-top pt-3">
                 <small class="text-muted">
                     Do you already have an account?</small>
@@ -37,4 +30,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}

@@ -10,7 +10,7 @@ class RegisterUserForm(UserCreationForm):
     last_name = forms.CharField(max_length=100)
     # Fields for Stripe
     MONTH_CHOICES = [(i, i) for i in range(1, 12)]
-    YEAR_CHOICES = [(i, i) for i in range(2018 - 2036)]
+    YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
 
     credit_card_number = forms.CharField(label="Credit card number")
     cvv = forms.CharField(label="Security code (CVV)")

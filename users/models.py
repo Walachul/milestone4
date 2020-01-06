@@ -4,16 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image, ImageDraw
 
-"""
-Change for the User model in order to save stripe token/id when user registers for later use
-"""
-
-
-class User(AbstractUser):
-    stripe_id = models.CharField(max_length=40, default="")
-
-    objects = AccountUserManager()
-
 
 class Profile(models.Model):
     """Extending the user profile by adding additional information.
