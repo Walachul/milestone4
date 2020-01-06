@@ -22,6 +22,7 @@ from home import urls as urls_home
 from blog import urls as urls_blog
 from users import views as user_views
 
+
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^", include(urls_home)),

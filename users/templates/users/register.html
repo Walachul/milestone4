@@ -14,8 +14,9 @@
             </form>
             <div class="col-6 mx-auto my-4">
                 <div class="row">
-                    {% for membership in memberships %}
-                    {{ membership.membership_type}}
+                    <p>Select membership</p>
+                    {% for object in object_list %}
+                    <p>{{ object.membership_type}}</p>
                     {% endfor %}
                 </div>
             </div>

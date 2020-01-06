@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ["clubul-alpin-roman.herokuapp.com", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    "membership.apps.MembershipConfig",
     "home.apps.HomeConfig",
     "blog.apps.BlogConfig",
     "users.apps.UsersConfig",
