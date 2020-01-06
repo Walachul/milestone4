@@ -9,6 +9,10 @@ from .forms import (
     UpdateUserForm,
     UpdateProfileForm,
 )
+import datetime
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required
@@ -42,23 +46,34 @@ def login(request):
 
 
 def register(request):
-    """Register users view"""
+    """Register users view.
+        The user can register after paying with stripe his membership."""
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
-            user = form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
+            #Stripe section
+            try:
+                customer = stripe.Charge.create(
+                    amount = 60,
+                    currency = "RON",
+                    description = form.cleaned_data['email'],
+                    card = form.cleaned_data['stripe_id'],
+                )
+                user = form.save()
+                profile = profile_form.save(commit=False)
+                profile.user = user
+                profile.save()
 
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password1")
-            messages.success(
-                request,
-                f"The account for {username} was created successfully! You are now able to login",
-            )
-            return redirect("login")
+                username = form.cleaned_data.get("username")
+                password = form.cleaned_data.get("password1")
+                messages.success(
+                    request,
+                    f"The account for {username} was created successfully! You are now able to login",
+                )
+                return redirect("login")
+            except: stripe.CardError, e:
+                form.add_error("The card has been declined!")
     else:
         form = RegisterUserForm()
         profile_form = ProfileForm()
