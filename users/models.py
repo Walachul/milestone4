@@ -22,6 +22,8 @@ class Profile(models.Model):
         default="profile_images/card_ID/default_card.png",
         upload_to="profile_images/card_ID",
     )
+    # Saving the stripe_id/token in order to use it later for renewing/cancelling subscription
+    stripe_id = models.CharField(max_length=40, default="")
 
     def __str__(self):
         return f"{self.user.username} Profile"
