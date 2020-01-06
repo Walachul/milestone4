@@ -24,6 +24,7 @@ class Profile(models.Model):
     )
     # Saving the stripe_id/token in order to use it later for renewing/cancelling subscription
     stripe_id = models.CharField(max_length=40, default="")
+    plan = models.CharField(max_length=60)
 
     def __str__(self):
         return f"{self.user.username} Profile"
