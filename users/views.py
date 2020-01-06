@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import (
@@ -52,13 +53,13 @@ def register(request):
         form = RegisterUserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
-            #Stripe section
+            # Stripe section
             try:
                 customer = stripe.Charge.create(
-                    amount = 60,
-                    currency = "RON",
-                    description = form.cleaned_data['email'],
-                    card = form.cleaned_data['stripe_id'],
+                    amount=int(60),
+                    currency="RON",
+                    description=form.cleaned_data["email"],
+                    card=form.cleaned_data["stripe_id"],
                 )
                 user = form.save()
                 profile = profile_form.save(commit=False)
@@ -72,8 +73,8 @@ def register(request):
                     f"The account for {username} was created successfully! You are now able to login",
                 )
                 return redirect("login")
-            except: stripe.CardError, e:
-                form.add_error("The card has been declined!")
+            except stripe.error.CardError:
+                messages.error(request, "Your card has been declined!")
     else:
         form = RegisterUserForm()
         profile_form = ProfileForm()
