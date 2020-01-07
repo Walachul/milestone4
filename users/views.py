@@ -57,7 +57,7 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            usernane = form.cleaned_data.get("username")
+            username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password1")
             messages.success(
                 request,
