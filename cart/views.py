@@ -22,3 +22,19 @@ def add_to_cart(request, id):
     request.session["cart"] = cart
 
     return redirect(reverse("products-home"))
+
+
+def modify_cart(request, id):
+    """
+    Enables the user to modify the cart items quantity
+    """
+    quantity = int(request.POST.get("quantity"))
+    cart = request.session.get("cart", {})
+
+    if quantity > 0:
+        cart[id] = quantity
+    else:
+        cart.pop(id)
+    request.session["cart"] = cart
+    return redirect(reverse("view_cart"))
+
