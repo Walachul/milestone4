@@ -8,27 +8,25 @@ class RegisterUserForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=100)
-    # Fields for Stripe
-    MONTH_CHOICES = [(i, i) for i in range(1, 12)]
-    YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
+    # # Fields for Stripe
+    # MONTH_CHOICES = [(i, i) for i in range(1, 12)]
+    # YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
 
-    credit_card_number = forms.CharField(label="Credit card number")
-    cvv = forms.CharField(label="Security code (CVV)")
-    expiry_month = forms.ChoiceField(label="Month", choices=MONTH_CHOICES)
-    expiry_year = forms.ChoiceField(label="Year", choices=YEAR_CHOICES)
-    stripe_id = forms.CharField(widget=forms.HiddenInput)
+    # credit_card_number = forms.CharField(label="Credit card number")
+    # cvv = forms.CharField(label="Security code (CVV)")
+    # expiry_month = forms.ChoiceField(label="Month", choices=MONTH_CHOICES)
+    # expiry_year = forms.ChoiceField(label="Year", choices=YEAR_CHOICES)
 
     class Meta:
         model = User
         fields = [
+            "username",
             "email",
             "first_name",
             "last_name",
             "password1",
             "password2",
-            "stripe_id",
         ]
-        exclude = ["username"]
 
     def save(self, commit=True):
         user = super().save(commit=False)

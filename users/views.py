@@ -53,34 +53,30 @@ def register(request):
         form = RegisterUserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
+            user = form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            usernane = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+            messages.success(
+                request,
+                f"The account for {username} was created successfully! You are now able to login",
+            )
+            return redirect("login")
             # Stripe section
-            try:
+            # try:
 
-                customer = stripe.Customer.create(
-                    email=form.cleaned_data["email"],
-                    plan="plan_GNNrDYol6PdfOA",
-                    card=form.cleaned_data["stripe_id"],
-                )
+            #     customer = stripe.Customer.create(
+            #         email=form.cleaned_data["email"],
+            #         card=form.cleaned_data["stripe_id"],
+            #         plan="plan_GNNrDYol6PdfOA",
+            #     )
 
-            except stripe.error.CardError:
-                messages.error(request, "Your card has been declined!")
+            # except stripe.error.CardError:
+            #     messages.error(request, "Your card has been declined!")
 
-            if customer:
-                user = form.save()
-                profile = profile_form.save(commit=False)
-                profile.user = user
-                profile.save()
-                user.profile.stripe_id = customer.id
-                user.profile.plan = "plan_GNNrDYol6PdfOA"
-                user.profile.save()
-
-                username = form.cleaned_data.get("username")
-                password = form.cleaned_data.get("password1")
-                messages.success(
-                    request,
-                    f"The account for {username} was created successfully! You are now able to login",
-                )
-                return redirect("login")
+            # if customer:
 
     else:
         form = RegisterUserForm()

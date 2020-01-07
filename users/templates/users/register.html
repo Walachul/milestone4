@@ -6,7 +6,7 @@
 <script type="text/javascript">
     //<![CDATA[
     Stripe.publishableKey = '{{ publishable }}';
-    //]]
+    //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock head_js %}
@@ -18,9 +18,12 @@
             <form method="POST" id="payment-form">
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
+                <div id="credit-card-errors" style="display: none;">
+                    <div id="alert-message block-message error" id="stripe-error-message"></div>
+                </div>
                 {{ profile_form | as_bootstrap }}
 
-                <button class="btn btn-primary" type="submit">Register</button>
+                <button class="btn btn-primary" type="submit" id="validate_card_btn">Register</button>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
