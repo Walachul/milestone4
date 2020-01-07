@@ -23,6 +23,7 @@ from home import urls as urls_home
 from blog import urls as urls_blog
 from users import views as user_views
 from products import urls as urls_products
+from cart import urls as urls_cart
 from .settings import MEDIA_ROOT
 
 urlpatterns = [
@@ -70,6 +71,7 @@ urlpatterns = [
     ),
     url(r"^blog/", include(urls_blog)),
     url(r"^products/", include(urls_products)),
+    url(r"^cart/", include(urls_cart)),
     url(r"^media/(?P<path>.*)$", static.serve, {"document_root": MEDIA_ROOT}),
 ]
 

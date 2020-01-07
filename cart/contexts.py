@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404
-from products.models import Merchandise, Clothes
+from products.models import Merchandise
 
 
-def cart_content(request):
+def cart_contents(request):
     """
     Stores the cart items and keeps them in the session when the user is logged in
     and he navigates the site.
