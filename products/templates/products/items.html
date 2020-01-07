@@ -16,11 +16,11 @@
                         <p class=" items-description">{{merch.description}}</p>
                         <p>{{merch.price}}</p>
 
-                        <form method=" post" action="{% url 'add_to_cart' merch.id %}">
+                        <form method="POST" action="{% url 'add_to_cart' merch.id %}">
                             {% csrf_token %}
                             <div class="input-group">
-                                <input name="quantity" type="number" min="1" max="999" class="form-control"
-                                    placeholder="Quantity">
+                                <input name="quantity" required="required" type='number' min="1" max="999"
+                                    class="form-control" placeholder="Quantity">
                                 <span class="input-group-btn">
                                     <button class="btn btn-success" type="submit">Add</button>
                                 </span>
