@@ -16,11 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from home import urls as urls_home
 from blog import urls as urls_blog
 from users import views as user_views
+from products import urls as urls_products
+from products.views import all_items
+from .settings import MEDIA_ROOT
 
 
 urlpatterns = [
@@ -67,6 +71,8 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     url(r"^blog/", include(urls_blog)),
+    url(r"^products/", include(urls_products)),
+    url(r"media/(?P<path>.*)$", static.serve, {"document_root": MEDIA_ROOT}),
 ]
 
 """To run in development and DEBUG mode is True"""
