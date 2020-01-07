@@ -5,5 +5,5 @@ from products.models import Merchandise
 
 
 def search_merch(request):
-    merchs = Merchandise.objects.filter(name__icontains=request.GET["q"])
-    return render(request, "items.html", {"items": items})
+    merchandise = Merchandise.objects.filter(name__icontains=request.GET["q"])
+    return render(request, "products/items.html", {"merchandise": merchandise})

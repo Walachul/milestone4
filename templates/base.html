@@ -79,6 +79,13 @@
                     </li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'profile' %}">Profile</a></li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'view_cart' %}">
+                            <i class="fa fa-shipping-cart"></i>Cart
+                            {% if item_count > 0 %}
+                            <label class="badge badge-warning">{{ item_count}}</label>
+                            {% endif %}
+                        </a></li>
+
                     {% else %}
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'login' %}">Login</a></li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'register' %}">Register</a>
@@ -98,9 +105,14 @@
         <div class="alert alert-{{ message.tags }}">
             {{ message }}
         </div>
-
         {% endfor %}
         {% endif %}
+        <div class="display">
+            <form action="{% url 'search' %}" method="GET">
+                <input type="text" name="q">
+                <button type="submit">Search</button>
+            </form>
+        </div>
         {% block content %}
         {% endblock content%}
     </main>
