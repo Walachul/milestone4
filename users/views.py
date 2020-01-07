@@ -55,16 +55,24 @@ def register(request):
         if form.is_valid() and profile_form.is_valid():
             # Stripe section
             try:
+
+                customer = stripe.Customer.create(
+                    email=form.cleaned_data["email"],
+                    plan="plan_GNNrDYol6PdfOA",
+                    card=form.cleaned_data["stripe_id"],
+                )
+
+            except stripe.error.CardError:
+                messages.error(request, "Your card has been declined!")
+
+            if customer:
                 user = form.save()
                 profile = profile_form.save(commit=False)
                 profile.user = user
                 profile.save()
-                customer = stripe.Customer.create(
-                    email=user.email, plan="plan_GNNrDYol6PdfOA", card=user.stripe_id
-                )
-                user.stripe_id = customer.id
-                user.plan = "plan_GNNrDYol6PdfOA"
-                user.save()
+                user.profile.stripe_id = customer.id
+                user.profile.plan = "plan_GNNrDYol6PdfOA"
+                user.profile.save()
 
                 username = form.cleaned_data.get("username")
                 password = form.cleaned_data.get("password1")
@@ -73,8 +81,7 @@ def register(request):
                     f"The account for {username} was created successfully! You are now able to login",
                 )
                 return redirect("login")
-            except stripe.error.CardError:
-                messages.error(request, "Your card has been declined!")
+
     else:
         form = RegisterUserForm()
         profile_form = ProfileForm()
