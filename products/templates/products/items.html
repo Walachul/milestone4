@@ -4,14 +4,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">Products</h1>
+            <h1 class="text-center mb-3" id="heading_one">Products page hello</h1>
 
         </div>
         <div class="col-12 mx-auto">
             {% for merch in merchandise %}
             <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
                 <div class="panel-body">
-                    <div class="merch" style="background-image:url(" {{MEDIA_URL}}{{merch.image}}">
+                    <div class="merch" style="background-image:url(" {{merch.image.url}}">
                         <h3>{{ merch.name</h3>
                         <p class="items-description">{{merch.description}}</p>
                             <p>{{merch.price}}</p>

@@ -23,9 +23,7 @@ from home import urls as urls_home
 from blog import urls as urls_blog
 from users import views as user_views
 from products import urls as urls_products
-from products.views import all_items
 from .settings import MEDIA_ROOT
-
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
@@ -72,10 +70,10 @@ urlpatterns = [
     ),
     url(r"^blog/", include(urls_blog)),
     url(r"^products/", include(urls_products)),
-    url(r"media/(?P<path>.*)$", static.serve, {"document_root": MEDIA_ROOT}),
+    url(r"^media/(?P<path>.*)$", static.serve, {"document_root": MEDIA_ROOT}),
 ]
 
-"""To run in development and DEBUG mode is True"""
+# """To run in development and DEBUG mode is True"""
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
