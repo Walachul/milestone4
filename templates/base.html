@@ -62,15 +62,14 @@
                     {% if user.is_authenticated %}
                     <!-- Access to Blog -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link navItems dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Blog
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{%url 'blog-home'%}">Blog</a>
-                            <a class="dropdown-item" href="{% url 'blog-new-post' %}">New blog post</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="{% url 'blog-new-post' %}">New blog post</a>
                         </div>
                     </li>
                     <!--Access to Merchandise shop-->
@@ -78,11 +77,14 @@
                         <a class="nav-link navItems" href="{% url 'products-home' %}">Merchandise</a>
                     </li>
                     <!--Access to user profile-->
-                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'profile' %}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'profile' %}"><i
+                                class="fas fa-user mr-1"></i>Profile</a></li>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'edit-profile' %}"><i
+                                class="fas fa-user mr-1"></i>Edit Profile</a></li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'logout' %}">Logout</a></li>
                     <!--Access to cart items-->
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'view_cart' %}">
-                            <i class="fas fa-shopping-cart"></i>Cart
+                            <i class="fas fa-shopping-cart"></i>
                             {% if item_count > 0 %}
                             <label class="badge badge-warning">{{ item_count}}</label>
                             {% endif %}
