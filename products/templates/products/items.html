@@ -13,7 +13,7 @@
                 <div class="panel-body">
                     <div class="merch" style="background-image:url('{{merch.image.url}}')">
                         <h3>{{ merch.name }}</h3>
-                        <p class=" items-description">{{merch.description}}</p>
+                        <p class="merch-description">{{merch.description}}</p>
                         <p>{{merch.price}}</p>
 
                         <form method="POST" action="{% url 'add_to_cart' merch.id %}">

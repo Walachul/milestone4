@@ -14,7 +14,7 @@
             <div class="panel-body">
                 <div class="merch" style="background-image:url('{{item.merchandise.image.url}}')">
                     <h3>{{item.merchandise.name }}</h3>
-                    <p class="items-description">{{item.merchandise.description}}</p>
+                    <p class="merch-description">{{item.merchandise.description}}</p>
                     <p>{{item.merchandise.price}}</p>
                     <p>
                         <form class="form-inline" method="POST" action="{% url 'modify_cart' item.id %}">
