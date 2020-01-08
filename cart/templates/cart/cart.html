@@ -6,8 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">View your cart's content</h1>
-
+            <h1 class="text-center mb-3" id="heading_one"><i class="fas fa-shopping-cart mr-1"></i>Cart's content</h1>
         </div>
     </div>
 
@@ -15,13 +14,12 @@
     <div class="row">
         {% for item in cart_items %}
         <div class="col-md-3 card mx-2">
-            <img class="merch card-img-top mx-auto" src="{{item.merchandise.image.url}}"
+            <img class="merch card-img-top mx-auto mt-1" src="{{item.merchandise.image.url}}"
                 alt="Picture of {{item.merchandise.name}} ">
             <div class="card-body">
-
                 <h3 class="card-title">{{item.merchandise.name }}</h3>
                 <p class="card-text merch-description">{{item.merchandise.description}}</p>
-                <p>Price of one item: <i class="fas fa-coins mr-1"></i>{{item.merchandise.price}} RON</p>
+                <p>Item price: <i class="fas fa-coins mr-1"></i>{{item.merchandise.price}} RON</p>
                 <div>
                     <form class="form-inline" method="POST" action="{% url 'modify_cart' item.id %}">
                         {% csrf_token %}
@@ -37,7 +35,11 @@
 
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-edit mr-1"></i>Update</button>
+                        <div class="input-group-prepend">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i
+                                        class="fas fa-edit mr-1"></i>Update</button>
+                            </span></div>
                     </form>
                 </div>
 
@@ -62,7 +64,7 @@
             <a href="{% url 'products-home' %}" class="btn btn-primary"><i class="fas fa-shopping-basket mr-1"></i>Visit
                 merchandise shop</a>
             {% else %}
-            <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}}</i></p>
+            <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}} RON</i></p>
             <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i
                     class="fas fa-check mr-1"></i>Checkout</a>
             {% endif %}
