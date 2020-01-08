@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import (
@@ -10,10 +9,6 @@ from .forms import (
     UpdateUserForm,
     UpdateProfileForm,
 )
-import datetime
-import stripe
-
-stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required
