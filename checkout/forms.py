@@ -23,7 +23,7 @@ class OrderForm(forms.ModelForm):
             "full_name",
             "phone_number",
             "country",
-            "coounty",
+            "county",
             "city",
             "postcode",
             "street_adress1",
