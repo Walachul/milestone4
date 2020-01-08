@@ -5,6 +5,7 @@ from .models import Profile
 
 
 class RegisterUserForm(UserCreationForm):
+
     email = forms.EmailField()
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=100)
@@ -19,7 +20,8 @@ class RegisterUserForm(UserCreationForm):
             "password1",
             "password2",
         ]
-""" Modified save function in order to save also first and last name of the user.  """
+
+    # Save function modified in order to save first and last name of user
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
