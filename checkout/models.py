@@ -1,5 +1,6 @@
 from django.db import models
 from products.models import Merchandise
+from django.contrib.auth.models import User
 
 """Get valid information from user"""
 
@@ -14,6 +15,7 @@ class Order(models.Model):
     street_adress1 = models.CharField(max_length=100, blank=False)
     street_adress2 = models.CharField(max_length=100, blank=False)
     date = models.DateField()
+    buyer = models.ForeignKey(User, default=None)
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
