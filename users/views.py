@@ -64,13 +64,7 @@ def register(request):
         form = RegisterUserForm()
         profile_form = ProfileForm()
     return render(
-        request,
-        "users/register.html",
-        {
-            "form": form,
-            "profile_form": profile_form,
-            "publishable": settings.STRIPE_PUBLISHABLE,
-        },
+        request, "users/register.html", {"form": form, "profile_form": profile_form}
     )
 
 
