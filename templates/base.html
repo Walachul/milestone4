@@ -118,12 +118,7 @@
         </div>
         {% endfor %}
         {% endif %}
-        <div class="display">
-            <form action="{% url 'search' %}" method="GET">
-                <input type="text" name="q">
-                <button type="submit">Search</button>
-            </form>
-        </div>
+
         {% block content %}
         {% endblock content%}
     </main>

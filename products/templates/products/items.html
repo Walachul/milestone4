@@ -6,6 +6,12 @@
         <div id="credit-card-errors" style="display:none">
             <div class="alert-message block-message error" id="stripe-error-message"></div>
         </div>
+        <div class="display">
+            <form action="{% url 'search' %}" method="GET">
+                <input type="text" name="q">
+                <button type="submit">Search</button>
+            </form>
+        </div>
         <div class="col-12 mx-auto my-4">
             <h1 class="text-center mb-3" id="heading_one">Items page</h1>
 
