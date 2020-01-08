@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from checkout.models import Order, OrderItem
 from .forms import (
     RegisterUserForm,
     ProfileForm,
@@ -103,8 +104,17 @@ def profile(request):
     else:
         updateForm = UpdateUserForm(instance=request.user)
         profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
+    user = User.objects.get(email=request.user.email)
+    orders = Order.objects.filter(id=user.id).order_by("-id")
+    orders_details = OrderItem.objects.filter(order_id=pk)
     return render(
         request,
         "users/profile.html",
-        {"updateForm": updateForm, "profileUpdateForm": profileUpdateForm},
+        {
+            "updateForm": updateForm,
+            "profileUpdateForm": profileUpdateForm,
+            "orders": orders,
+            "orders_details": orders_details,
+            "order_id": pk,
+        },
     )
