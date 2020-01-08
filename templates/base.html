@@ -55,30 +55,32 @@
                         <a class="nav-link navItems" href="{% url 'home-home' %}">Home</a>
                     </li>
                     <!--
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
+                    
                     -->
                     <!--If the user is authenticated, logout and profile templates will become available.
                     Else display Login and Register-->
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link navItems" href="{%url 'blog-home'%}">Blog</a>
+                    <!-- Access to Blog -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Blog
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{%url 'blog-home'%}">Blog</a>
+                            <a class="dropdown-item" href="{% url 'blog-new-post' %}">New blog post</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </li>
+                    <!--Access to Merchandise shop-->
                     <li class="nav-item ">
-                        <a class="nav-link navItems" href="{% url 'blog-new-post' %}">New post</a>
+                        <a class="nav-link navItems" href="{% url 'products-home' %}">Merchandise</a>
                     </li>
+                    <!--Access to user profile-->
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'profile' %}">Profile</a></li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'logout' %}">Logout</a></li>
+                    <!--Access to cart items-->
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>Cart
                             {% if item_count > 0 %}
