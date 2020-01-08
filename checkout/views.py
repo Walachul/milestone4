@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
@@ -14,7 +14,7 @@ stripe.api_key = settings.STRIPE_SECRET
 @login_required()
 def checkout(request):
     if request.method == "POST":
-        order_form = OrderForm(reuqest.POST)
+        order_form = OrderForm(request.POST)
         stripe_form = StripePayForm(request.POST)
 
         if order_form.is_valid() and stripe_form.is_valid():
@@ -56,7 +56,7 @@ def checkout(request):
         stripe_form = StripePayForm()
     return render(
         request,
-        "checkout.html",
+        "checkout/checkout.html",
         {
             "order_form": order_form,
             "stripe_form": stripe_form,
