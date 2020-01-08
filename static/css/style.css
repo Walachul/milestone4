@@ -19,7 +19,18 @@ body {
 /**** end of sticky footer ****/
 
 /**** Main style ****/
-
+#home_background{
+    background-image:linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("../img/background/Bucegi.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width:100%;
+    height: auto;
+    min-height: 85.2vh;
+}
 /*** Header ***/
 /*** Navbar ***/
 /** Style for name of the site  **/

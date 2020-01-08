@@ -32,7 +32,6 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">{{item.quantity}}</span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="input-group-prepend">
@@ -52,7 +51,7 @@
 
     <div class="row">
         <!-- If the total is not 0, the user will be able to access checkout-->
-        <div class="col-6 mx-auto">
+        <div class="col-4 mx-auto">
             {% if total == 0 %}
             <div class="alert alert-info mx-auto" role="alert">
                 <i class="fas fa-cart-arrow-down" style="font-size:20px"></i> Your cart is empty.<br />
@@ -66,12 +65,13 @@
             {% else %}
             <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}} RON</i></p>
             <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i
-                    class="fas fa-check mr-1"></i>Checkout</a>
+                    class="fas fa-credit-card mr-1"></i>Checkout</a>
             {% endif %}
         </div>
     </div>
     <!--end of row-->
 </div>
+<!--end of container-fluid-->
 
 
 
