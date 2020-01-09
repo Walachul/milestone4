@@ -65,7 +65,7 @@ body {
 
 /*** H1 ***/
 #heading_one {
-    font-size: 40px;
+    font-size: 60px;
     color:black;
     font-weight: 400;
     line-height: 1.2em;
@@ -126,23 +126,37 @@ footer{
     color:white;
     font-size: 20px;
 }
+
+
 /**Social Media **/
 .sIcons{
     color:white;
     transition: all .5s
 }
 .sIcons:hover{
-    transform: scale(0.8);
-    color: grey
+    color:grey;
+    transition: all .5s
 }
 /** Partners **/
 .partners{
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     transition: all .4s
 }
 .partners:hover{
     color:grey;
     text-decoration: none;
   
+}
+/** Partners Link **/
+#Partners{
+    color:white;
+    transition: all .5s
+}
+       
+#Partners:hover{
+    transform: scale(0.8);
+    color: grey;
+    text-decoration:none
+    
 }
