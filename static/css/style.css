@@ -65,9 +65,10 @@ body {
 
 /*** H1 ***/
 #heading_one {
-    font-size: 30px;
+    font-size: 40px;
     color:black;
-    font-weight: 400
+    font-weight: 400;
+    line-height: 1.2em;
 }
 /*** Blog home page ***/
 /** Title H2 from blog posts **/
@@ -136,8 +137,8 @@ footer{
 }
 /** Partners **/
 .partners{
-    color: white;
-    font-size: 16px;
+    color: black;
+    font-size: 18px;
     transition: all .4s
 }
 .partners:hover{

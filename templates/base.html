@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!--jQuery for Mosaic gallery-->
+    <link rel="stylesheet" href="{% static 'css/jquery.mosaic.css' %}">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -142,30 +144,14 @@
                 <div class="col-4 col-lg-4">
                     <h3 class="h3Footer text-center mt-2">Partners</h3>
                     <a href="{% url "home-partners" %}">Partners</a>
-                    <ul class="list-unstyled text-center ">
-                        <li><a class="partners" href="https://www.himalaya.ro/">Himalaya</a></li>
-                        <li><a class="partners" href="https://www.montrek.ro/">Montrek</a></li>
-                        <li><a class="partners" href="https://www.nootkasport.ro/">Nootka</a></li>
-                        <li><a class="partners" href="https://www.absolutoutdoor.ro/">Absolut Outdoor</a></li>
-                        <li><a class="partners" href="https://floareadecolt.com/">Floarea de Colț București</a>
-                        </li>
-                        <li><a class="partners" href="https://centraladeescalada.ro/">Centrala de escaladă</a>
-                        </li>
-                        <li><a class="partners" href="https://www.s-karp.ro/">S-Karp</a></li>
-                        <li><a class="partners" href="http://www.sportvirus.ro/">Sport Virus</a></li>
-                        <li><a class="partners" href="https://www.cunescu.ro/">Cunescu Balaciu Asociații</a>
-                        </li>
-                        <li><a class="partners" href="https://www.craimont.ro/">CraiMont</a></li>
-                        <li><a class="partners" href="https://www.zumont.ro/">ZuMont</a></li>
-                    </ul>
-
-
                 </div>
-
             </div>
+            <!--end of row-->
         </div>
+        <!--end of container-fluid-->
     </footer>
-
+    <!--jQuery Mosaic-->
+    <script src="{% static 'js/jquery.mosaic.js' %}"></script>
 </body>
 
 </html>

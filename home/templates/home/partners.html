@@ -1,13 +1,70 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <!--Partners page-->
-        <div id="partners">
-            <div class="col-12 mt-5">
-                <h1 class="text-center" id="heading_one">Our partners</h1>
-            </div>
+        <div class="col-12 my-2 mx-auto">
+            <h1 class="text-center text-capitalize" id="heading_one">partners</h1>
+        </div>
+    </div>
+    <!--end of row-->
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <ul class="list-unstyled text-center">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li></li>
+                <li></li>
+                <li>
+                </li>
+                <li><a class="partners" href="https://www.craimont.ro/">CraiMont</a></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <!--end of row-->
+    <div>
+        <div id="mosaic" class="mosaic">
+            <a class="partners" href="https://www.himalaya.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/himalaya.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.absolutoutdoor.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/absolut_outdoor.jpeg' %}">
+            </a>
+            <a class="partners" href="https://centraladeescalada.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/centrala_de_escalada.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.montrek.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/montrek.jpg' %}">
+            </a>
+            <a class="partners" href="https://floareadecolt.com/">
+                <img class="img-fluid" src="{% static 'img/partners/floarea_de_colt_Bucuresti.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.nootkasport.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/nootka.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.s-karp.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/s-karp.jpeg' %}">
+            </a>
+            <a class="partners" href="http://www.sportvirus.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/sport_virus.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.zumont.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/zumont.jpeg' %}">
+            </a>
+            <a class="partners" href="https://www.cunescu.ro/">
+                <img class="img-fluid" src="{% static 'img/partners/cunescu_balaciu_asociatii.jpeg' %}">
+            </a>
+
         </div>
     </div>
 </div>
+<!--end of container-fluid-->
 {% endblock %}
