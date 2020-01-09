@@ -5,14 +5,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">Register</h1>
+            <h1 class="text-center mb-3 text-uppercase" id="heading_one">Register</h1>
             <form method="POST">
                 {% csrf_token %}
-                {{ form | as_bootstrap }}
-                <div id="credit-card-errors" style="display: none;">
-                    <div id="alert-message block-message error" id="stripe-error-message"></div>
-                </div>
-                {{ profile_form | as_bootstrap }}
+
+                {{ form | as_bootstrap_horizontal }}
+                {{ profile_form | as_bootstrap_horizontal }}
 
                 <button class="btn btn-primary" type="submit" id="validate_card_btn">Register</button>
             </form>

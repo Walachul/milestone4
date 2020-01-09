@@ -29,11 +29,16 @@ body {
     background-size: cover;
     width:100%;
     height: auto;
-    min-height: 85.2vh;
+    min-height: 88.2vh;
 }
 /*** Header ***/
 /*** Navbar ***/
 /** Style for name of the site  **/
+/** white color for hamburger menu **/
+.white{
+    color:white;
+    font-size:26px
+}
 #blue, #yellow, #red{
     font-size:22px;
 }
@@ -159,7 +164,9 @@ footer{
 /**Social Media **/
 .sIcons{
     color:white;
-    transition: all .5s
+    transition: all .5s;
+    font-size: 14px;
+
 }
 .sIcons:hover{
     color:grey;
