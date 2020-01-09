@@ -46,6 +46,7 @@
                 <span id="yellow">Alpine</span>
                 <span id="red">Club</span>
             </a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,11 +57,7 @@
                     <li class="nav-item active">
                         <a class="nav-link navItems" href="{% url 'home-home' %}">Home</a>
                     </li>
-                    <!--
-                    
-                    -->
-                    <!--If the user is authenticated, logout and profile templates will become available.
-                    Else display Login and Register-->
+                    <!--Display different links if user is authenticated or not-->
                     {% if user.is_authenticated %}
                     <!-- Access to Blog -->
                     <li class="nav-item dropdown">

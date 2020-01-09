@@ -64,12 +64,40 @@ body {
 }
 
 /*** H1 ***/
-#heading_one {
+#headingHome{
+    color:white;
+}
+#heading_one{
+    color:black
+}
+#heading_one, #headingHome {
     font-size: 60px;
-    color:black;
     font-weight: 400;
     line-height: 1.2em;
 }
+
+/** Info text home page **/
+.infoText{
+    color:white;
+    transition-delay: 2s;
+    transition-timing-function: ease-out;
+    font-size:20px;
+    
+}
+/** Member benefits **/
+#list-group{
+    display:flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-top:0;
+    margin-bottom: 0;
+}
+.list-group-children{
+   padding: 2px;
+   margin-bottom: -1px;
+
+}
+
 /*** Blog home page ***/
 /** Title H2 from blog posts **/
 .blogPosts{
