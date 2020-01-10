@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/Walachul/milestone4.svg?branch=master)](https://travis-ci.org/Walachul/milestone4)
 
 # **Romanian Alpine Club**
-###### Full Stack Milestone project 4
+## Full Stack Milestone project 4 for Code Institute
 
 The idea/necessity for the project came alive when asked to construct from scratch the website of the Romanian Alpine Club and adding functionalities which now don't exist or need an upgrade.
 
@@ -9,7 +9,7 @@ Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
 New site living here: [RomanianAlpineClub](heroku)
 
-## **User Experience**
+# **User Experience**
 
 The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other clibbing events and workshops, and also an admin(s) panel where they can check activity of the members.
 
@@ -18,7 +18,7 @@ One of the most important requirements that was asked for a new site was that to
 
 The app had to be user friendly and colorful, and the information needed to be displayed in eye-friendly mode.
 
-## **User Stories**
+# **User Stories**
 
 In general, a user who is not registered will visit the site if he is interested in finding information regarding hiking, climbing and other mountain/outdoor activies and events, but also to find information regarding the history and pioneers of climbing in Romania.
 
@@ -50,7 +50,7 @@ Also, the administrator should be able to add other admins as well, and to check
 
 This functionality is possible with Django admin panel, in which I registered the required models from different apps.
 
-## **Features**
+# **Features**
 
 ##### **Implemented features**
 
@@ -182,28 +182,278 @@ The following requirements are left to be implemented in the future:
 
 - Amazon S3 - For storing static files, mainly images, due to Heroku's ephemeral file system which deletes static images.
 
-## Testing
+# Testing
 
-#####Users(accounts) app
-
+##### URLS
 1. Testing urls 
 
     1.1. Testing visible links while user is not logged in
 
-        i. Accessing links from navbar(Home, About, Login, Register) and footer, also Join button from Home page, and verify that it routes to the desired page.
+        i. Accessing links from navbar(Home, About, Login, Register) and footer, also Join and SignUp button from Home page, and verify that it routes to the desired page.
         ii. Accessing unauthorized pages while not logged in and check to see if it redirects to the login form.(for example accessing /profile,/products or /cart and check that it redirects to login form.)
     
     1.2 Testing accessible links when user is logged in
         
         i. Accessing links from navbar, footer and also all buttons from different pages, and verify that it routes to the desired page(for example from New blog post page to Merchandise).
-        ii. While logged in, test to access routes that are accessible if not logged in(for example accessing /login from browser, will redirect user to home page)
+        ii. While logged in, test to access routes that are accessible if not logged in(for example accessing /login and /register routes from browser, will redirect user to home page).
+
+##### Users(accounts) app
+
+1. Registration form 
+    
+        i. Access registration page from Register link or Join button
+        ii.Try to submit the empty register form and verify that an error message from Django appears with the required input.
+        iii. Try to submit the register form with different passwords and verify that a relevant warning message appears.
+        iv. Try to submit the register form with the same username as one already registered in the database and verify that a relevant warning message prompts the user to choose another one.
+        v. Try to submit the register form with all inputs valid and verify that a successful registered message appears, redirecting user to login form.   
+
+2. Login form 
+
+        i. Go to "Login" page from the menu.
+        ii. Try to submit the empty login form and verify that an error message from Django displays with the required input.
+        iii. Try to submit the login form only with the user name and verify that a relevant warning message appears.
+        iv.  Try to submit the login form only with the password and verify that a relevant warning message appears.
+        v. Try to submit the login form with all inputs valid and verify that a successful logged in message appears that redirects to the home page or to the page the user tried to access while not logged in(example /profile).
+
+3. Forgot password
+
+        i. Access forgot password from Login page and verify it redirects to password-reset template
+        ii. If registered user chose his valid email, he will get an email from Django with a link to reset his password and also get successful message that email was sent.
+        iii. Accessing the reset password link directs user to password-reset-confirm on Romanian Alpine Club site where he is requested to change his password.
+        iv. Verify warning message displays when submitting the empty form or with different passwords.
+        v. If password change is successful, verify it redirects to password-reset-complete and a success message displays with a button to login.
+        vi. Test login button redirects to login page.
+        vii. Verify logging in with username and new password.
+        viii. Tested token with link for password reset after a day and it is not functional anymore.
+        viii. Future improvement to verify that the email typed is already in the database.
+
+4. Logout 
+
+        i. Go to Logout link
+        ii. Logging out redirects the user to the logout template.
+        iii. Try to access the Log In Again button and check it redirects to login page.
+
+5. Account page
+
+    5.1. Profile page
+
+        i. Go to Account page from navbar.
+        ii. Try to access profile page and check it redirects to profile.
+        iii. Check that information from the user is there.
+    
+    5.2 Edit profile page
+
+        i. Go to Account page from navbar.
+        ii. Try to access edit page and check it redirects to template.
+        iii. Try to update profile while submitting without username or email and check warning message displays.
+        iv. Try to upload an image for profile pic and check the name of the uploaded pic displays in the input field.
+        v. Try to update page with desired new information and picture and verify it redirects back to profile page. Verify a success message displays and the profile picture is changed and resized.
+        vi. Check in developer tools that the new profile pic is stored in Amazon's s3 bucket.
+        vii. If no update is required, try to access back to profile button and check it redirects to profile page.
+
+##### Blog app
+
+1. Blog
+
+    1.1 Blog view all posts
 
 
+        i. Go to Blog link from navbar
+        ii. Try to access Blog and check it redirects to the page.
+        iii. Check to see if blog page displays all blog posts from different users.
+        iv. Check to see if pagination is active(>3 blog posts).
+        v. Try to access next link and check if it displays the next page with blog posts.
+        vi. Try to access first and last link and check if it redirects to desired pages.
+        vii. Try to access the Read more link from a post and check it redirects to that blog post details.
+        viii. Try to access Back to blog link and check it redirects to main blog page.
+        ix. As a logged in user, check to see if Update and Delete  links are available for own post.
+        x. Try to update a blog post and verify that it updates and redirects to the post page.
+        xi. Try to delete a blog post and verify it redirects to delete page and it displays two links - Confirm delete and Cancel. 
+        xii. Try to confirm delete and verify post is deleted and user is redirected to main blog page.
+        xiii. Try to cancel and verify user is redirected back to post.
+        xiv. Try to access the author of a post link and verify it redirects to that author's page and it displays all his posts.
+
+    1.2 Add new blog post
+
+        i. Go to Blog link from navbar
+        ii. Try to access New blog post and verify it redirects to the blog/new page.
+        iii. Try to add a post without Title or Content and verify a warning message displays.
+        iv. Try to add a post with information and verify it redirects to the new blog post.
+        v. Try to access the main blog page and verify the new post is displayed first.
+
+##### Products app
+
+        i. Try to access Merchandise from navbar.
+        ii. Verify it redirects to the /products app and all items are displayed correctly.
+
+##### Cart app
+
+    1.1 Add to cart
+
+        i. Try to access add button without any input and verify it displays an error message.
+        ii. Try to access the add button and verify the Cart from the navbar displays a badge with one item and the user is redirected to the products page.
+
+    1.2 View cart
+
+        i. Try to access Cart link from navbar and verify it redirects to the user's cart page where he can see the item he bought.
+        ii. Try to view cart when user has no added item and verify a info message appears that the cart is empty. Verify that Checkout button is disabled and that a Visit merchandise shop button is displayed.
+        iii. Try to access visit merchandise shop button and verify it redirects to products page.
+
+    1.3 Modify cart
+
+        i. Try to access the Update link and if the Cart has more items, verify that the cart and total price adjusts to the new user change.
+        ii. Try to have no items in Cart and verify it gives a message that cart is empty.
+        iii. Verify that Checkout button is disabled and that a Visit merchandise shop button is displayed.
 
 
+##### Checkout app
 
+        i. Try to access the Checkout button if the Cart has more than one item and verify it redirects to checkout page.
+        ii. On checkout page, verify that total number of items, total price, order details form and stripe form are visible and accessible.
+        iii. Try to pay without any input and verify error messages are displayed
+        iv. Try to pay with only Order information and verify that error message from Stripe displays.
+        v. Try to pay with all forms filled correctly except test card number and verify error message is displayed that card is invalid.
+        vi. Try to pay with all forms correctly filled and verify that user is redirected to merchandise/products page and a successful message appears.
+        vii. Verify Stripe dashboard and check that correct payment is displayd with the user's email.
+        viii. Try to access admin panel and verify that the user's information for the order is displayed, together with what he ordered.
 
+##### Responsiveness
 
+        The project was tested with the following browsers locally: Chrome, Firefox, Internet Explorer 11.
+        For checking how the project and pages flow for different devices, I used Chrome's developer's tools.
 
+        The project was tested after deployment to Heroku on Android and iPhone.
 
+# Deployment
 
+##### Local installation 
+
+    1. First clone the project
+        https://github.com/Walachul/milestone4
+
+    2. To start developing the project:
+
+        i. Make sure you have Python 3.6 installed.
+
+        ii.For this project I have used Microsoft's Visual Studio Code.
+
+        iii. Create a virtual environment in Windows:
+            Navigate to where the project folder is and run:
+            python -m venv venv
+
+        iv. Activate the venv:
+        Navigate to venv and inside run:
+        C:\Python\Django_Project_Name\venv>Scripts\activate
+         If successfuly, you should see the name of the virtual environment in curly braces in the front of the path:
+             (venv) C:\Python\Django_Project_Name\venv>
+
+        v. To install packages:
+            Navigate to the home folder:
+            (venv) C:\Python\Django_Project_Name> pip install requirements.txt
+
+        vi. Don't forget to create your superuser(admin)
+            python manage.py createsuper
+
+        vii. Make sure that stripe version 1.7 is installed in order for the stripe.js to work
+
+        viii. You will need your own S3 bucket for the profile and products images.
+
+ ##### Environment variables
+
+        You can either create an env.py and store the env variables there and import them where needed or
+
+        In Windows, you can navigate to Control Panel > System > Advanced system settings > Environment Variables > add new
+
+        The env variables needed are for Stripe, Amazon's Secret key, Django's secret key, database_url.
+
+        To generate a random number for SECRET_KEY :
+
+        in CMD:
+            >>>import secrets
+            >>>secrets.token_hex(16)
+            >>>'15412c9e3e3ff5e03cac2270cc6fb57f'
+            >>>exit()
+
+        Django is setup to either use a Heroku Postgres url or the local SQLite url.
+
+##### Heroku deployment
+
+[Install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
+Useful commands
+
+    (venv) C:\Python\Django_Project_Name>heroku login //for log in to Heroku
+    (venv) C:\Python\Django_Project_Name> heroku apps:create example-app // need of unique app name
+
+To add Heroku Hobby-dev PostgreSQL to the project:
+
+    (venv) C:\Python\Example> heroku addons:add heroku-postgresql:hobby-dev
+
+OR you can add this addon by going to
+
+    heroku dashboard of your app > resources tab and searching for Heroku Postgres
+
+You can eddit the config vars in the Settings windows of the app.
+
+**Procfile**
+
+web: gunicorn Romanian_Alpine_Club.wsgi
+
+Final deployment
+
+    git commit -a -m "deployment to heroku changes"
+    git push heroku master
+
+If you encounter errors you can visit the app's logs from the dashboard.
+
+# Version control
+
+Github
+
+# Resources
+
+- Code Institute 
+- Google
+- Youtube
+- Stack Overflow
+- Django documentation
+- Django-bootstrap-form
+- Various Django websites
+- Python Crash Course book
+
+# Content 
+
+Inspiration for creating the project was taken by visiting the [American Alpine Club](https://americanalpineclub.org/) and [UK Alpine Club](http://www.alpine-club.org.uk/).
+
+The content was taken from the still live site of the Romanian Alpine Club.
+
+##### Media
+
+Background images were obtained using Google's Images search results and I use them only for educational purposes only.
+
+Images for the products are taken from the Brand Manual.
+
+All media is uploaded to Amazon's S3.
+
+# Credits
+
+Credit is due to the following names.
+
+ I would like to thank each and every one who has helped or contributed to my project in any way. Please see list of names below:
+
+- Code Institute for introducing me to Python and Django framework
+- Romanian Alpine Club
+ - Mentor Aaron Sinnott
+ - Slack channel information
+ - Youtuber Corey Schafer
+ - Youtuber Pretty Printed
+ - Youtuber JustDjango
+ - Youtuber Mike Hibbert
+ - [PythonProgramming](https://pythonprogramming.net/)
+ - [DjangoGirls](https://djangogirls.org/)
+ - Python Crash Course book
+
+# License
+
+This project is released under the MIT license.
+[MIT LICENSE](LICENSE.md)
