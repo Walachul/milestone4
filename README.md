@@ -357,7 +357,8 @@ The following requirements are left to be implemented in the future:
         vii. Make sure that stripe version 1.7 is installed in order for the stripe.js to work
 
         viii. You will need your own S3 bucket for the profile and products images.
-
+        
+        ix. Don't forget to set in settings.py DEBUG=True. It is turned off in production.
  ##### Environment variables
 
         You can either create an env.py and store the env variables there and import them where needed or
