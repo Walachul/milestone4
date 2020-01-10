@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["clubul-alpin-roman.herokuapp.com", "127.0.0.1"]
 
@@ -88,11 +88,7 @@ WSGI_APPLICATION = "Romanian_Alpine_Club.wsgi.application"
 
 
 if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            "postgres://caohrvshgxddjv:ffa080a0c04545d02a9adeb81c88c2101e1e1d335d5ae748da9412d18ffd4110@ec2-46-137-188-105.eu-west-1.compute.amazonaws.com:5432/de0a30l0tu89ra"
-        )
-    }
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 else:
     print("Database URL not found. Using SQLite instead")
     DATABASES = {
