@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-import env
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -171,5 +171,5 @@ if DEBUG:
     STRIPE_SECRET = os.getenv("STRIPE_SECRET")
 else:
     # Production
-    STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
-    STRIPE_SECRET = os.getenv("STRIPE_SECRET")
+    STRIPE_PUBLISHABLE = os.environ.get("STRIPE_PUBLISHABLE")
+    STRIPE_SECRET = os.environ.get("STRIPE_SECRET")
