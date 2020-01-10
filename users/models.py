@@ -15,6 +15,9 @@ class Profile(models.Model):
     homeAddress = models.CharField(
         blank=True, max_length=200, default="Your home address"
     )
+    homeAddress2 = models.CharField(
+        blank=True, max_length=200, default="Your home address"
+    )
     profileImage = models.ImageField(default="default.jpg", upload_to="profile_images")
 
     def __str__(self):
