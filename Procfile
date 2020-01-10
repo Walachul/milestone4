@@ -1,1 +1,1 @@
-web: gunicorn Romanian_Alpine_Club.wsgi:application
+web: gunicorn Romanian_Alpine_Club.wsgi
