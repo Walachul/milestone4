@@ -21,9 +21,6 @@ def logout(request):
 
 
 def login(request):
-    """ Return to home page if user is authenticated """
-    if request.user.is_authenticated:
-        return redirect(reverse("home-home"))
     if request.method == "POST":
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -43,8 +40,11 @@ def login(request):
 
 
 def register(request):
-    """Register users view.
-        The user can register after paying with stripe his membership."""
+
+    """ Return to home page if user is authenticated """
+    if request.user.is_authenticated:
+        return redirect(reverse("home-home"))
+    """Register users view."""
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         profile_form = ProfileForm(request.POST)

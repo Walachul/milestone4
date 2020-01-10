@@ -105,10 +105,98 @@ When quantity is 0, the item is deleted from cart.
 
 ##### *Checkout app*
 
+* Functionality to check if the cart is empty - If the total amount is 0, the user gets a message that his cart is empty and he has a button to visit the merchandise shop. Checkout button is disabled.
+
 * Checkout - in the View cart page, user can access checkout app from the checkout button. He will be redirected to the checkout page.
-Here he can view the items that he wants to buy, the total price.
+Here he can view the items that he wants to buy and the total price.
 In order to buy, he must complete 2 forms: one for Order, with personal information stored in the database and can be viewed only by admin(s), and second is the Stripe Payment form, which doesn't store any information on local server, but will communicate with the Stripe server.
 If the card is accepted, the user will receive a success message and will be redirected to the items template.
+
+##### *Partners page*
+
+* Now partners have their own dedicated page with logos that if clicked it will redirect to the partner's website.
+
+##### **Features left to implement**
+
+The following requirements are left to be implemented in the future:
+
+1. Forum app - Necessity for the community members to talk about different topics. Topics need to be categorized and also moderated by admins.
+2. Apps departments - This app will be created for different towns where the Romanian Alpine Club has departments in order to organize the members there and to share info if required only with that department's members.
+3. Report app - Automatically generate a monthly/yearly report with different information
+4. Membership card - This app will generate automatically a card with the member's details, that will be loaded in .jpeg format and can be downloaded from member's profile.
+5. Membership app - App to automatically pay for a type of membership(yearly)(regular, standard, retired) and also payment for registration(only once). Whoever registers before a date mentioned, can get a -10% discount.
+
+6. **Admin functionalities**
+     - honeypot django app - in order to notify the admin if someone else is trying to access the admin panel;
+     - mail to admin(s) when someone registers to get approval from him(django-registration-redux > admin approval backend);
+     - mail to admin(s) when someone buys merchandise, in order to be shipped to the address mentioned in the order form;
+
+7. eLearning - eLearning platform to share written information and/or video courses
+
+
+# Technologies Used
+## Frontend
+
+- Bootstrap 4
+
+    Bootstrap is used in all the projects's apps from a base template, to create the User Interface and for better User Experience.
+
+    The fluid grid and CSS Bootstrap classes, allows elements to be display in a harmonious way on different devices.
+
+ - CSS3
+
+    Used for personal styling
+
+ - jQuery and Mosaic gallery
+    
+    To organize logos of partners
+
+- Font Awesome
+
+    To enhance the UI.
+
+- Google Fonts
+
+    For personal styling
+
+- Logo 
+
+    The Romanian Alpine Logo was edited with GIMP v2 so that the elements will be white and background transparent.
+
+##### For elements such as typography, colors, logo, font etc. I was given the Romanian Alpine Club Brand Manual & Guidelines.
+##### I can share this if needed with Code Institute.
+## Backend
+- Django 1.11 
+
+    Python framework which can scale and with it was built the project.
+
+- Python 3.6
+
+- SQLite database used for development
+
+- Postgres used for production
+
+- Stripe 1.7
+
+    For taking online payments.
+
+- Amazon S3 - For storing static files, mainly images, due to Heroku's ephemeral file system which deletes static images.
+
+## Testing
+
+#####Users(accounts) app
+
+1. Testing urls 
+
+    1.1. Testing visible links while user is not logged in
+
+        i. Accessing links from navbar(Home, About, Login, Register) and footer, also Join button from Home page, and verify that it routes to the desired page.
+        ii. Accessing unauthorized pages while not logged in and check to see if it redirects to the login form.(for example accessing /profile,/products or /cart and check that it redirects to login form.)
+    
+    1.2 Testing accessible links when user is logged in
+        
+        i. Accessing links from navbar, footer and also all buttons from different pages, and verify that it routes to the desired page(for example from New blog post page to Merchandise).
+        ii. While logged in, test to access routes that are accessible if not logged in(for example accessing /login from browser, will redirect user to home page)
 
 
 

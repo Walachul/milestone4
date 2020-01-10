@@ -36,7 +36,9 @@ urlpatterns = [
     url(r"^edit_profile/", user_views.edit_profile, name="edit-profile"),
     url(
         r"^login/",
-        auth_views.LoginView.as_view(template_name="users/login.html"),
+        auth_views.LoginView.as_view(
+            redirect_authenticated_user=True, template_name="users/login.html"
+        ),
         name="login",
     ),
     url(
