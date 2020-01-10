@@ -39,7 +39,7 @@ class RegisterUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("homeAddress", "phoneNumber")
+        fields = ("homeAddress",)
         exclude = ["user"]
 
 
