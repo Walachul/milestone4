@@ -22,7 +22,8 @@ class Profile(models.Model):
 
     """Override save function in order to resize the image,
         so that the file system will not get loaded with big files,
-        affecting performance. The resized image is now saved also on S3 Amazon"""
+        affecting performance. 
+        The resized image is now saved also on S3 Amazon"""
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
