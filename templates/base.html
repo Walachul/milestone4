@@ -110,7 +110,8 @@
                         </a></li>
 
                     {% else %}
-                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'login' %}">LOGIN</a></li>
+                    <li class="nav-item"><a class="nav-link navItems text-uppercase" href="{% url 'login' %}">LOGIN</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'register' %}">REGISTER</a>
                     </li>
                     {% endif %}

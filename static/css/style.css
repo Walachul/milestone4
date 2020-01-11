@@ -70,13 +70,13 @@ body {
 }
 
 /*** H1 ***/
-#headingHome, #headingMission{
+#headingHome, #headingMission, #headingLogin{
     color:white;
 }
 #heading_one{
     color:#414042
 }
-#heading_one, #headingHome,#headingMission {
+#heading_one, #headingHome,#headingMission, #headingLogin {
     font-size: 60px;
     font-weight: 400;
     line-height: 1.2em;
@@ -143,23 +143,25 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
     border-color: #414042;
 }
 /*** Login page ***/
+
 #forgotPwd{
-    color: silver;
+    color: white;
     font-weight: 500;
     transition: all .6s;
     display: inline-block
 }
 #forgotPwd:hover{
-    color:black;
+    color:#FFDE17;
     transform:translateX(10px)
 }
 #signUp{
     transition: all .6s;
     text-decoration: none;
-    display: inline-block
+    display: inline-block;
+    color:white
 }
 #signUp:hover{
-    color:#279fff;
+    color:#00AEEF;
     transform:translateX(10px)
 }
 
@@ -172,9 +174,20 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
     height: 150px;
     merch: 0 auto
 }
+/*** LOGIN ***/
+#login_background{
+    background-image: url("../img/background/login_section/login_background.PNG");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width:100%;
+    height: auto;
+    min-height: 80.1vh;
+}
+
 
 /*** Footer ***/
-footer{
+.footer{
     background-color: #414042
 }
 /** Footer Titles **/
@@ -197,7 +210,7 @@ footer{
 }
 /** Headers with links **/
 .linkHeader{
-    color: black;
+    color: white;
     font-size: 16px;
     transition: all .4s
 }

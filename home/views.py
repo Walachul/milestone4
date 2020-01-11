@@ -14,7 +14,7 @@ def mission(request):
 
 
 def historic(request):
-    return render(request, "home/historic.html", {"title": "Historic"})
+    return render(request, "home/historic.html", {"title": "History"})
 
 
 # Partners
