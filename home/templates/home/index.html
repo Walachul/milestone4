@@ -25,7 +25,17 @@
                         public
                         patrimony and must be accessible to all lovers of the mountains.</p>
                 </div>
+                {% if user.is_authenticated %}
 
+                <div class="d-none col-12 mx-auto my-3">
+                    <!--Call to action-->
+                    <p class="my-3 text-center">
+                        <a class="btn btn-success btn-lg" href="{% url 'register' %}">
+                            <i class="fas fa-globe mr-1"></i>Join the
+                            community</a>
+                    </p>
+                </div>
+                {% else %}
                 <div class="col-12 mx-auto my-3">
                     <!--Call to action-->
                     <p class="my-3 text-center">
@@ -34,6 +44,7 @@
                             community</a>
                     </p>
                 </div>
+                {% endif %}
             </div>
             <!--end of row-->
             <div class="row p-0 m-0 mt-4">

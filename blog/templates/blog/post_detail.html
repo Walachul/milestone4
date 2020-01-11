@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-12 col-lg-6 mx-auto my-4">
             <div class="blogPosts media my-4">
-                <img class="ml-2 align-self-center rounded-circle"
+                <img class="ml-2 py-md-2 align-self-top rounded-circle"
                     src="{{ object.authorPost.profile.profileImage.url }}"
                     alt="Profile image of the author of the post">
 
-                <div class="media-body ml-2">
-                    <h1 class="text-left p-4 my-1" id="heading_one">{{ object.title }}</h1>
+                <div class="media-body py-md-2">
+                    <h1 class="my-1" class="postDetail">{{ object.title }}</h1>
                     <span class="text-left p-4"><small>Date added: {{ object.dateAdded }}</small></span>
                     <span class=" text-left">By
                         <a href="{% url 'blog-user-posts' object.authorPost.username %}">

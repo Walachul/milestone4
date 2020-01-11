@@ -15,21 +15,22 @@
             <!-- Render the posts from users -->
             {% for post in posts %}
             <div class="blogPosts media my-4">
-                <img class="ml-2 align-self-center rounded-circle" src="{{ post.authorPost.profile.profileImage.url }}"
-                    alt="Profile image of the author of the post">
+                <img class="ml-2 py-md-2 align-self-top rounded-circle"
+                    src="{{ post.authorPost.profile.profileImage.url }}" alt="Profile image of the author of the post">
 
-                <div class="media-body ml-2">
-                    <h2 class="blogTitle text-left p-4 my-1">{{ post.title }}</h2>
-                    <span class="text-left p-4"><small>Date added: {{ post.dateAdded }}</small></span>
-                    <span class=" text-left">By
-                        <a href="{% url 'blog-user-posts' post.authorPost.username %}">
-                            {{post.authorPost }}</a></span>
-                    <span class="text-left p-2">Category: {{post.category }}</span>
-                    <p class="my-2 p-4 text-left">
+                <div class="media-body py-md-2">
+                    <h5 class="blogTitle my-1">{{ post.title }}</h2>
+                        <span class="text-left"><small>Date added: {{ post.dateAdded }}</small></span>
+                        <span class=" text-left">By
+                            <a href="{% url 'blog-user-posts' post.authorPost.username %}">
+                                {{post.authorPost }}</a></span>
+                        <span class="text-left p-2">Category: {{post.category }}</span>
+                        <p class="my-2">
 
-                        {{ post.content|truncatewords:30 }}
-                    </p>
-                    <p class="text-right"><a class="mr-2" href="{% url 'blog-details-post' post.id %}">Read more</a></p>
+                            {{ post.content|truncatewords:30 }}
+                        </p>
+                        <p class="text-right"><a class="mr-2" href="{% url 'blog-details-post' post.id %}">Read more</a>
+                        </p>
 
                 </div>
             </div>
