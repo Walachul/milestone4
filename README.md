@@ -407,6 +407,13 @@ Final deployment
 
 If you encounter errors you can visit the app's logs from the dashboard.
 
+If by any change you need to delete migrations folder and __pycache__ for an app and need to modify a model and then makemigrations, you can use command python manage.py makemigrations --empty app-name.
+After, you can run makemigrations normally.
+
+Had to delete phoneNumber field because it was causing error with Postgres, but because it was copied in the first migration, I had to think of different things to get this sorted.
+
+With some research, I have found this topic [How to force migrations to a DB if some tables already exists](https://stackoverflow.com/questions/43880426/how-to-force-migrations-to-a-db-if-some-tables-already-exist-in-django)
+
 # Version control
 
 Github

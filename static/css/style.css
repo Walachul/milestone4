@@ -1,5 +1,5 @@
 /**** Font ****/
-@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
 
 /**** Sticky footer ****/
 html, body {
@@ -43,10 +43,10 @@ body {
     font-size:22px;
 }
 #blue{
-    color: blue    
+    color: RGB(0,174,239)    
 }
 #yellow{
-    color: yellow
+    color: RGB(255,223,23)
 }
 
 #red{
@@ -100,6 +100,21 @@ body {
 .list-group-children{
    padding: 2px;
    margin-bottom: -1px;
+
+}
+/*** ABOUT SECTION ***/
+/** MISSION VISION VALUES **/
+#mission_background{
+    background-image:linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("../img/mission_background/mission_background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width:100%;
+    height: auto;
+    min-height: 88.2vh;
 
 }
 
