@@ -4,22 +4,25 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6 mx-auto my-4">
-            <h1 class="text-center mb-3 text-uppercase" id="heading_one">Register</h1>
-            <form method="POST">
-                {% csrf_token %}
+        <div id="register_background">
+            <div class="col-6 mx-auto my-4">
+                <h1 class="text-center mb-3 text-uppercase" id="heading_one">Register</h1>
+                <form method="POST">
+                    {% csrf_token %}
 
-                {{ form | as_bootstrap_horizontal }}
-                {{ profile_form | as_bootstrap_horizontal }}
+                    {{ form | as_bootstrap_horizontal }}
+                    {{ profile_form | as_bootstrap_horizontal }}
 
-                <button class="btn btn-primary" type="submit" id="validate_card_btn">Register</button>
-            </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Do you already have an account?</small>
-                <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                    <button class="btn btn-primary" type="submit" id="validate_card_btn">Register</button>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Do you already have an account?</small>
+                    <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 {% endblock content %}
