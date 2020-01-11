@@ -2,143 +2,287 @@
 {% load static from staticfiles %}
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div id="historic_background">
-            <div class="row p-0 m-0">
-                <div class="col-12">
-                    <h1 class="text-center text-uppercase my-5" id="heading_one">HISTORIC
-                    </h1>
-                </div>
-                <!--end of col-12-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <h1 data-aos="fade-right" class="text-center text-uppercase my-5" id="heading_one">HISTORY
+                </h1>
             </div>
-            <!--end of row-->
+            <!--end of col-12-->
+        </div>
+        <!--end of row-->
+    </div>
+    <div class="container">
+        <div class="row my-4">
+            <!--History info-->
 
+            <div class="col-12 ">
 
-            <!--End of historic-background-->
-            <div class="row p-0 m-0 my-4">
-                <!--History info-->
-                <div class="col-12 col-lg-8 ">
-                    <p class="my-2 p-2 infoMVV text-justify">The Alpin Roman Club was founded in Bucharest, on March 18,
-                        1934, at the initiative of a group entitled "Alpine Grouping". Soul and initiator C.A.R. was the
-                        young lawyer Nicolae (Nae) Dimitriu, who wrote, on March 21, 1932, to his friend Radu Titeica
-                        the
-                        following: “And I would have great joy to know that the future roads will be made under the
-                        aegis of
-                        the Alpin-Club, whose realization will not I see that when we are grouped together. I would dare
-                        to
-                        think of a monthly tourist publication ... ”. Being few, eight (engineer Gheorghe Frim, lawyer
-                        Nicolae Dimitriu, students Nicolae Comanescu, Alexandru Beldie and Vasile Nicolau, Traian
-                        Belitoreanu, Gheorghe Georgescu and Ion Sincan), first had to affiliate with an older
-                        association,
-                        ADMIR, in March 1933 Here the Alpine Grouping began to implement its plans. He published the
-                        quarterly magazine the Alpine Bulletin, in whose pages appeared a series of articles with
-                        descriptions of routes, accompanied by sketches, and organized a cycle of graded collective
-                        trips,
-                        in which a large number of lovers of the mountain participated.</p>
-
-                    <figure class="figure">
-                        <img class='figure-img img-fluid rounded'
-                            src="{% static 'img/background/historic_section/Nae_Dimitriu.jpg' %}"
-                            alt="Founder and Puiu Petriu on Picătura Peak">
-                        <figcaption class="figure-caption">Nae Dimitriu (standing) and Puiu Petriu on Picătura Peak
-                        </figcaption>
-                    </figure>
-                    <p class="my-2 p-2 infoMVV text-justify">After a year of fruitful coexistence with the ADMIR-host
-                        association, the Alpine Group withdrew and on March 18, 1934 laid the foundation of the Alpin
-                        Roman
-                        Club, taking over the Alpin Bulletin magazine. The establishment of the Alpin Roman Club was a
-                        necessity of the time, in order to remove it. the Romanian mountaineering from the old beech
-                        forests
-                        - the paths - and pointing towards the steep, rocky walls and the winter climbs, activity
-                        especially
-                        requested by the youth of those times and appreciated by the youth of today. Also, because of
-                        the
-                        need for guidance, hosting and, why not, schooling in alpine climbing.</p>
-
-
-
-                    <p class="my-2 p-2 infoMVV text-justify">In 1934-1948, CAR, according to its statute, continued the
-                        gradual group trips with people from outside the club, to make known to the amateurs the
-                        prahovan
-                        steepness of the Bucegi, others in other massifs of the country or abroad, marked roads to
-                        facilitate access. in the mountains, he built the Costila Refuge, in 1938, and the Alpine
-                        Camino, in
-                        1939, for the rest of the climbers at an affordable price, he bought in 1947 a space in
-                        Bucharest
-                        (Elisabeta Blvd. 15) for the Club's headquarters, until 1937 the Bulletin was printed. Alpin,
-                        and in
-                        1938-1940 the Bulletin of the Alpin Roman Club, organized the first school of modern technique
-                        in
-                        alpine climbing, thus raising the degree of difficulty from I to V, with sixth grade passages
-                        according to the UIAA norms, made the badge of the Club.</p>
-                    <p class="my-2 p-2 infoMVV text-justify">The initiators of the Alpin Roman Club, old carolers of the
-                        mountain beauties, in their pilgrimages
-                        captured on the photographic film wonderful images that illustrated the club magazine, the fruit
-                        of
-                        a special and disinterested work, which required years of physical training and photographic
-                        specialty. Each article in the magazines - representing pioneering work - some accompanied by
-                        sketches by Radu Titeica, Alexandru Beldie or Nae Dimitriu, contains references to the tracks,
-                        either for research or description.</p>
-                    <p class="my-2 p-2 infoMVV text-justify">The first climbing routes, using a rudimentary technique,
-                        were
-                        initiated and carried out by Nicu
-                        Comanescu: the northern edge of the Tower of Seciului, the Central Horn in the Corner of Malin
-                        and
-                        the Tip of Peak, all in Bucegi. Other young people followed, as was naturally the case: Niculae
-                        Baticu, Ion Trandafir and Dan Popescu climbed the Furcilor route in the wall of Galbenelilor,
-                        considered today by the 4th degree. From 1938 the modern climbing technique was introduced, new
-                        types of ropes and new espadrilles, beneficiary being. first of all, Toma Boerescu with the
-                        Great
-                        Surplomba from the yellow wall. After the war, in 1946, the routes of the Three Surplombe and
-                        the
-                        Crack of the White Valley Peak, by Niculae Baticu and Emilian Cristea, were made, and Sorin
-                        Tulea
-                        and Gh. Nicolescu participated in the first. At the same time, Ion Coman from Brasov has made a
-                        number of 11 premieres in the Bucegi and Piatra Craiului mountains, of which we mention the most
-                        important: Central Cracks in the White Valley wall, the Coman Trail in the Yellowstone wall, the
-                        oblique route in the Malaiesti Tower.</p>
-                    <figure class="figure">
-                        <img class='figure-img img-fluid rounded'
-                            src="{% static 'img/background/historic_section/surplombe_traseu_membri.jpg' %}"
-                            alt="Founder and Puiu Petriu on Picătura Peak">
-                        <figcaption class="figure-caption">Together with Gicu Nicolescu and Emil Cristea on chine
-                            Coștila-Gălbenele, after ascension of the route Three Surplombe
-                        </figcaption>
-                    </figure>
-                    <p class="my-2 p-2 infoMVV text-justify">This fruitful activity was interrupted by the samavolic act
-                        of
-                        the communist authorities, which on June 11, 1948 dissolved the tourism-mountaineering
-                        associations,
-                        whose heritage was passed to the National Tourist Office. It should be noted that Romania was
-                        the
-                        only country in the Soviet bloc that dissolved the tourism-mountaineering groups. (History
-                        written
-                        by Niculae Baticu in 1990). </p>
-
-                    <p class="my-2 p-2 infoMVV text-justify">By the initiative of a rare man, Niculae Baticu, C.A.R. it
-                        was
-                        reborn in 1990, initially gathering under its name or several hundred members. A handful of
-                        people
-                        investing in their free time and making significant material donations have kept C.A.R. in the
-                        family of full members of the International Union of Mountaineering Associations (UIAA). Their
-                        objective was and is to revitalize C.A.R. for the benefit of all mountain lovers.</p>
-                </div>
-                <!--end of col-->
-                <!-- Founder pic-->
-                <div class="col-12">
-
-                    <div class="col-4">
-
-
-                    </div>
-                    <div class="col-4">
-
-
-                    </div>
-                </div>
+                <p data-aos-delay="300" data-aos="fade-up" class="my-4  p-2 infoMVV text-justify">
+                    The Alpin Roman Club was founded in
+                    Bucharest, on March
+                    18,
+                    1934, at the initiative of a group entitled "Alpine Grouping". Soul and initiator C.A.R.
+                    was
+                    the
+                    young lawyer Nicolae (Nae) Dimitriu, who wrote, on March 21, 1932, to his friend Radu
+                    Titeica
+                    the
+                    following: “And I would have great joy to know that the future roads will be made under
+                    the
+                    aegis of
+                    the Alpin-Club, whose realization will not I see that when we are grouped together. I
+                    would
+                    dare
+                    to
+                    think of a monthly tourist publication ... ”. Being few, eight (engineer Gheorghe Frim,
+                    lawyer
+                    Nicolae Dimitriu, students Nicolae Comanescu, Alexandru Beldie and Vasile Nicolau,
+                    Traian
+                    Belitoreanu, Gheorghe Georgescu and Ion Sincan), first had to affiliate with an older
+                    association,
+                    ADMIR, in March 1933 Here the Alpine Grouping began to implement its plans. He published
+                    the
+                    quarterly magazine the Alpine Bulletin, in whose pages appeared a series of articles
+                    with
+                    descriptions of routes, accompanied by sketches, and organized a cycle of graded
+                    collective
+                    trips,
+                    in which a large number of lovers of the mountain participated.</p>
             </div>
-            <!--end of row-->
         </div>
     </div>
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-6 mx-auto">
+                <figure data-aos-delay="500" data-aos="fade-up" class="figure">
+                    <img class='figure-img img-fluid rounded'
+                        src="{% static 'img/background/historic_section/Nae_Dimitriu.jpg' %}"
+                        alt="Founder and Puiu Petriu on Picătura Peak">
+                    <figcaption class="figure-caption">Nae Dimitriu (standing) and Puiu Petriu on Picătura
+                        Peak
+                    </figcaption>
+                </figure>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-12 mx-auto">
+                <p data-aos-delay="1000" data-aos="fade-up" class="my-4 p-2 infoMVV text-justify">After a year of
+                    fruitful coexistence
+                    with the
+                    ADMIR-host
+                    association, the Alpine Group withdrew and on March 18, 1934 laid the foundation of the
+                    Alpin
+                    Roman
+                    Club, taking over the Alpin Bulletin magazine. The establishment of the Alpin Roman Club
+                    was
+                    a
+                    necessity of the time, in order to remove it. the Romanian mountaineering from the old
+                    beech
+                    forests
+                    - the paths - and pointing towards the steep, rocky walls and the winter climbs,
+                    activity
+                    especially
+                    requested by the youth of those times and appreciated by the youth of today. Also,
+                    because
+                    of
+                    the
+                    need for guidance, hosting and, why not, schooling in alpine climbing.</p>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <p data-aos="fade-up" class="my-4 p-2 infoMVV text-justify">In 1934-1948, CAR,
+                    according to its
+                    statute,
+                    continued
+                    the
+                    gradual group trips with people from outside the club, to make known to the amateurs the
+                    prahovan
+                    steepness of the Bucegi, others in other massifs of the country or abroad, marked roads
+                    to
+                    facilitate access. in the mountains, he built the Costila Refuge, in 1938, and the
+                    Alpine
+                    Camino, in
+                    1939, for the rest of the climbers at an affordable price, he bought in 1947 a space in
+                    Bucharest
+                    (Elisabeta Blvd. 15) for the Club's headquarters, until 1937 the Bulletin was printed.
+                    Alpin,
+                    and in
+                    1938-1940 the Bulletin of the Alpin Roman Club, organized the first school of modern
+                    technique
+                    in
+                    alpine climbing, thus raising the degree of difficulty from I to V, with sixth grade
+                    passages
+                    according to the UIAA norms, made the badge of the Club.</p>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <p data-aos="fade-up" class="my-4 p-2 infoMVV text-justify">The initiators of the
+                    Alpin Roman
+                    Club,
+                    old
+                    carolers of
+                    the
+                    mountain beauties, in their pilgrimages
+                    captured on the photographic film wonderful images that illustrated the club magazine,
+                    the
+                    fruit
+                    of
+                    a special and disinterested work, which required years of physical training and
+                    photographic
+                    specialty. Each article in the magazines - representing pioneering work - some
+                    accompanied
+                    by
+                    sketches by Radu Titeica, Alexandru Beldie or Nae Dimitriu, contains references to the
+                    tracks,
+                    either for research or description.</p>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <p data-aos="fade-up" class="my-4 p-2 infoMVV text-justify">The first climbing
+                    routes, using a
+                    rudimentary
+                    technique,
+                    were
+                    initiated and carried out by Nicu
+                    Comanescu: the northern edge of the Tower of Seciului, the Central Horn in the Corner of
+                    Malin
+                    and
+                    the Tip of Peak, all in Bucegi. Other young people followed, as was naturally the case:
+                    Niculae
+                    Baticu, Ion Trandafir and Dan Popescu climbed the Furcilor route in the wall of
+                    Galbenelilor,
+                    considered today by the 4th degree. From 1938 the modern climbing technique was
+                    introduced,
+                    new
+                    types of ropes and new espadrilles, beneficiary being. first of all, Toma Boerescu with
+                    the
+                    Great
+                    Surplomba from the yellow wall. After the war, in 1946, the routes of the Three
+                    Surplombe
+                    and
+                    the
+                    Crack of the White Valley Peak, by Niculae Baticu and Emilian Cristea, were made, and
+                    Sorin
+                    Tulea
+                    and Gh. Nicolescu participated in the first. At the same time, Ion Coman from Brasov has
+                    made a
+                    number of 11 premieres in the Bucegi and Piatra Craiului mountains, of which we mention
+                    the
+                    most
+                    important: Central Cracks in the White Valley wall, the Coman Trail in the Yellowstone
+                    wall,
+                    the
+                    oblique route in the Malaiesti Tower.</p>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <figure data-aos="fade-up" class="figure">
+                    <img class='figure-img img-fluid rounded'
+                        src="{% static 'img/background/historic_section/surplombe_traseu_membri.jpg' %}"
+                        alt="Founder and Puiu Petriu on Picătura Peak">
+                    <figcaption class="figure-caption">Together with Gicu Nicolescu and Emil Cristea on
+                        chine
+                        Coștila-Gălbenele, after ascension of the route Three Surplombe
+                    </figcaption>
+                </figure>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <p data-aos="fade-up" class="my-4 p-2 infoMVV text-justify">This fruitful activity
+                    was interrupted
+                    by the
+                    samavolic
+                    act
+                    of
+                    the communist authorities, which on June 11, 1948 dissolved the tourism-mountaineering
+                    associations,
+                    whose heritage was passed to the National Tourist Office. It should be noted that
+                    Romania
+                    was
+                    the
+                    only country in the Soviet bloc that dissolved the tourism-mountaineering groups.
+                    (History
+                    written
+                    by Niculae Baticu in 1990). </p>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p data-aos="fade-up" class="mt-4 p-2 infoMVV text-justify">By the initiative of a
+                    rare man,
+                    Niculae
+                    Baticu,
+                    C.A.R.
+                    it
+                    was
+                    reborn in 1990, initially gathering under its name or several hundred members. A handful
+                    of
+                    people
+                    investing in their free time and making significant material donations have kept C.A.R.
+                    in
+                    the
+                    family of full members of the International Union of Mountaineering Associations (UIAA).
+                    Their
+                    objective was and is to revitalize C.A.R. for the benefit of all mountain lovers.</p>
+            </div>
+            <!--end of col-->
+            <div class="col-6">
+                <figure data-aos="fade-up" class="figure">
+                    <img class='figure-img img-fluid rounded'
+                        src="{% static 'img/background/historic_section/niculae_baticu.jpg' %}"
+                        alt="Founder and Puiu Petriu on Picătura Peak">
+                    <figcaption class="figure-caption">Niculae Baticu
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+
+
+
+    <!--end of row-->
+
+
 </div>
 {% endblock %}
