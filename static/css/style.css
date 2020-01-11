@@ -1,12 +1,13 @@
 /**** Font ****/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
-
+/** In case first one crashes **/
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap');
 /**** Sticky footer ****/
 html, body {
     height: 100%
 }
 body {
-    font-family: 'Averia Serif Libre', cursive;
+    font-family: 'Montserrat','Averia Serif Libre', cursive;
     display: flex;
     flex-direction: column
 }
