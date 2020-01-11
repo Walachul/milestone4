@@ -8,8 +8,11 @@
                 <h1 class="text-center  mb-3" id="headingLogin">LOGIN</h1>
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form | as_bootstrap }}
-                    <div class="form-group">
+                    <div style="color:white" class="col-12 mx-auto">
+                        {{ form | as_bootstrap }}
+                    </div>
+
+                    <div class="form-group col-12 mx-auto text-center">
                         <button type="submit" class="btn btn-success">LOGIN</button>
                     </div>
                     <div class="my-2">
