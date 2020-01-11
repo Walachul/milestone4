@@ -195,13 +195,13 @@ footer{
     color:grey;
     transition: all .5s
 }
-/** Partners **/
-.partners{
+/** Headers with links **/
+.linkHeader{
     color: black;
     font-size: 16px;
     transition: all .4s
 }
-.partners:hover{
+.linkHeader:hover{
     color:grey;
     text-decoration: none;
   

@@ -65,7 +65,7 @@
                             ABOUT
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'home-historic' %}">HISTORIC </a>
+                            <a class="dropdown-item" href="{% url 'home-historic' %}">HISTORY </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'home-mission' %}">MISSION VISION VALUES</a>
                         </div>
@@ -139,7 +139,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4 col-lg-4">
-                    <h3 class="h3Footer text-uppercase text-center mt-2">Home</h3>
+                    <h3 class="h3Footer text-uppercase text-center mt-2"><a class="linkHeader"
+                            href="{% url 'home-home' %}">HOME</a>
+                    </h3>
                 </div>
                 <div class="col-4 col-lg-4">
                     <p class=" text-center mt-2">
@@ -152,7 +154,7 @@
                 </div>
                 <div class="col-4 col-lg-4">
                     <h3 class="h3Footer text-center text-uppercase mt-2">
-                        <a id="Partners" href="{% url "home-partners" %}"><i
+                        <a class="linkHeader" href="{% url "home-partners" %}"><i
                                 class="fas fa-handshake mr-1"></i>Partners</a>
                     </h3>
 
