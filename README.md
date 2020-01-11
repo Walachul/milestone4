@@ -54,6 +54,26 @@ This functionality is possible with Django admin panel, in which I registered th
 
 ##### **Implemented features**
 
+##### *Home app*
+
+* Home - Index page of the project. Users can read what the site is about(mission statement) and have a call to action button.
+* About - Contains two subpages:
+          
+    - History - Users can read about the history of the Romanian Alpine Club and can see old pics of the founder and main members. To improve UI for reading, I have used AOS scroll library.
+    - MISSION VISION VALUES - Users can read more about the mission, values and vision of the Romanian Alpine Club
+
+* Login link - Users who are already members can login. If they don't have an account, they can register with a Sign Up button that will redirect to register page. 
+Here they can also reset their password.
+
+* Registration - Users who want to become members can register here. If they are already a member, they have a Sign In which will redirect them to login page.
+
+* Footer 
+    
+    - Home link to return home
+    - Social links to visit the social media pages
+    - Partners page - to visit the partners page
+*Partners page - Allows users/members to view logos of partners and if click on them will allow users/members to visit that site.
+
 ##### *Users(accounts) app*
 
 * Registration - Allows users to register to the site by filling the registration form.(Username, email, full name, password, birth date, home address, phone number) 
@@ -147,13 +167,16 @@ The following requirements are left to be implemented in the future:
 
     Used for personal styling
 
- - jQuery and Mosaic gallery
-    
-    To organize logos of partners
-
 - Font Awesome
 
     To enhance the UI.
+- jQuery and Mosaic gallery
+    
+    To organize logos of partners
+
+- [Animate on Scroll Library](https://michalsnik.github.io/aos/)
+
+    Improve UI and reading of the History page when user scrolls down.
 
 - Google Fonts
 
