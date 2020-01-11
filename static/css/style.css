@@ -70,13 +70,13 @@ body {
 }
 
 /*** H1 ***/
-#headingHome, #headingMission, #headingLogin{
+#headingHome, #headingMission, #headingLogin, #headingRegister{
     color:white;
 }
 #heading_one{
     color:#414042
 }
-#heading_one, #headingHome,#headingMission, #headingLogin {
+#heading_one, #headingHome,#headingMission, #headingLogin,#headingRegister {
     font-size: 60px;
     font-weight: 400;
     line-height: 1.2em;
@@ -194,7 +194,7 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
     width:100%;
     height: auto;
     min-height: 84.1vh;
-    opacity:0.5
+    
 }
 
 /*** Footer ***/

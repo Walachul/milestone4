@@ -5,20 +5,22 @@
 <div class="container-fluid">
     <div class="row">
         <div id="register_background">
-            <div class="col-6 mx-auto my-4">
-                <h1 class="text-center mb-3 text-uppercase" id="heading_one">Register</h1>
+            <div class="col-12 col-lg-6 mx-auto my-4">
+                <h1 class="text-center mb-3 text-uppercase" id="headingRegister">Register</h1>
                 <form method="POST">
                     {% csrf_token %}
-
-                    {{ form | as_bootstrap_horizontal }}
-                    {{ profile_form | as_bootstrap_horizontal }}
-
-                    <button class="btn btn-primary" type="submit" id="validate_card_btn">Register</button>
+                    <div style="color:white" class="col-12 col-lg-6 mx-auto">
+                        {{ form | as_bootstrap_horizontal }}
+                        {{ profile_form | as_bootstrap_horizontal }}
+                    </div>
+                    <div class="col-12 col-lg 6 mx-auto text-center">
+                        <button class="btn btn-primary" type="submit" id="validate_card_btn">REGISTER</button>
+                    </div>
                 </form>
-                <div class="border-top pt-3">
-                    <small class="text-muted">
+                <div class="border-top pt-3 col-6 mx-auto">
+                    <small style="color:white">
                         Do you already have an account?</small>
-                    <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                    <a href="{% url 'login' %}" class="ml-2" id="signUp">Sign In</a>
                 </div>
             </div>
         </div>
