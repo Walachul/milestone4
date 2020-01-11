@@ -57,6 +57,7 @@
                     <li class="nav-item active">
                         <a class="nav-link navItems" href="{% url 'home-home' %}">HOME</a>
                     </li>
+                    <!--About section-->
                     <li class="nav-item dropdown">
                         <a class="nav-link navItems dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +66,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/">HISTORIC </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'home-mission' %}">MISSION VISION STATEMENT</a>
+                            <a class="dropdown-item" href="{% url 'home-mission' %}">MISSION VISION VALUES</a>
                         </div>
                     </li>
                     <!--Display different links if user is authenticated or not-->
@@ -77,28 +78,28 @@
                             Blog
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{%url 'blog-home'%}">Blog</a>
+                            <a class="dropdown-item" href="{%url 'blog-home'%}">BLOG</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'blog-new-post' %}">New blog post</a>
+                            <a class="dropdown-item" href="{% url 'blog-new-post' %}">NEW BLOG POST</a>
                         </div>
                     </li>
                     <!--Access to Merchandise shop-->
                     <li class="nav-item ">
-                        <a class="nav-link navItems" href="{% url 'products-home' %}">Merchandise</a>
+                        <a class="nav-link navItems" href="{% url 'products-home' %}">MERCHANDISE</a>
                     </li>
                     <!--Access to user profile-->
                     <li class="nav-item dropdown">
                         <a class="nav-link navItems dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user mr-1"></i>Account
+                            <i class="fas fa-user mr-1"></i>ACCOUNT
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}">PROFILE</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Profile</a>
+                            <a class="dropdown-item" href="{% url 'edit-profile' %}">EDIT PROFILE</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'logout' %}">LOGOUT</a></li>
                     <!--Access to cart items-->
                     <li class="nav-item"><a class="nav-link navItems" href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>
@@ -108,8 +109,8 @@
                         </a></li>
 
                     {% else %}
-                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'login' %}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'register' %}">Register</a>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'login' %}">LOGIN</a></li>
+                    <li class="nav-item"><a class="nav-link navItems" href="{% url 'register' %}">REGISTER</a>
                     </li>
                     {% endif %}
                 </ul>

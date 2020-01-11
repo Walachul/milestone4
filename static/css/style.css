@@ -70,25 +70,26 @@ body {
 }
 
 /*** H1 ***/
-#headingHome{
+#headingHome, #headingMission{
     color:white;
 }
 #heading_one{
-    color:black
+    color:#414042
 }
-#heading_one, #headingHome {
+#heading_one, #headingHome,#headingMission {
     font-size: 60px;
     font-weight: 400;
     line-height: 1.2em;
 }
 
 /** Info text home page **/
-.infoText{
-    color:white;
+.infoMVV, .infoText{
     transition-delay: 2s;
     transition-timing-function: ease-out;
     font-size:20px;
-    
+}
+.infoText{
+    color:white    
 }
 /** Member benefits **/
 #list-group{
@@ -109,14 +110,20 @@ body {
     background-image:linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url("../img/mission_background/mission_background.png");
+    ), url("../img/background/mission_section/mission_background.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width:100%;
     height: auto;
     min-height: 88.2vh;
+}
+/** Text **/
 
+
+/** Info text home page **/
+.headingMVV,.infoMVV{
+    color:#414042    
 }
 
 /*** Blog home page ***/

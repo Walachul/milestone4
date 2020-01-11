@@ -1,15 +1,22 @@
 from django.shortcuts import render
 
-# Home page
+# Home
 def home(request):
     return render(request, "home/index.html", {"title": "Home"})
 
 
-# Mission/Vision/Values page
+# Mission/Vision/Values
 def mission(request):
     return render(request, "home/mission.html", {"title": "Mission"})
 
 
-# Partners page
+# Historic
+
+
+def historic(request):
+    return render(request, "home/historic.html", {"title": "Historic"})
+
+
+# Partners
 def partners(request):
     return render(request, "home/partners.html", {"title": "Partners"})
