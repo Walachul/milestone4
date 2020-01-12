@@ -57,13 +57,14 @@
                 <i class="fas fa-cart-arrow-down" style="font-size:20px"></i> Your cart is empty.<br />
                 Please add an item to be able to buy it and to checkout.
             </div>
-            <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}}</i></p>
+            <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}}</p>
             <a href="{% url 'checkout' %}" class="btn btn-secondary disabled" role="button"><i
                     class="fas fa-check"></i>Checkout</a>
             <a href="{% url 'products-home' %}" class="btn btn-primary"><i class="fas fa-shopping-basket mr-1"></i>Visit
                 merchandise shop</a>
             {% else %}
-            <p><span class="mr-2 text-bold">Total</span><i class="fas fa-coins pr-2"></i>{{total}} RON</i></p>
+            <p class="mr-2 text-bold  text-info">Total<i class="fas fa-coins pr-2"></i>{{total}} RON</i>
+            </p>
             <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i
                     class="fas fa-credit-card mr-1"></i>Checkout</a>
             {% endif %}

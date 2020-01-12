@@ -6,10 +6,11 @@
         <div id="credit-card-errors" style="display:none">
             <div class="bg-success text-white alert-message block-message error" id="stripe-error-message"></div>
         </div>
-        <div class="display">
-            <form action="{% url 'search' %}" method="GET">
-                <input type="text" name="q">
-                <button type="submit">Search</button>
+        <div class="display p-md-2">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
+                <p class="my-2"><input class="form-control" type="text" name="q"></p>
+                <button placeholder="Search product" class="btn btn-outline-success" type="submit"><i
+                        class="fas fa-search mr-1"></i>SEARCH</button>
             </form>
         </div>
         <div class="col-12 mx-auto my-4">
@@ -21,7 +22,7 @@
     <div class="row">
         <!--Display merch-->
         {% for merch in merchandise %}
-        <div class="col-md-3 card px-2 mx-2 my-5">
+        <div class="card col-12 col-md-7 col-lg-4 col-xl-3  px-lg-2 mx-lg-2 my-5">
             <img class="merch card-img-top mx-auto mt-1" alt="Picture of {{merch.name}} " src="{{merch.image.url}}">
             <div class="card-body">
                 <h3 class="card-title">{{ merch.name }}</h3>

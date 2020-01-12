@@ -335,6 +335,12 @@ The following requirements are left to be implemented in the future:
         ii. On checkout page, verify that total number of items, total price, order details form and stripe form are visible and accessible.
         iii. Try to pay without any input and verify error messages are displayed
         iv. Try to pay with only Order information and verify that error message from Stripe displays.
+        ##### Stripe  card test details:
+
+            - card number 4242 4242 4242 4242
+            - CVV any 3 number digits
+            - Expiry date - any future expiry date
+            
         v. Try to pay with all forms filled correctly except test card number and verify error message is displayed that card is invalid.
         vi. Try to pay with all forms correctly filled and verify that user is redirected to merchandise/products page and a successful message appears.
         vii. Verify Stripe dashboard and check that correct payment is displayd with the user's email.
