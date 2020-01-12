@@ -7,7 +7,7 @@ The idea/necessity for the project came alive when asked to construct from scrat
 
 Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
-New site living here: [RomanianAlpineClub](heroku)
+New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herokuapp.com/)
 
 # **User Experience**
 
@@ -340,7 +340,7 @@ The following requirements are left to be implemented in the future:
             - card number 4242 4242 4242 4242
             - CVV any 3 number digits
             - Expiry date - any future expiry date
-            
+
         v. Try to pay with all forms filled correctly except test card number and verify error message is displayed that card is invalid.
         vi. Try to pay with all forms correctly filled and verify that user is redirected to merchandise/products page and a successful message appears.
         vii. Verify Stripe dashboard and check that correct payment is displayd with the user's email.
