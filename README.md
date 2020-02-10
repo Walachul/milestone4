@@ -3,12 +3,23 @@
 # **Romanian Alpine Club**
 ## Full Stack Milestone project 4 for Code Institute
 
-The idea/necessity for the project came alive when asked to construct from scratch the website of the Romanian Alpine Club and adding functionalities which now don't exist or need an upgrade.
+The web app was created in order to offer a platform organized by an admin user for the Romanian Alpine Club members, where users can register, communicate, share information, buy merchandise.
 
 Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
 New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herokuapp.com/)
 
+# **Table of Contents**
+- [User experience](https://github.com/Walachul/milestone4#user-experience)
+- [User stories](https://github.com/Walachul/milestone4#user-stories)
+- [Features](https://github.com/Walachul/milestone4#features)
+- [Technologies used](https://github.com/Walachul/milestone4#technologies-used)
+- [Testing](https://github.com/Walachul/milestone4#testing)
+- [Deployment](https://github.com/Walachul/milestone4#deployment)
+- [Version control](https://github.com/Walachul/milestone4#version-control)
+- [Resources](https://github.com/Walachul/milestone4#resources)
+- [Content](https://github.com/Walachul/milestone4#content)
+- [Credits](https://github.com/Walachul/milestone4#credits)
 # **User Experience**
 
 The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other clibbing events and workshops, and also an admin(s) panel where they can check activity of the members.
@@ -355,65 +366,19 @@ The following requirements are left to be implemented in the future:
 
 # Deployment
 
-##### Local installation 
-
-    1. First clone the project
-        https://github.com/Walachul/milestone4
-
-    2. To start developing the project:
-
-        i. Make sure you have Python 3.6 installed.
-
-        ii.For this project I have used Microsoft's Visual Studio Code.
-
-        iii. Create a virtual environment in Windows:
-            Navigate to where the project folder is and run:
-            python -m venv venv
-
-        iv. Activate the venv:
-        Navigate to venv and inside run:
-        C:\Python\Django_Project_Name\venv>Scripts\activate
-         If successfuly, you should see the name of the virtual environment in curly braces in the front of the path:
-             (venv) C:\Python\Django_Project_Name\venv>
-
-        v. To install packages:
-            Navigate to the home folder:
-            (venv) C:\Python\Django_Project_Name> pip install requirements.txt
-
-        vi. Don't forget to create your superuser(admin)
-            python manage.py createsuper
-
-        vii. Make sure that stripe version 1.7 is installed in order for the stripe.js to work
-
-        viii. You will need your own S3 bucket for the profile and products images.
-        
-        ix. Don't forget to set in settings.py DEBUG=True. It is turned off in production.
- ##### Environment variables
-
-        You can either create an env.py and store the env variables there and import them where needed or
-
-        In Windows, you can navigate to Control Panel > System > Advanced system settings > Environment Variables > add new
-
-        The env variables needed are for Stripe, Amazon's Secret key, Django's secret key, database_url.
-
-        To generate a random number for SECRET_KEY :
-
-        in CMD:
-            >>>import secrets
-            >>>secrets.token_hex(16)
-            >>>'15412c9e3e3ff5e03cac2270cc6fb57f'
-            >>>exit()
-
-        Django is setup to either use a Heroku Postgres url or the local SQLite url.
-
 ##### Heroku deployment
 
 [Install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
 Useful commands
 
-    (venv) C:\Python\Django_Project_Name>heroku login //for log in to Heroku
-    (venv) C:\Python\Django_Project_Name> heroku apps:create example-app // need of unique app name
+To log in to Heroku
+
+    (venv) C:\Python\Django_Project_Name>heroku login 
+    
+Create new unique app name for your project
+
+    (venv) C:\Python\Django_Project_Name> heroku apps:create example-app 
 
 To add Heroku Hobby-dev PostgreSQL to the project:
 
@@ -423,7 +388,7 @@ OR you can add this addon by going to
 
     heroku dashboard of your app > resources tab and searching for Heroku Postgres
 
-You can eddit the config vars in the Settings windows of the app.
+You need to copy all env variables in the Settings windows of the app in Heroku
 
 **Procfile**
 
@@ -436,12 +401,72 @@ Final deployment
 
 If you encounter errors you can visit the app's logs from the dashboard.
 
-If by any change you need to delete migrations folder and __pycache__ for an app and need to modify a model and then makemigrations, you can use command python manage.py makemigrations --empty app-name.
+If by any chance you need to delete migrations folder and __pycache__ for an app and need to modify a model and then makemigrations, you can use command
+
+    python manage.py makemigrations --empty app-name.
 After, you can run makemigrations normally.
 
-Had to delete phoneNumber field because it was causing error with Postgres, but because it was copied in the first migration, I had to think of different things to get this sorted.
+I dad to delete phoneNumber field because it was causing error with Postgres, but because it was copied in the first migration, I had to think of different things to get this sorted.
 
 With some research, I have found this topic [How to force migrations to a DB if some tables already exists](https://stackoverflow.com/questions/43880426/how-to-force-migrations-to-a-db-if-some-tables-already-exist-in-django)
+
+
+
+##### Local installation 
+
+1. First clone the project
+
+        git clone https://github.com/Walachul/milestone4.git
+
+2. Create a virtual environment in Windows. Navigate to where the project folder is and run:
+
+            python -m venv venv
+
+3. Activate the venv - Navigate to venv folder in the terminal window and inside run:
+
+            C:\Python\Django_Project_Name\venv>Scripts\activate
+    If activation was successful, you should see the name of the virtual environment in curly braces in the front of the path:
+   
+            (venv) C:\Python\Django_Project_Name\venv>
+
+4. Install packages needed for the project:
+    Navigate to the home folder and run:
+
+            (venv) C:\Python\Django_Project_Name> pip install requirements.txt
+5. Create your superuser(admin)
+
+            python manage.py createsuper
+
+6. Run command:
+
+            python manage.py makemigrations
+
+    which is responsible for creating new migrations based on the changes you have made to your models.
+
+7. Run command:
+
+            python manage.py migrate
+
+     which is responsible for applying the changes to your database and create the SQLite database.
+
+
+8. Create an env.py to store the env variables. The env variables needed for the project are: DATABASE_URL, SECRET_KEY, STRIPE_PUBLISHABLE, STRIPE_SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD
+
+        
+9. You will need your own S3 bucket for storing media.
+        
+10. In settings, set DEBUG=True. It is turned off in production.
+
+11. To generate a random number for SECRET_KEY, in CMD:
+
+            >>>import secrets
+            >>>secrets.token_hex(16)
+            >>>'15412c9e3e3ff5e03cac2270cc6fb57f'
+            >>>exit()
+
+
+
+
 
 # Version control
 
