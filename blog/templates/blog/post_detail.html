@@ -10,16 +10,14 @@
 
                 <div class="media-body py-md-2">
                     <h1 class="my-1" class="postDetail">{{ object.title }}</h1>
-                    <span class="text-left p-4"><small>Date added: {{ object.dateAdded }}</small></span>
-                    <span class=" text-left">By
+                    <span class="text-left"><small>{{ object.dateAdded }}</small> ||</span>
+                    <span class=" text-left">
                         <a href="{% url 'blog-user-posts' object.authorPost.username %}">
-                            {{object.authorPost }}</a></span>
-                    <span class="text-left p-2">Category: {{object.category }}</span>
+                            {{object.authorPost }}</a> ||</span>
+                    <span class="text-left p-2"> {{object.category }}</span>
                     <p class="my-2 p-4 text-left">
-
                         {{ object.content}}
                     </p>
-
                 </div>
             </div>
 

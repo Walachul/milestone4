@@ -28,6 +28,7 @@ from checkout import urls as urls_checkout
 from search import urls as urls_search
 from .settings import MEDIA_ROOT
 
+
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^", include(urls_home)),
@@ -82,7 +83,3 @@ urlpatterns = [
     url(r"^media/(?P<path>.*)$", static.serve, {"document_root": MEDIA_ROOT}),
 ]
 
-# """To run in development and DEBUG mode is True"""
-
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

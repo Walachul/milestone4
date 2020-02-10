@@ -7,7 +7,7 @@ html, body {
     height: 100%
 }
 body {
-    font-family: 'Montserrat','Averia Serif Libre', cursive;
+    font-family: 'Averia Serif Libre', cursive;
     display: flex;
     flex-direction: column
 }
@@ -74,12 +74,13 @@ body {
     color:white;
 }
 #heading_one, #headingProfile,.postDetail, #headingMerch{
-    color:#414042
+    color: RGB(0,174,239)
 }
 #heading_one, #headingHome,#headingMission, #headingLogin,#headingRegister {
-    font-size:60px;
+    font-size:50px;
     font-weight: 400;
     line-height: 1.2em;
+    font-family: 'Montserrat', cursive;
 }
 
 /** Info text home page **/
@@ -136,6 +137,22 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
 .blogTitle{
     font-size: 22px;
 }
+/** Read more button **/
+.btn-readmore{
+    color: black;
+    transition: all .6s;
+    padding: 10px;
+    background-color: RGB(255,223,23)
+}
+.btn-readmore:hover{
+    color: black;
+    text-decoration: none;    
+}
+.btn-readmore:hover i{
+    color: red;
+    transform:translateX(4px)
+}
+
 /** Pagination buttons **/
 .btn-paginate{
     color: #fff;
