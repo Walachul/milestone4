@@ -9,6 +9,10 @@ class RegisterUserForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=100)
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label="Password Confirmation", widget=forms.PasswordInput
+    )
 
     class Meta:
         model = User
@@ -20,6 +24,16 @@ class RegisterUserForm(UserCreationForm):
             "password1",
             "password2",
         ]
+
+    # Check that email is unique
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        username = self.cleaned_data.get("username")
+        if User.objects.filter(email=email).exclude(username=username):
+            raise forms.ValidationError(
+                u"Email address is taken. Please choose another one."
+            )
+        return email
 
     # Save function modified in order to save first and last name of user
     def save(self, commit=True):
