@@ -34,7 +34,6 @@ urlpatterns = [
     url(r"^", include(urls_home)),
     url(r"^register/", user_views.register, name="register"),
     url(r"^profile/", user_views.profile, name="profile"),
-    url(r"^edit_profile/", user_views.edit_profile, name="edit-profile"),
     url(
         r"^login/",
         auth_views.LoginView.as_view(

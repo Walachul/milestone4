@@ -71,19 +71,6 @@ def register(request):
 @login_required
 def profile(request):
     """User account view"""
-    updateForm = UpdateUserForm(instance=request.user)
-    profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
-
-    return render(
-        request,
-        "users/profile.html",
-        {"updateForm": updateForm, "profileUpdateForm": profileUpdateForm},
-    )
-
-
-@login_required
-def edit_profile(request):
-    """User account view"""
     if request.method == "POST":
         updateForm = UpdateUserForm(request.POST, instance=request.user)
         profileUpdateForm = UpdateProfileForm(
@@ -97,9 +84,9 @@ def edit_profile(request):
     else:
         updateForm = UpdateUserForm(instance=request.user)
         profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
-
     return render(
         request,
-        "users/edit_profile.html",
+        "users/profile.html",
         {"updateForm": updateForm, "profileUpdateForm": profileUpdateForm},
     )
+

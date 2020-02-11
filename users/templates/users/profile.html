@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12 mx-auto my-4">
 
-            <h1 class="text-center mb-3" id="headingProfile"><img class="rounded-circle"
+            <h1 class="text-center mb-3 text-uppercase" id="headingProfile"><img class="rounded-circle"
                     src="{{user.profile.profileImage.url }}">{{ user.username }}'s Profile</h1>
         </div>
         <div class="col-12 mx-auto my-4">
@@ -15,6 +15,16 @@
             <p>Email: {{user.email }}</p>
             <p>Address: {{ user.profile.homeAddress }}</p>
 
+        </div>
+        <div class="col-12">
+            <h2 class="h2" style="color:yellow">UPDATE PROFILE INFORMATION</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ updateForm | as_bootstrap }}
+                {{ profileUpdateForm | as_bootstrap }}
+                <button type="submit" class="btn btn-primary">Update</button>
+
+            </form>
         </div>
     </div>
 </div>

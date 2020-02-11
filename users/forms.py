@@ -66,6 +66,16 @@ class UserLoginForm(forms.Form):
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField()
 
+    # Check that email is unique
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        username = self.cleaned_data.get("username")
+        if User.objects.filter(email=email).exclude(username=username):
+            raise forms.ValidationError(
+                u"Email address is taken. Please choose another one."
+            )
+        return email
+
     class Meta:
         model = User
         fields = ["username", "email", "first_name", "last_name"]
