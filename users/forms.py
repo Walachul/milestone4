@@ -85,4 +85,5 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["profileImage", "homeAddress"]
+        exclude = ["membershipCard"]
 

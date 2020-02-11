@@ -16,6 +16,7 @@ class Profile(models.Model):
         blank=True, max_length=200, default="Your home address"
     )
     profileImage = models.ImageField(default="default.jpg", upload_to="profile_images")
+    membershipCard = models.ImageField(default="", upload_to="membership_cards")
 
     def __str__(self):
         return f"{self.user.username} Profile"
