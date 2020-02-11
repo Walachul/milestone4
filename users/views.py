@@ -3,6 +3,8 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from PIL import Image, ImageDraw
+import io
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from .forms import (
     RegisterUserForm,
@@ -85,29 +87,46 @@ def profile(request):
     else:
         updateForm = UpdateUserForm(instance=request.user)
         profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
-        """Get data from user and create membership card"""
+        """Create Membership Card"""
+
+        """Get data from current user and store it for future use"""
         current_user = request.user
         first_name = current_user.first_name
         last_name = current_user.last_name
         address = current_user.profile.homeAddress
-
+        """Get Club's logo"""
         pic = Image.open(
             "static/img/logo/Romanian_Alpine_Club_Logo_transparent.png", "r"
         )
         pic_w, pic_h = pic.size
-
+        """Create new Image with Pillow"""
         img = Image.new("RGB", (600, 350), color="#00AEEF")
         img_w, img_h = img.size
         offset = ((img_w - pic_w) // 2, (img_h - pic_h) // 2)
-
+        """Insert data into the new image"""
         d = ImageDraw.Draw(img)
         d.text((70, 30), first_name, fill=(255, 255, 255))
         d.text((140, 30), last_name, fill=(255, 255, 255))
         d.text((40, 60), "Address      " + address, fill=(255, 255, 255))
 
         img.paste(pic, offset)
-        img.save("media/membership_cards/" + first_name + "_" + last_name + ".jpg")
-        current_user.profile.membershipCard = img
+        """Create a file-like object to write img data"""
+        img_io = io.BytesIO()
+        img.save(img_io, format="JPEG")
+        """Create a new Django file-like object to be used 
+            in models as ImageField using InMemoryUploadedFile. """
+        img_file = InMemoryUploadedFile(
+            img_io,
+            None,
+            first_name + last_name + ".jpg",
+            "image/jpeg",
+            img_io.tell,
+            None,
+        )
+        membershipCard = current_user.profile.membershipCard
+        img_name = first_name + "_" + last_name + ".png"
+        """Save the new object in membershipCard ImageField"""
+        membershipCard.save(img_name, img_file)
 
     return render(
         request,
