@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">Order id: {{order_id}}</div>
+    </div>
+
+    {% for order in orderDetails %}
+    <div class="row mb-4 text-center">
+        <div class="col-3 col-md-2 col-lg-1 my-auto">{{ order.id }}</div>
+        <div class="col-3 col-md-3 d-none d-lg-block my-auto "> {{order.merchandise}}</div>
+
+        <div class="col-4 col-md-5 col-lg-2 my-auto">{{ order.quantity}}</div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

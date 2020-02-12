@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from checkout.models import Order, OrderItem
 from PIL import Image, ImageDraw, ImageFont
 import io
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -73,7 +74,7 @@ def register(request):
 
 @login_required
 def profile(request):
-    """User account view"""
+    """Profile page - display information from registration"""
     if request.method == "POST":
         updateForm = UpdateUserForm(request.POST, instance=request.user)
         profileUpdateForm = UpdateProfileForm(
@@ -87,6 +88,7 @@ def profile(request):
     else:
         updateForm = UpdateUserForm(instance=request.user)
         profileUpdateForm = UpdateProfileForm(instance=request.user.profile)
+
         """Create Membership Card"""
 
         """Get data from current user and store it for future use"""
@@ -100,7 +102,7 @@ def profile(request):
         pic = Image.open("static/img/logo/CAR_logo_membership_card.png", "r")
         """Create new Image with Pillow"""
         img = Image.new("RGB", (510, 310), color="#FFFFFF")
-        imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 28)
+        imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 40)
         offset = (40, 40)
         """Insert data into the new image"""
         d = ImageDraw.Draw(img)
@@ -127,9 +129,26 @@ def profile(request):
         """Save the new object in membershipCard ImageField"""
         membershipCard.save(img_name, img_file)
 
+        """Get orders of the user and display them"""
+
+        orders = Order.objects.filter(buyer=current_user).order_by("-id")
+
     return render(
         request,
         "users/profile.html",
-        {"updateForm": updateForm, "profileUpdateForm": profileUpdateForm},
+        {
+            "updateForm": updateForm,
+            "profileUpdateForm": profileUpdateForm,
+            "orders": orders,
+        },
+    )
+
+
+@login_required
+def order_details(request, pk):
+    """Get orderItem details and display in template"""
+    orderDetails = OrderItem.objects.filter(order_id=pk)
+    return render(
+        request, "order_details.html", {"orderDetails": orderDetails, "order_id": pk}
     )
 

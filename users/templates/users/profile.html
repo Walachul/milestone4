@@ -63,6 +63,20 @@
 
             </form>
         </div>
+        <div class="col-12 my-2">
+            <h2 id="h2UpdateInfo">HISTORY OF ORDERS</h2>
+            {% if orders %}
+            {% for order in orders %}
+            <p>{{order.full_name}}</p>
+            <p>{{order.date}}</p>
+            <p>{{order.id}}</p>
+            <a href="{% url 'order_details' order.id %}" class="btn btn-primary">View
+                order</a>
+            {% endfor %}
+            {% else %}
+            <p>There is no history of orders.</p>
+            {% endif %}
+        </div>
     </div>
 </div>
 
