@@ -223,6 +223,43 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
     font-weight: 400;
     line-height: 1.2em;
 }
+#h2ProfileInfo, #h2UpdateInfo{
+    color: RGB(255,223,23) 
+}
+#h2ProfileInfo::after{
+    position:absolute;
+    top: 35px;
+    left: 18px;
+    content: '';
+    width: 254px;
+    height: 2px;
+    background-color:#414042;
+}
+#h2UpdateInfo::after{
+    position:absolute;
+    top: 35px;
+    left: 18px;
+    content: '';
+    width: 215px;
+    height: 2px;
+    background-color:#414042;
+}
+.profileText{
+    color:RGB(0,174,239);
+    font-family: 'Montserrat', cursive;
+    letter-spacing: 1px;
+}
+.profileTextInfo{
+    color: #414042;
+    font-family: 'Averia Serif Libre', cursive;
+    letter-spacing: 1px;
+}
+#membershipCard{
+    -webkit-box-shadow: 10px 1px 12px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 1px 12px 2px rgba(0,0,0,0.75);
+    box-shadow: 10px 1px 12px 2px rgba(0,0,0,0.75);
+}
+
 /*** Footer ***/
 .footer{
     background-color: #414042

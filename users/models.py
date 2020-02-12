@@ -32,7 +32,7 @@ class Profile(models.Model):
         imgProfile_read = storage.open(self.profileImage.name, "r")
         imgProfile = Image.open(imgProfile_read)
         if imgProfile.height > 300 or imgProfile.width > 300:
-            outputSize = (180, 135)
+            outputSize = (75, 75)
             imgProfile.thumbnail(outputSize)
             in_mem_file = io.BytesIO()
             imgProfile.save(in_mem_file, format="JPEG")
