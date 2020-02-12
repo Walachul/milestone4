@@ -20,6 +20,7 @@ def checkout(request):
         if order_form.is_valid() and stripe_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
+            order.buyer = request.user
             order.save()
             """Get information from cart session """
             cart = request.session.get("cart", {})
