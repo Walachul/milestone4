@@ -148,7 +148,12 @@ def profile(request):
 def order_details(request, pk):
     """Get orderItem details and display in template"""
     orderDetails = OrderItem.objects.filter(order_id=pk)
+    merchQuantity = orderDetails.first().quantity
+    merchPrice = orderDetails.first().merchandise.price
+    totalPrice = merchPrice * merchQuantity
     return render(
-        request, "order_details.html", {"orderDetails": orderDetails, "order_id": pk}
+        request,
+        "order_details.html",
+        {"orderDetails": orderDetails, "order_id": pk, "totalPrice": totalPrice},
     )
 

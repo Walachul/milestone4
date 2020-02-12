@@ -66,13 +66,31 @@
         <div class="col-12 my-2">
             <h2 id="h2UpdateInfo">HISTORY OF ORDERS</h2>
             {% if orders %}
-            {% for order in orders %}
-            <p>{{order.full_name}}</p>
-            <p>{{order.date}}</p>
-            <p>{{order.id}}</p>
-            <a href="{% url 'order_details' order.id %}" class="btn btn-primary">View
-                order</a>
-            {% endfor %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Buyer's Name</th>
+                        <th class="text-center" scope="col">Order number</th>
+                        <th class="text-center" scope="col">Date</th>
+                        <th class="text-center" scope="col">Access purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for order in orders %}
+                    <tr>
+                        <th class="text-center" scope="row">{{order.full_name}}</th>
+                        <td class="text-center">{{order.id}}</td>
+                        <td class="text-center"> {{order.date}}</td>
+                        <td class="text-center"><a href="{% url 'order_details' order.id %}"
+                                class="btn btn-primary">View
+                                order</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
             {% else %}
             <p>There is no history of orders.</p>
             {% endif %}
