@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import io
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
@@ -93,21 +93,20 @@ def profile(request):
         current_user = request.user
         first_name = current_user.first_name
         last_name = current_user.last_name
-        address = current_user.profile.homeAddress
+        name = first_name + " " + last_name
+        dateJoined = current_user.date_joined
+        dateJoinedFormated = dateJoined.strftime("%d-%m-%Y")
         """Get Club's logo"""
-        pic = Image.open(
-            "static/img/logo/Romanian_Alpine_Club_Logo_transparent.png", "r"
-        )
-        pic_w, pic_h = pic.size
+        pic = Image.open("static/img/logo/CAR_logo_membership_card.png", "r")
         """Create new Image with Pillow"""
-        img = Image.new("RGB", (600, 350), color="#00AEEF")
-        img_w, img_h = img.size
-        offset = ((img_w - pic_w) // 2, (img_h - pic_h) // 2)
+        img = Image.new("RGB", (510, 310), color="#FFFFFF")
+        imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 28)
+        offset = (40, 40)
         """Insert data into the new image"""
         d = ImageDraw.Draw(img)
-        d.text((70, 30), first_name, fill=(255, 255, 255))
-        d.text((140, 30), last_name, fill=(255, 255, 255))
-        d.text((40, 60), "Address      " + address, fill=(255, 255, 255))
+        d.text((220, 90), name, fill=(65, 64, 66))
+        d.text((220, 190), "Date joined: " + dateJoinedFormated, fill=(65, 64, 66))
+        d.text((220, 220), "Card validity: 1 year", fill=(65, 64, 66))
 
         img.paste(pic, offset)
         """Create a file-like object to write img data"""
