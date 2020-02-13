@@ -110,8 +110,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        """Check to see that the auth user is 
-        the author of the post that is being updated."""
 
         if self.request.user == post.authorPost:
             return True
