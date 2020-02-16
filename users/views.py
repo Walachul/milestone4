@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from checkout.models import Order, OrderItem
 from PIL import Image, ImageDraw, ImageFont
 import io
+import qrcode
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from .forms import (
@@ -98,19 +99,43 @@ def profile(request):
         name = first_name + " " + last_name
         dateJoined = current_user.date_joined
         dateJoinedFormated = dateJoined.strftime("%d-%m-%Y")
+        valabilityOfCard = int(dateJoined.strftime("%Y")) + 1
+        dateExpiryCard = dateJoined.strftime("%d-%m-") + str(valabilityOfCard)
+        availableCoupons = """\n\t\t10% discount to the following shops: Himalaya, Zumont, S-KARP, Sport Virus, Nootka;\r\n\t\t15% discount to Craimont
+                      """
+        # Create QR Code for Coupons
+        qr = qrcode.QRCode(
+            version=10,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=2,
+            border=3,
+        )
+        # Data for QR Code
+        data = f"""
+        Member name: {name}\n
+        Validity of card: {dateExpiryCard}\n
+        Coupons: {availableCoupons}
+        """
+        qr.clear()
+        qr.add_data(data)
+        qr.make(fit=False)
+        # Create QR Code image
+        qr_code = qr.make_image(fill="black", back_color="white")
         """Get Club's logo"""
         pic = Image.open("static/img/logo/CAR_logo_membership_card.png", "r")
         """Create new Image with Pillow"""
-        img = Image.new("RGB", (510, 310), color="#FFFFFF")
+        img = Image.new("RGB", (510, 360), color="#FFFFFF")
         imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 40)
-        offset = (40, 40)
+        offset1 = (40, 40)
+        offset2 = (277, 200)
         """Insert data into the new image"""
         d = ImageDraw.Draw(img)
         d.text((220, 90), name, fill=(65, 64, 66))
-        d.text((220, 190), "Date joined: " + dateJoinedFormated, fill=(65, 64, 66))
-        d.text((220, 220), "Card validity: 1 year", fill=(65, 64, 66))
+        d.text((220, 138), "Date joined: " + dateJoinedFormated, fill=(65, 64, 66))
+        d.text((220, 160), "Card validity: 1 year", fill=(65, 64, 66))
 
-        img.paste(pic, offset)
+        img.paste(pic, offset1)
+        img.paste(qr_code, offset2)
         """Create a file-like object to write img data"""
         img_io = io.BytesIO()
         img.save(img_io, format="JPEG")
