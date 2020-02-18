@@ -96,15 +96,21 @@ Here they can also reset their password.
 
 
 
-###### **Below functionalities require the user to be logged in**
+##### **Below functionalities require the user to be logged in**
 
 * Logout - Allows users to logout from the website. They are redirected to the logout template. If they had any cart items stored in session, they will lose it.
 
 * Account page - Users can see their information that they had entered in the registration form.
 
-* Edit profile - Users can edit their personal information entered in the registration form(personal info and update their profile picture)
+* Profile features:
 
-* Resizable profile picture - The user's profile picture is resized in the background with python function and uploaded to Amazon's S3
+  - General information obtained from the registration form;
+  - Edit profile - Users can edit their personal information entered in the registration form(personal info and update their profile picture)
+  - Resizable profile picture - The user's profile picture is resized in the background with python function and uploaded to Amazon's S3 bucket
+  - Membership Card - The card is automatically created in the profile and contains member name, when he joined and also QR Code. The membership Card updates automatically when user changes first or last name.
+  - QR Code - The QR Code is placed inside the membership card and this contains useful information regarding discounts to different stores offered on behalf of the Club, name of the member and expiry date of the card. Member can visit a store with his card and after it was scanned, can get the right discount.
+  - History of orders - Member can view purchase information
+  - History of orders/View Order - allows users to access an order and view details of that orrder(product name, price of an product, how many items, total price)
 
 ##### *Blog app*
 * Blog - The user can view and read all blog posts from other users, by navigating to the blog section in the navigation bar.
@@ -153,16 +159,14 @@ The following requirements are left to be implemented in the future:
 
 1. Forum app - Necessity for the community members to talk about different topics. Topics need to be categorized and also moderated by admins.
 2. Apps departments - This app will be created for different towns where the Romanian Alpine Club has departments in order to organize the members there and to share info if required only with that department's members.
-3. Report app - Automatically generate a monthly/yearly report with different information
-4. Membership card - This app will generate automatically a card with the member's details, that will be loaded in .jpeg format and can be downloaded from member's profile.
-5. Membership app - App to automatically pay for a type of membership(yearly)(regular, standard, retired) and also payment for registration(only once). Whoever registers before a date mentioned, can get a -10% discount.
+3. Membership app - App to automatically pay for a type of membership(yearly)(regular, standard, retired) and also payment for registration(only once). Whoever registers before a date mentioned, can get a -10% discount.
 
-6. **Admin functionalities**
+4. **Admin functionalities**
      - honeypot django app - in order to notify the admin if someone else is trying to access the admin panel;
      - mail to admin(s) when someone registers to get approval from him(django-registration-redux > admin approval backend);
      - mail to admin(s) when someone buys merchandise, in order to be shipped to the address mentioned in the order form;
 
-7. eLearning - eLearning platform to share written information and/or video courses
+5. eLearning - eLearning platform to share written information and/or video courses
 
 
 # Technologies Used
