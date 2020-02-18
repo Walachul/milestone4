@@ -17,14 +17,6 @@ from .forms import (
 )
 
 
-@login_required
-def logout(request):
-    """Logout the user if he is already authenticated"""
-    auth.logout(request)
-    messages.success(request, f"You have successfully been logged out!")
-    return redirect(reverse("home-home"))
-
-
 def login(request):
     if request.method == "POST":
         form = UserLoginForm(request.POST)
@@ -42,6 +34,14 @@ def login(request):
         form = UserLoginForm()
 
     return render(request, "users/login.html", {"form": form})
+
+
+@login_required
+def logout(request):
+    """Logout the user if he is already authenticated"""
+    auth.logout(request)
+    messages.success(request, f"You are not logged in.")
+    return redirect(reverse("home-home"))
 
 
 def register(request):

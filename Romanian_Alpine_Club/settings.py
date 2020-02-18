@@ -141,6 +141,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 LOGIN_REDIRECT_URL = "home-home"
 LOGIN_URL = "login"
 
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
