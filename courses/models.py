@@ -12,11 +12,12 @@ class Courses(models.Model):
     periodOfTime = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
     scopeOfCourse = models.CharField(max_length=200)
-
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     # Participants
     participants = models.CharField(max_length=20)
     totalParticipants = models.IntegerField(default=0)
     participant = models.ForeignKey(User, default=None)
+
     video_url = models.CharField(max_length=200, null=False)
     trainer = models.CharField(max_length=100)
 

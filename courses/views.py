@@ -16,14 +16,14 @@ def CourseList(request):
 @login_required()
 def CourseDetail(request, pk):
 
-    course = get_object_or_404(Courses, pk)
+    course = get_object_or_404(Courses, pk=pk)
     notions = Notions.objects.filter(course_id=course.pk).all()
     enrollReq = EnrollingRequirements.objects.filter(course_id=course.pk).all()
     gearReq = GearRequirements.objects.filter(course_id=course.pk).all()
 
     return render(
         request,
-        "courses/course_detail",
+        "courses/course_details.html",
         {
             "course": course,
             "notions": notions,

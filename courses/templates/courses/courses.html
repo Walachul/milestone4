@@ -27,6 +27,10 @@
                     <p>How many participans: {{ course.participants }}</p>
                     <p>Trainer: {{ course.trainer }}</p>
                 </div>
+                <p class="text-right"><a class="mr-2 btn-readmore" href="{% url 'course-details' course.id %}">READ
+                        MORE
+                        <i class="btn-readmore ml-1 fas fa-chevron-right"></i></a>
+                </p>
             </div>
             {% endfor %}
 

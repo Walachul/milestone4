@@ -4,8 +4,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">COURSES</h1>
-
+            <h1 class="text-center mb-3" id="heading_one">{{ course.title }}</h1>
+            <span class="text-center"><small>Date added: {{ course.dateAdded }}</small> ||</span>
         </div>
     </div>
 </div>
@@ -13,26 +13,58 @@
     <div class="row">
         <div class="col-12 col-lg-6 mx-auto">
             <!-- Render the posts from users -->
-            {% for course in courses %}
+
             <div class="blogPosts media my-4">
                 <img class="ml-2 py-md-2 align-self-top rounded-circle" src=""
                     alt="Profile image of the author of the post">
 
                 <div class="media-body py-md-2">
-                    <h2 class="blogTitle my-1 text-center">{{ course.title }}</h2>
-                    <span class="text-center"><small>{{ course.dateAdded }}</small> ||</span>
+                    <h2 class="blogTitle my-1 text-center"></h2>
+
                     <p>Description: {{ course.description}}</p>
                     <p>Time period: {{ course.periodOfTime}}</p>
                     <p>Location: {{ course.location}}</p>
                     <p>How many participans: {{ course.participants }}</p>
+                    <p>Total enrolled: {{ course.totalParticipants }}</p>
+                    <p>Scope of course: {{ course.scopeOfCourse }}</p>
+                    {% if course.video_url %}
+                    <p>{{course.video_url }}</p>
+                    {% else %}
+                    <p class="d-block">{{course.video_url}}</p>
+                    {% endif %}
+                    <ul>
+                        {% for notion in notions %}
+                        <li>{{notion}}</li>
+                        {% endfor %}
+                    </ul>
+                    <ul>
+                        {% for requirement in enrollReq %}
+                        <li>{{ requirement }}</li>
+                    </ul>
+                    {% endfor %}
+                    <ul>
+                        {% for gear in gearReq %}
+                        <li>{{ gear }}</li>
+                        {% endfor %}
+                    </ul>
                     <p>Trainer: {{ course.trainer }}</p>
                 </div>
-                <p class="text-right"><a class="mr-2 btn-readmore" href="{% url 'blog-details-post' course.id %}">READ
-                        MORE
-                        <i class="btn-readmore ml-1 fas fa-chevron-right"></i></a>
-                </p>
+                <form method="POST" action="{% url 'add_to_cart' course.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="quantity" required="required" type='number' min="1" max="1"
+                                class="form-control" placeholder="Quantity">
+                            <div class="input-group-prepend">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit">Enroll</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            {% endfor %}
+
 
         </div>
     </div>
