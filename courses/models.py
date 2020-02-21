@@ -30,6 +30,9 @@ class Notions(models.Model):
     notionDiscussed = models.CharField(max_length=100, null=False)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.notionDiscussed
+
 
 # Requirements for enrolling
 class EnrollingRequirements(models.Model):
@@ -37,9 +40,15 @@ class EnrollingRequirements(models.Model):
     requirementsForEnrolling = models.CharField(max_length=200, null=False)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.requirementsForEnrolling
+
 
 # Gear Requirements
 class GearRequirements(models.Model):
 
     requiredGear = models.CharField(max_length=200, null=False)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.requiredGear

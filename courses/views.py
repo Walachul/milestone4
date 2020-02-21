@@ -1,14 +1,34 @@
-from django.shortcuts import render
-from django.views.generic import ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Courses
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Courses, Notions, EnrollingRequirements, GearRequirements
 
 
-class Courses(LoginRequiredMixin, ListView):
+@login_required()
+def CourseList(request):
 
-    model = Courses
+    courses = Courses.objects.all()
 
-    template_name = "courses/courses.html"
+    return render(
+        request, "courses/courses.html", {"title": "Courses", "courses": courses}
+    )
 
-    context_object_name = "courses"
+
+@login_required()
+def CourseDetail(request, pk):
+
+    course = get_object_or_404(Courses, pk)
+    notions = Notions.objects.filter(course_id=course.pk).all()
+    enrollReq = EnrollingRequirements.objects.filter(course_id=course.pk).all()
+    gearReq = GearRequirements.objects.filter(course_id=course.pk).all()
+
+    return render(
+        request,
+        "courses/course_detail",
+        {
+            "course": course,
+            "notions": notions,
+            "enrollReq": enrollReq,
+            "gearReq": gearReq,
+        },
+    )
 
