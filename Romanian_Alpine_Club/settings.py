@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "cart.apps.CartConfig",
     "search.apps.SearchConfig",
     "checkout.apps.CheckoutConfig",
+    "courses.apps.CoursesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
