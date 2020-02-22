@@ -25,7 +25,7 @@
         <div class="card col-12 col-md-7 col-lg-4 col-xl-3  px-lg-2 mx-lg-2 my-5">
             <img class="merch card-img-top mx-auto mt-1" alt="Picture of {{merch.name}} " src="{{merch.image.url}}">
             <div class="card-body">
-                <h3 class="card-title">{{ merch.name }}</h3>
+                <h3 class="card-title">{{ merch.title }}</h3>
                 <p class="card-text merch-description">{{merch.description}}</p>
                 <p>Item price: <i class="fas fa-coins mr-1"></i>{{merch.price}} RON</p>
                 <form method="POST" action="{% url 'add_to_cart' merch.id %}">
@@ -49,6 +49,42 @@
         {% endfor %}
     </div>
     <!--end of row-->
+    <!--Courses product-->
+    <div class="row">
+        {% for course in courses %}
+        <div class="card col-12 col-md-7 col-lg-4 col-xl-3  px-lg-2 mx-lg-2 my-5">
+            <div class="media-body py-md-2">
+                <h2 class="blogTitle my-1 text-center">{{ course.title }}</h2>
+
+                <p>Description: {{ course.description |truncatewords:30}}</p>
+                <p>Time period: {{ course.periodOfTime}}</p>
+                <p>Location: {{ course.location}}</p>
+                <p>How many participans: {{ course.participants }}</p>
+                <p>Trainer: {{ course.trainer }}</p>
+            </div>
+            <p>Price <i class="fas fa-coins mr-1"></i> {{ course.price }} RON</p>
+            <form method="POST" action="{% url 'add_to_cart' course.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
+                        <input name="quantity" required="required" type='number' min="1" max="1" class="form-control"
+                            placeholder="Quantity">
+                        <div class="input-group-prepend">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit">Add</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <p class="text-right"><a class="mr-2 btn-readmore" href="{% url 'course-details' course.id %}">READ
+                    MORE
+                    <i class="btn-readmore ml-1 fas fa-chevron-right"></i></a>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    <!--end of Courses row-->
 </div>
 <!--end of container-->
 

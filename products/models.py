@@ -1,4 +1,19 @@
 from django.db import models
+from django.utils import timezone
+
+
+""" Concrete base class Model for both Merchandise and Courses models
+    https://realpython.com/modeling-polymorphism-django-python/
+"""
+
+
+class Product(models.Model):
+    title = models.CharField(max_length=200, default="")
+    price = models.DecimalField(max_digits=6, decimal_places=2, default="0")
+
+    def __str__(self):
+        return self.title
+
 
 """
 General items like cups, hats, water recipients etc.,
@@ -6,13 +21,8 @@ with the Romanian Alpine Club Logo
 """
 
 
-class Merchandise(models.Model):
+class Merchandise(Product):
 
-    name = models.CharField(max_length=300, default="")
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to="images")
-
-    def __str__(self):
-        return self.name
 

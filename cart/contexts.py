@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
-from products.models import Merchandise
-from courses.models import Courses
+from products.models import Product
 
 
 def cart_contents(request):
@@ -14,18 +13,10 @@ def cart_contents(request):
     total = 0
     item_count = 0
     for id, quantity in cart.items():
-        merchandise = get_object_or_404(Merchandise, pk=id)
-        course = get_object_or_404(Courses, pk=id)
-        total += quantity * merchandise.price
+        product = get_object_or_404(Product, pk=id)
+        total += quantity * product.price
         item_count += quantity
-        cart_items.append(
-            {
-                "id": id,
-                "quantity": quantity,
-                "merchandise": merchandise,
-                "course": course,
-            }
-        )
+        cart_items.append({"id": id, "quantity": quantity, "product": product})
 
     return {"cart_items": cart_items, "total": total, "item_count": item_count}
 

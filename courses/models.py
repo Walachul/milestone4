@@ -1,24 +1,21 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils import timezone
+from products.models import Product
 
 
-class Courses(models.Model):
+class Courses(Product):
 
-    title = models.CharField(max_length=200)
     description = models.TextField()
     dateAdded = models.DateTimeField(default=timezone.now)
     # Time period in which the course is organized
     periodOfTime = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
-    scopeOfCourse = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+
     # Participants
     participants = models.CharField(max_length=20)
     totalParticipants = models.IntegerField(default=0)
-    participant = models.ForeignKey(User, default=None)
 
-    video_url = models.CharField(max_length=200, null=False)
+    video_url = models.CharField(max_length=200, null=True, blank=True)
     trainer = models.CharField(max_length=100)
 
     def __str__(self):
@@ -28,7 +25,7 @@ class Courses(models.Model):
 # List of notions discussed in the course
 class Notions(models.Model):
 
-    notionDiscussed = models.CharField(max_length=100, null=False)
+    notionDiscussed = models.CharField(max_length=100, null=True, blank=True)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -38,7 +35,7 @@ class Notions(models.Model):
 # Requirements for enrolling
 class EnrollingRequirements(models.Model):
 
-    requirementsForEnrolling = models.CharField(max_length=200, null=False)
+    requirementsForEnrolling = models.CharField(max_length=200, null=True, blank=True)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -48,7 +45,7 @@ class EnrollingRequirements(models.Model):
 # Gear Requirements
 class GearRequirements(models.Model):
 
-    requiredGear = models.CharField(max_length=200, null=False)
+    requiredGear = models.CharField(max_length=200, null=True, blank=True)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
 
     def __str__(self):
