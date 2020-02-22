@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from products.models import Product, Merchandise
+from courses.models import Courses
+from django.db import connection
+
 
 # Create your views here.
 
@@ -23,9 +27,19 @@ def add_to_cart(request, id):
     else:
         cart[id] = cart.get(id, quantity)
 
+    # Check to see if item in cart belongs to merchandise table
+    itemInCart = list(cart.keys())[list(cart.values()).index(cart[id])]
+    print(itemInCart)
+    productStored = Merchandise.objects.filter(id=itemInCart).first()
+    print(productStored)
+    productsMerch = Merchandise.objects.all()
+    print(productsMerch)
     request.session["cart"] = cart
 
-    return redirect(reverse("products-home"))
+    if productStored in productsMerch:
+        return redirect(reverse("products-home"))
+    else:
+        return redirect(reverse("courses-home"))
 
 
 @login_required()

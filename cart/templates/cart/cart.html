@@ -15,11 +15,11 @@
         {% for item in cart_items %}
         <div class="col-md-3 card mx-2">
             <img class="merch card-img-top mx-auto mt-1" src="{{item.merchandise.image.url}}"
-                alt="Picture of {{item.merchandise.name}} ">
+                alt="Picture of {{item.product.title}} ">
             <div class="card-body">
-                <h3 class="card-title">{{item.merchandise.name }}</h3>
-                <p class="card-text merch-description">{{item.merchandise.description}}</p>
-                <p>Item price: <i class="fas fa-coins mr-1"></i>{{item.merchandise.price}} RON</p>
+                <h3 class="card-title">{{item.product.title }}</h3>
+                <p class="card-text merch-description">{{item.product.description}}</p>
+                <p>Item price: <i class="fas fa-coins mr-1"></i>{{item.product.price}} RON</p>
                 <div>
                     <form class="form-inline" method="POST" action="{% url 'modify_cart' item.id %}">
                         {% csrf_token %}
