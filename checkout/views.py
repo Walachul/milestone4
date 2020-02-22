@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import OrderItem
 from .forms import OrderForm, StripePayForm
-from products.models import Merchandise
+from products.models import Product
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
@@ -26,11 +26,9 @@ def checkout(request):
             cart = request.session.get("cart", {})
             total = 0
             for id, quantity in cart.items():
-                merchandise = get_object_or_404(Merchandise, pk=id)
-                total += quantity * merchandise.price
-                order_item = OrderItem(
-                    order=order, merchandise=merchandise, quantity=quantity
-                )
+                product = get_object_or_404(Product, pk=id)
+                total += quantity * product.price
+                order_item = OrderItem(order=order, product=product, quantity=quantity)
                 order_item.save()
 
             try:

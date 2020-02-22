@@ -49,8 +49,22 @@
                     </ul>
                     <p>Trainer: {{ course.trainer }}</p>
                 </div>
-                <p>Course price: <i class="fas fa-coins mr-1"></i>{{course.price}} RON</p>
 
+                <p>Price <i class="fas fa-coins mr-1"></i> {{ course.price }} RON</p>
+                <form method="POST" action="{% url 'add_to_cart' course.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="quantity" required="required" type='number' min="1" max="1"
+                                class="form-control" placeholder="Quantity">
+                            <div class="input-group-prepend">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit">Add</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
 
 

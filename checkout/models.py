@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Merchandise
+from products.models import Product
 from django.contrib.auth.models import User
 
 """Get valid information from user"""
@@ -26,10 +26,10 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, null=False)
-    merchandise = models.ForeignKey(Merchandise, null=False)
+    product = models.ForeignKey(Product, null=False)
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
         return "{0} {1} @ {2}".format(
-            self.quantity, self.merchandise.name, self.merchandise.price
+            self.quantity, self.product.title, self.product.price
         )
