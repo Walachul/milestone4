@@ -4,6 +4,8 @@ from django.utils import timezone
 
 """ Concrete base class Model for both Merchandise and Courses models
     https://realpython.com/modeling-polymorphism-django-python/
+    in order to store the common fields: ID, TITLE, PRICE,
+    so as to use the same checkout app.
 """
 
 
