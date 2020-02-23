@@ -15,9 +15,6 @@
             <!-- Render the posts from users -->
 
             <div class="blogPosts media my-4">
-                <img class="ml-2 py-md-2 align-self-top rounded-circle" src=""
-                    alt="Profile image of the author of the post">
-
                 <div class="media-body py-md-2">
                     <h2 class="blogTitle my-1 text-center"></h2>
 
@@ -28,7 +25,11 @@
                     <p>Total enrolled: {{ course.totalParticipants }}</p>
                     <p>Scope of course: {{ course.scopeOfCourse }}</p>
                     {% if course.video_url %}
-                    <p>{{course.video_url }}</p>
+                    <iframe width="560" height="315" src="{{course.video_url }}" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+
                     {% else %}
                     <p class="d-block">{{course.video_url}}</p>
                     {% endif %}

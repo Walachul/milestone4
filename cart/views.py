@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from products.models import Product, Merchandise
-from courses.models import Courses
-from django.db import connection
 
 
 # Create your views here.
