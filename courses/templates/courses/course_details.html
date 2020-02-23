@@ -4,68 +4,96 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">{{ course.title }}</h1>
-            <span class="text-center"><small>Date added: {{ course.dateAdded }}</small> ||</span>
+            <h1 class="text-center mb-3 text-uppercase" id="heading_one">{{ course.title }}</h1>
         </div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-lg-6 mx-auto">
-            <!-- Render the posts from users -->
+        <div class="col-12 col-lg-4 mx-auto">
+            <!-- Render the course details -->
 
             <div class="blogPosts media my-4">
                 <div class="media-body py-md-2">
-                    <h2 class="blogTitle my-1 text-center"></h2>
-
-                    <p>Description: {{ course.description}}</p>
-                    <p>Time period: {{ course.periodOfTime}}</p>
-                    <p>Location: {{ course.location}}</p>
-                    <p>How many participans: {{ course.participants }}</p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="fas fa-book-open"></i>
+                            Description: </span> {{ course.description}}</p>
+                    <p class="my-2 text-justify p-3">
+                        <span class="coursesInfo"><i class="far fa-calendar-alt"></i> When:</span>
+                        {{ course.periodOfTime}}</p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="far fa-map"></i>
+                            Location:</span>
+                        {{ course.location}}</p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="far fa-user"></i>
+                            Participants:</span>
+                        {{ course.participants }}</p>
                     <p>Total enrolled: {{ course.totalParticipants }}</p>
-                    <p>Scope of course: {{ course.scopeOfCourse }}</p>
                     {% if course.video_url %}
-                    <iframe width="560" height="315" src="{{course.video_url }}" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{course.video_url }}" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
 
                     {% else %}
                     <p class="d-block">{{course.video_url}}</p>
                     {% endif %}
-                    <ul>
-                        {% for notion in notions %}
-                        <li>{{notion}}</li>
-                        {% endfor %}
-                    </ul>
-                    <ul>
-                        {% for requirement in enrollReq %}
-                        <li>{{ requirement }}</li>
-                    </ul>
-                    {% endfor %}
-                    <ul>
-                        {% for gear in gearReq %}
-                        <li>{{ gear }}</li>
-                        {% endfor %}
-                    </ul>
-                    <p>Trainer: {{ course.trainer }}</p>
-                </div>
-
-                <p>Price <i class="fas fa-coins mr-1"></i> {{ course.price }} RON</p>
-                <form method="POST" action="{% url 'add_to_cart' course.id %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input name="quantity" required="required" type='number' min="1" max="1"
-                                class="form-control" placeholder="Quantity">
-                            <div class="input-group-prepend">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="submit">Add</button>
-                                </span>
-                            </div>
-                        </div>
+                    <div>
+                        <h6 class="my-2 text-justify p-3 coursesInfo">Learning outcome</h6>
+                        <ul class="list-group">
+                            {% for notion in notions %}
+                            <li class="list-group-item border-0"><i class="coursesReq fas fa-arrow-right"></i>
+                                {{notion}}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </form>
+                    <!--end div notions-->
+                    <div>
+                        <h6 class="my-2 text-justify p-3 coursesInfo">Requirements for enrolling</h6>
+                        <ul class="list-group">
+                            {% for requirement in enrollReq %}
+                            <li class="list-group-item border-0"><i class="coursesReq fas fa-thumbtack"></i>
+                                {{ requirement }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- end div requirements-->
+                    <div>
+                        <h6 class="my-2 text-justify p-3 coursesInfo">Required equipment</h6>
+                        <ul class="list-group">
+                            {% for gear in gearReq %}
+                            <li class="list-group-item border-0"><i class="coursesReq fas fa-exclamation"></i>
+                                {{ gear }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="fas fa-chalkboard-teacher"></i>
+                            Trainer:</span>
+                        {{ course.trainer }}</p>
+
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="fas fa-coins mr-1"></i>
+                            Price:</span> {{ course.price }} RON</p>
+                    <div class="col-6">
+                        <form method="POST" action="{% url 'add_to_cart' course.id %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="quantity" required="required" type='number' min="1" max="1"
+                                        class="form-control" placeholder="Quantity">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" type="submit">Add to cart</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end div for form-->
+                </div>
+                <!--end div media body-->
+
+
             </div>
 
 

@@ -11,26 +11,33 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-lg-6 mx-auto">
+        <div class="col-12 col-lg-4 mx-auto">
             <!-- Render the posts from users -->
             {% for course in courses %}
             <div class="blogPosts media my-4">
-                <img class="ml-2 py-md-2 align-self-top rounded-circle" src=""
-                    alt="Profile image of the author of the post">
 
                 <div class="media-body py-md-2">
-                    <h2 class="blogTitle my-1 text-center">{{ course.title }}</h2>
-                    <span class="text-center"><small>{{ course.dateAdded }}</small> ||</span>
-                    <p>Description: {{ course.description}}</p>
-                    <p>Time period: {{ course.periodOfTime}}</p>
-                    <p>Location: {{ course.location}}</p>
-                    <p>How many participans: {{ course.participants }}</p>
-                    <p>Trainer: {{ course.trainer }}</p>
+                    <h2 class="blogTitle my-1 text-center text-uppercase">{{ course.title }}</h2>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="fas fa-book-open"></i>
+                            Description:</span>
+                        {{ course.description | truncatewords:30}}</p>
+                    <p class="my-2 text-justify p-3">
+                        <span class="coursesInfo"><i class="far fa-calendar-alt"></i> When:</span>
+                        {{ course.periodOfTime}}
+                    </p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="far fa-map"></i>
+                            Location:</span> {{ course.location}}</p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="far fa-user"></i>
+                            participants:</span>
+                        {{ course.participants }}</p>
+                    <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="fas fa-chalkboard-teacher"></i>
+                            Trainer:</span>
+                        {{ course.trainer }}</p>
+                    <p class="text-right"><a class="mr-2 btn-readmore" href="{% url 'course-details' course.id %}">READ
+                            MORE
+                            <i class="btn-readmore ml-1 fas fa-chevron-right"></i></a>
+                    </p>
                 </div>
-                <p class="text-right"><a class="mr-2 btn-readmore" href="{% url 'course-details' course.id %}">READ
-                        MORE
-                        <i class="btn-readmore ml-1 fas fa-chevron-right"></i></a>
-                </p>
             </div>
             {% endfor %}
 

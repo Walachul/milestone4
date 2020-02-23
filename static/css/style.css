@@ -189,8 +189,17 @@ box-shadow: 0px 0px 8px 3px rgba(169,169,169,1);
     color:#00AEEF;
     transform:translateX(10px)
 }
+/*** Courses ***/
 
-
+.coursesInfo{
+    color: RGB(0,174,239);
+    font-family: 'Montserrat', cursive;
+    text-transform: uppercase;
+}
+/* Color for icons in course-details section */
+.coursesReq{
+    color: RGB(0,174,239);
+}
 /*** Products ***/
 .merch{
     background-size: contain;
