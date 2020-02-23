@@ -179,7 +179,7 @@ def order_details(request, pk):
         quant = order.quantity
         price = order.product.price
         totalPrice += quant * price
-        print(totalPrice)
+
     return render(
         request,
         "users/order_details.html",
