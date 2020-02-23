@@ -12,60 +12,40 @@
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock head_js %}
 {% block content %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-12 mx-auto my-4">
-            <h1 class="text-center mb-3" id="heading_one">Checkout</h1>
+            <h1 class="text-center mb-3 text-uppercase" id="heading_one">Checkout</h1>
         </div>
     </div>
     <!--end of row-->
     <div class="row">
-        <!-- Cart items -->
-        {% for item in cart_items %}
-        <div class="col-md-3 card mx-2">
-            <img class="merch card-img-top mx-auto mt-1" src="{{item.merchandise.image.url}}"
-                alt="Picture of {{item.merchandise.name}} ">
-            <div class="card-body">
-                <h3 class="card-title">{{item.merchandise.name }}</h3>
-                <p class="card-text merch-description">{{item.merchandise.description}}</p>
-                <p>Item price: <i class="fas fa-coins mr-1"></i>{{item.merchandise.price}} RON</p>
-                <div>
-                    <form class="form-inline" method="POST" action="{% url 'modify_cart' item.id %}">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Qty</span>
-                                </div>
-                                <input name="quantity" type="number" min="0" max="999" class="form-control">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">{{item.quantity}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-group-prepend">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary"><i
-                                        class="fas fa-edit mr-1"></i>Update</button>
-                            </span></div>
-                    </form>
-                </div>
-
-            </div>
+        <!-- Cart items summary -->
+        <div class="col-lg-4 order-lg-2 my-4">
+            <h4 class="d-flex justify-content-between align-items center mb-3">
+                <span class="text-uppercase">Your cart</span>
+                <span><a href="{% url 'view_cart' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a></span>
+            </h4>
+            <ul class="list-group">
+                {% for item in cart_items %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6 class="my-0">{{item.product.title}}</h6>
+                        <small>Quantity: {{item.quantity}}</small>
+                    </div>
+                    <span class="text-muted">{{item.product.price}}</span>
+                </li>
+                {% endfor %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span class='text-info text-uppercase'>Total <i class="fas fa-coins"></i></span>
+                    <strong> {{total}} RON</strong>
+                </li>
+            </ul>
         </div>
-        <!-- end of div for displaying items-->
-        {% endfor %}
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <p class="my-2 font-weight-bold text-info text-uppercase">Total <i class="fas fa-coins"> {{total}} RON</i>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 my-2">
-            <!-- Stripe and Order form -->
+        <!-- Stripe and Order form -->
+        <div class="col-8 my-md-2 order-lg-1">
             <div class="col-6 my-2">
                 <div id="credit-card-errors" style="display:none">
                     <div class="bg-danger text-white alert-message block-message error" id="stripe-error-message">
@@ -73,20 +53,21 @@
                 </div>
             </div>
             <form role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">
-                <legend><i class="fab fa-cc-stripe mr-1" style="font-size:40px"></i>Payment Details</legend>
+                <h4 class='text-uppercase'><i class="fab fa-cc-stripe mr-1" style="font-size:40px"></i>Payment Details
+                </h4>
                 <div class="row">
 
-                    <div class="form-group col-12 col-md-4">
+                    <div class="form-group col-12 col-lg-5">
                         {{ order_form | as_bootstrap}}
                     </div>
 
-                    <div class="form-group col-12 col-md-4">
+                    <div class="form-group col-12 col-lg-5">
                         {{ stripe_form | as_bootstrap}}
                     </div>
 
                     {% csrf_token %}
 
-                    <div class="form-group col-12 col-md-4">
+                    <div class="form-group col-12 col-md-12">
                         <input class="btn btn-primary btn-lg" id="submit_payment_btn" name="commit" type="submit"
                             value="Pay with stripe">
                     </div>
@@ -95,7 +76,7 @@
         </div>
         <!--end of col-->
     </div>
-    <!--end of row-->
+    <!--end of row biling info-->
 </div>
 
 
