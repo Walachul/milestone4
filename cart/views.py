@@ -27,15 +27,16 @@ def add_to_cart(request, id):
     else:
         cart[id] = cart.get(id, quantity)
 
-    # Check to see if item in cart belongs to merchandise table
+    # Get key(id of item) from the value stored in the cart session
     itemInCart = list(cart.keys())[list(cart.values()).index(cart[id])]
-    print(itemInCart)
-    productStored = Merchandise.objects.filter(id=itemInCart).first()
-    print(productStored)
-    productsMerch = Merchandise.objects.all()
-    print(productsMerch)
-    request.session["cart"] = cart
 
+    # Check to see if item in cart belongs to merchandise table
+    productStored = Merchandise.objects.filter(id=itemInCart).first()
+    # Get a list of all merchs in the table
+    productsMerch = Merchandise.objects.all()
+
+    request.session["cart"] = cart
+    # Redirect the user to the page according to the item stored in cart session
     if productStored in productsMerch:
         return redirect(reverse("products-home"))
     else:
