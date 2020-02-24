@@ -26,7 +26,6 @@
                     <p class="my-2 text-justify p-3"><span class="coursesInfo"><i class="far fa-user"></i>
                             Participants:</span>
                         {{ course.participants }}</p>
-                    <p>Total enrolled: {{ course.totalParticipants }}</p>
                     {% if course.video_url %}
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" src="{{course.video_url }}" frameborder="0"

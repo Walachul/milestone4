@@ -13,7 +13,6 @@ class Courses(Product):
 
     # Participants
     participants = models.CharField(max_length=20)
-    totalParticipants = models.IntegerField(default=0)
     """In order to get the correct video_url and render it in the iframe,
         you have to get the Embed Video from YouTube and get link as:
         https://www.youtube.com/embed/exampleVideo
