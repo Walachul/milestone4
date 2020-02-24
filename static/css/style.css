@@ -111,7 +111,7 @@ body {
     background-image:linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url("../img/background/mission_section/mission_background.png");
+    ), url("../img/background/mission_section/mvv_background.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -121,10 +121,14 @@ body {
 }
 /** Text **/
 
-
+/** Info text history **/
+.history{
+    color: #414042
+}
 /** Info text home page **/
-.headingMVV,.infoMVV{
-    color:#414042    
+.infoMVV{
+    color:white;
+    font-size: 18px;    
 }
 
 /*** Blog home page ***/
