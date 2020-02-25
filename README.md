@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/Walachul/milestone4.svg?branch=master)](https://travis-ci.org/Walachul/milestone4)
 
 # **Romanian Alpine Club**
-## Full Stack Milestone project 4 for Code Institute
+## Full Stack Django Milestone project 4
 
-The web app was created in order to offer a platform organized by an admin user for the Romanian Alpine Club members, where users can register, communicate, share information, buy merchandise.
+I have developed an application(platform) for the **Romanian Alpine Club** which meets modern web standars, can store information and is mobile friendly. A new website/application was needed in order to allow users(members) to register, share information and communicate, share events, buy personalized merchandise online, participate in courses organized by the Club and pay for them online. The application also meets the requirement of automatically creating a membership card for a new member, functionality which was upgraded by also adding a QR code with discounts. A new member can download and use his card from the profile page, instead of sending a written paper to the Club's committee and waiting for approval. 
 
 Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
@@ -22,7 +22,7 @@ New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herok
 - [Credits](https://github.com/Walachul/milestone4#credits)
 # **User Experience**
 
-The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other clibbing events and workshops, and also an admin(s) panel where they can check activity of the members.
+The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other clibbing events and workshops,  and also an admin(s) panel where they can check activity of the members, delete posts, check incoming orders from 
 
 
 One of the most important requirements that was asked for a new site was that to be mobile friendly, organized and to be accessible for anyone on every device they would use, so that was my main goal when started building it.
@@ -63,18 +63,19 @@ This functionality is possible with Django admin panel, in which I registered th
 
 # **Features**
 
-##### **Implemented features**
-
-##### *Home app*
-
-* Home - Index page of the project. Users can read what the site is about(mission statement) and have a call to action button.
+## Home app
+**Menu**
+* Home page - Index page of the project. Users can read what the site is about(mission statement) and have a call to action button(Join the community) which redirects them to registration page.
 * About - Contains two subpages:
           
-    - History - Users can read about the history of the Romanian Alpine Club and can see old pics of the founder and main members. To improve UI for reading, I have used AOS scroll library.
-    - MISSION VISION VALUES - Users can read more about the mission, values and vision of the Romanian Alpine Club
+    - History page - Users can read about the history of the Romanian Alpine Club and can see old pics of the founder and main members. To improve UI for reading, I have used AOS scroll library.
+    - MISSION VISION VALUES page - Users can read more about the mission, values and vision of the Romanian Alpine Club
 
-* Login link - Users who are already members can login. If they don't have an account, they can register with a Sign Up button that will redirect to register page. 
-Here they can also reset their password.
+* Login button - Users who are already members can login and access available additional apps. If they don't have an account, they can register with a Sign Up button that will redirect to register page. 
+
+    Here they can also reset their password by completing a form which requires valid email address(currently using personal email address to send emails from Django app , but will be switched in future with the Club's own email address).
+    
+    Example: ![Password Reset]()
 
 * Registration - Users who want to become members can register here. If they are already a member, they have a Sign In which will redirect them to login page.
 
