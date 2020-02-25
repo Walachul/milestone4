@@ -18,6 +18,6 @@ class TestViews(TestCase):
 class TestPosts(TestCase):
     def test_posts(self):
 
-        response = self.client.get(reverse("posts:index"))
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get(reverse("blog-home"))
+        self.assertEqual(response.status_code, 302)
 
