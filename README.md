@@ -3,7 +3,7 @@
 # **Romanian Alpine Club**
 ## Full Stack Django Milestone project 4
 
-I have developed an application(platform) for the **Romanian Alpine Club** which meets modern web standars, can store information and is mobile friendly. A new website/application was needed in order to allow users(members) to register, share information and communicate, share events, buy personalized merchandise online, participate in courses organized by the Club and pay for them online. The application also meets the requirement of automatically creating a membership card for a new member, functionality which was upgraded by also adding a QR code with discounts. A new member can download and use his card from the profile page, instead of sending a written paper to the Club's committee and waiting for approval. 
+I have developed an application(platform) for the **Romanian Alpine Club** which meets modern web standars, can store information and is mobile friendly. A new website/application was needed in order to allow users(members) to register, share information and communicate, share events, buy personalized merchandise online, participate in courses organized by the Club and pay for them online. The application also meets the requirement of automatically creating a membership card for a new member, functionality which was upgraded by also adding a QR code with discounts from Club's parteners.
 
 Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
@@ -64,7 +64,7 @@ This functionality is possible with Django admin panel, in which I registered th
 # **Features**
 
 ## Home app
-**Menu**
+
 * Home page - Index page of the project. Users can read what the site is about(mission statement) and have a call to action button(Join the community) which redirects them to registration page.
 * About - Contains two subpages:
           
@@ -75,48 +75,62 @@ This functionality is possible with Django admin panel, in which I registered th
 
     Here they can also reset their password by completing a form which requires valid email address(currently using personal email address to send emails from Django app , but will be switched in future with the Club's own email address).
     
-    Example: ![password_reset_1](https://user-images.githubusercontent.com/42890101/75277583-8f934f00-5808-11ea-97d8-bc426abb84e9.PNG)
-            ![password_reset_2](https://user-images.githubusercontent.com/42890101/75277708-d1bc9080-5808-11ea-8460-8b58cf255269.PNG)
 
-
-* Registration - Users who want to become members can register here. If they are already a member, they have a Sign In which will redirect them to login page.
+* Registration - Users who want to become members can register by completing a form. If they are already a member, they have a Sign In which will redirect them to login page.
 
 * Footer 
     
-    - Home link to return home
-    - Social links to visit the social media pages
-    - Partners page - to visit the partners page
-*Partners page - Allows users/members to view logos of partners and if click on them will allow users/members to visit that site.
+    - Home link to return to index
+    - Social links to visit the social media pages of the Romanian Alpine Club
+    - Partners page - to visit the partners page where users can view logos of the partners and visit their website(s)
 
-##### *Users(accounts) app*
+* Partners page - Allows users/members to view logos of partners and visit their website(s).
 
-* Registration - Allows users to register to the site by filling the registration form.(Username, email, full name, password, birth date, home address, phone number) 
+## Users(accounts) app
 
-  - Registration form - When submitting the form, the users will be prompted if the username is taken and to choose another one and if the passwords match. Also, they will be notified when they didn't fill a  field. When successful, a flash message will prompt the user that registration was successful and they can login.
-* Login - Allows users to login to the site and have access to the other apps created(account, blog,  merchandise, search), by going to the login page and fill the form with their username and password. The form created will notify the user if their credentials mismatch or forgot to fill a field and also prompt with successful message if the login was correct and redirect the user to the home page of the app or to the blog app(if he tried to access it without being logged in).
+* Registration page - Allows users to register to the site by filling the registration form.(Username, email, full name, password, home address,) 
 
-* Password reset - If the user forgets his password, he can access the *Forgot password* function offered by Django. This will redirect him to a form which will require his email. If the registered user that requires password change had entered a valid email address, he will get on that email address a link from the app that will redirect him to a form to change his password.
+  - Registration form - When submitting the form, the users will be prompted if the username or email is taken and to choose another one and if the passwords match. Also, they will be notified when they didn't fill a  field. When successful, a flash message will prompt the user that registration was successful and they can login.
+* Login - Allows users to login to the site and have access to the other apps created(users/profile, blog,  merchandise shop, courses, search), by going to the login page and typing their credentials(username and password).
+
+     The form created will notify the user if their credentials are wrong or forgot to fill a field. Also a prompt with successful message will pop if the login was correct and will redirect the user to the home page of the site or to another app(if he tried to access it without being logged in).
+
+* Password reset - If the user forgets his password, he can access the *Forgot password* function offered by Django. This will redirect him to a form which will require his email. If the registered user that requires password change had entered a valid email address, he will receive on that email address a link from the app that will redirect him to a form to change his password. (Currently using personal email address to send emails from Django app , but will be switched in future with the Club's own email address)
+
+    **Example:** ![password_reset_1](https://user-images.githubusercontent.com/42890101/75277583-8f934f00-5808-11ea-97d8-bc426abb84e9.PNG)
+            ![password_reset_2](https://user-images.githubusercontent.com/42890101/75277708-d1bc9080-5808-11ea-8460-8b58cf255269.PNG)
 
 
-
-##### **Below functionalities require the user to be logged in**
+## All the functionalities mentioned below require the user to be logged in
 
 * Logout - Allows users to logout from the website. They are redirected to the logout template. If they had any cart items stored in session, they will lose it.
 
-* Account page - Users can see their information that they had entered in the registration form.
+* Profile page - Users can see their information that they had entered in the registration form.
 
 * Profile features:
 
-  - General information obtained from the registration form;
-  - Edit profile - Users can edit their personal information entered in the registration form(personal info and update their profile picture)
-  - Resizable profile picture - The user's profile picture is resized in the background with python function and uploaded to Amazon's S3 bucket
+  - General information obtained from the registration form and a default profile image;
+  - Edit profile - Users can edit their personal information entered in the registration form(personal info and update their profile picture);
+  - Resizable profile picture - The user's profile picture is resized in the background with python function and uploaded to Amazon's S3 bucket;
   - Membership Card - The card is automatically created in the profile and contains member name, when he joined and also QR Code. The membership Card updates automatically when user changes first or last name.
   - QR Code - The QR Code is placed inside the membership card and this contains useful information regarding discounts to different stores offered on behalf of the Club, name of the member and expiry date of the card. Member can visit a store with his card and after it was scanned, can get the right discount.
-  - History of orders - Member can view purchase information
-  - History of orders/View Order - allows users to access an order and view details of that orrder(product name, price of an product, how many items, total price)
+        
+    To implement the membership card it took lots of research and trial&error + usage of django shell on how to create an image with Python and Pillow package, how to insert data from the user into it and how to position everything in the image. When the card was completed in the profile view and I could check it the local files, I realized that it was not a Django file, but a PIL image, which could not be saved in the membershipCard field from Profile Model. After some other research days, I tweaked the code from these two posts on stackoverflow( 1.[How to save pillow image object to Django ImageField](https://stackoverflow.com/questions/32945292/how-to-save-pillow-image-object-to-django-imagefield); 2. [How to convert PIL image to Django File](https://stackoverflow.com/questions/3723220/how-do-you-convert-a-pil-image-to-a-django-file) ) and I was succesful, while the card was saved accordingly to the folder and stored in S3 bucket.
+    
+    Example Membership Card
+        ![membership_card](https://user-images.githubusercontent.com/42890101/75280365-96709080-580d-11ea-9de1-abb640ac0f1b.PNG)
 
-##### *Blog app*
-* Blog - The user can view and read all blog posts from other users, by navigating to the blog section in the navigation bar.
+    QR Code related to this membership card
+    ![qr_code_test](https://user-images.githubusercontent.com/42890101/75280762-5d84eb80-580e-11ea-8d9d-e3ac3f6f763b.jpg)
+
+    Implementing QR code had its own research time, due to the fact that I wanted to add more data, but I got an error from Python which said insufficient data space allocated. After reading this article, [Information capacity and versions of the QR Code](https://www.qrcode.com/en/about/version.html), I increased version to 10 and QR code image was successfully implemented.
+
+
+  - History of orders - Member can view purchase information of merchandise or courses
+  - History of orders/View Order - allows users to access an order and view details of that order(product name, price of an product, how many items, grand total)
+
+## Blog app
+* Blog page- The user can view and read all blog posts from other users, by navigating to the blog section in the navigation bar.
        
 
 * View all posts from a specific user -  Users are able to view all posts from a specific user by clicking on the user's name.
@@ -127,23 +141,99 @@ This functionality is possible with Django admin panel, in which I registered th
 
 * Delete blog post - Only the user that created a blog post can delete it, by navigating to his specific post, accessing Read more. Then he will be redirected to the section of that post, where the Delete functionality is available. By hitting delete, the user will be redirected to the Delete page to confirm or to cancel the deletion.
 
-* Pagination - Functionality that paginates blog posts to 3
+* Pagination - Functionality that paginates blog posts rendered on the page to 3
 
-##### *Products app*
+## Courses app
 
- * Merchandise - by navigating to the Merchandise button in the navigation bar, the user is able to visit the items template, where they can add to cart and buy items.
+* Allows admin(s) to add specific courses that can be rendered in the courses template.
 
-##### *Cart app*
+* Courses page - allows user to view all courses organized by the Romanian Alpine Club
 
-* Add to cart - User is able to add items to his cart, which are stored in the session while user is logged in.
-The user can see the total number of items displayed in the cart button in the navigation bar.
+* Courses Details page - allows users to find more information about a specific course and also pay for it if they want to participate.
 
-* View cart - By accessing his cart, the user can see the items he bought.
+    The courses app was implemented after the merchandise app. The challenge faced after implementing the models and views was the payment method, because I wanted to use the same checkout app for two different products(Courses and Merchandise items). A user can add 1 course to the basket and pay for it. After researching on how to implement this feature, I found this article [Modeling polymorphism django python](https://realpython.com/modeling-polymorphism-django-python/#concrete-base-model), which recommends several methods for creating a polymorphic model. After analyzing my project and needs, I have decided to create a **concrete base model**, due to its nature of being created in the database table and in order to reference multiple products with common fields(in my case title and price are common for the Merchandise model in the products app and Courses model in the courses app) and also to get a total price of the items from cart.
+
+    Polymorphic Product conrete base model
+
+        class Product(models.Model):
+            title = models.CharField(max_length=200, default="")
+            price = models.DecimalField(max_digits=6, decimal_places=2, default="0")
+
+            def __str__(self):
+                return self.title
+    How the Product model looks in the database: 
+    ![polymorphic_model](https://user-images.githubusercontent.com/42890101/75283039-519b2880-5812-11ea-8767-b530c0726ec4.PNG)
+
+    How the Courses model looks in the database:
+    ![courses_courses](https://user-images.githubusercontent.com/42890101/75283285-d5edab80-5812-11ea-803a-a006c1526e50.PNG)
+
+    product_ptr_id acts as both primary key in the Courses table and foreign key in the concrete base model.
+
+    And the Courses model from models file:
+
+        class Courses(Product):
+
+            description = models.TextField()
+            dateAdded = models.DateTimeField(default=timezone.now)
+            # Time period in which the course is organized
+            periodOfTime = models.CharField(max_length=100)
+            location = models.CharField(max_length=200)
+
+            # Participants
+            participants = models.CharField(max_length=20)
+            """In order to get the correct video_url and render it in the iframe,
+                you have to get the Embed Video from YouTube and get link as:
+                https://www.youtube.com/embed/exampleVideo
+                and paste it in the admin panel
+            """
+            video_url = models.CharField(max_length=200, null=True, blank=True)
+            trainer = models.CharField(max_length=100)
+
+            def __str__(self):
+                return self.title
+
+    After implementing the polymorphic model, I had to modify the contexts file of the cart app and import the Product model, so that instead of merchandise ID, the cart will store the products id.
+  
+    The next challenge was to modify **add_to_cart view** in order to get the cart items stored in session and redirect the user to a corresponding template after purchasing an item from Merchandise shop or Course from courses app, instead of always redirecting to merchandise template. Researching the django error code from debug, I found that if I can get the key of the item stored in session, that represents the ID of the item in the database, based on known value, I can do a query check to see if that item is in Merchandise table or Courses table.
+
+    After researching and testing different methods, I found this response from stackoverflow, [Get key by value in dictionary](https://stackoverflow.com/questions/8023306/get-key-by-value-in-dictionary), which separates dict's values in a list, finds the position of that value(cart[id] in my case) and gets the key at that position in the keys list, and applied to my project as follows:
+       
+        itemInCart = list(cart.keys())[list(cart.values()).index(cart[id])]
+
+    Then the query check and redirection accordingly:
+
+        # Check to see if item in cart belongs to merchandise table
+        productStored = Merchandise.objects.filter(id=itemInCart).first()
+        # Get a list of all merchs in the table
+        productsMerch = Merchandise.objects.all()
+
+        request.session["cart"] = cart
+        # Redirect the user to the page according to the item stored in cart session
+        if productStored in productsMerch:
+            return redirect(reverse("products-home"))
+        else:
+            return redirect(reverse("courses-home"))
+
+## Products app
+
+ * Merchandise page - by navigating to the Merchandise button in the navigation bar, the user is able to visit the items template, where they can add to cart and buy items.
+
+## Cart app
+
+* Add to cart - User is able to add merchandise items or courses to his cart, which are stored in the session while user is logged in.
+The user can see the total number of items displayed in the cart button in the navigation bar. 
+
+    This view was modified and explanation is above as of why, in the Courses app section.
+
+* View cart - By accessing his cart, the user can see the items he bought. This has a check in for total price, as to not let the user go to checkout and submit an empty form if he did not buy anything and cart has 0 items.
+
+    ![warning_cart](https://user-images.githubusercontent.com/42890101/75287305-6c719b00-581a-11ea-87d4-fd4cf80f84a6.PNG)
+
 
 * Modify cart - User can reduce the quantity of items.
-When quantity is 0, the item is deleted from cart.
+When quantity is 0, the item is deleted from cart and user gets a prompt message that the cart is empty and he can visit the merchandise shop.
 
-##### *Checkout app*
+## Checkout app
 
 * Functionality to check if the cart is empty - If the total amount is 0, the user gets a message that his cart is empty and he has a button to visit the merchandise shop. Checkout button is disabled.
 
@@ -152,24 +242,23 @@ Here he can view the items that he wants to buy and the total price.
 In order to buy, he must complete 2 forms: one for Order, with personal information stored in the database and can be viewed only by admin(s), and second is the Stripe Payment form, which doesn't store any information on local server, but will communicate with the Stripe server.
 If the card is accepted, the user will receive a success message and will be redirected to the items template.
 
-##### *Partners page*
+    Example
+        ![order_items_admin](https://user-images.githubusercontent.com/42890101/75287700-1e10cc00-581b-11ea-86d4-14277cc5f18b.PNG)
 
-* Now partners have their own dedicated page with logos that if clicked it will redirect to the partner's website.
 
 ##### **Features left to implement**
 
-The following requirements are left to be implemented in the future:
+The following requirements by the Romanian Alpine Club members are left to be implemented in the future, due to time constraints to submit the project:
 
-1. Forum app - Necessity for the community members to talk about different topics. Topics need to be categorized and also moderated by admins.
-2. Apps departments - This app will be created for different towns where the Romanian Alpine Club has departments in order to organize the members there and to share info if required only with that department's members.
-3. Membership app - App to automatically pay for a type of membership(yearly)(regular, standard, retired) and also payment for registration(only once). Whoever registers before a date mentioned, can get a -10% discount.
+1. Apps departments - This app will be created for different towns where the Romanian Alpine Club has departments in order to organize the members there and to share info if required only with that department's members.
+2. Facebook API - to get the content dynamically from the Club's page.
+3. Google API - to be able to select location and store it in the location field from Courses Model.
+        
 
 4. **Admin functionalities**
      - honeypot django app - in order to notify the admin if someone else is trying to access the admin panel;
      - mail to admin(s) when someone registers to get approval from him(django-registration-redux > admin approval backend);
      - mail to admin(s) when someone buys merchandise, in order to be shipped to the address mentioned in the order form;
-
-5. eLearning - eLearning platform to share written information and/or video courses
 
 
 # Technologies Used
@@ -205,7 +294,7 @@ The following requirements are left to be implemented in the future:
     The Romanian Alpine Logo was edited with GIMP v2 so that the elements will be white and background transparent.
 
 ##### For elements such as typography, colors, logo, font etc. I was given the Romanian Alpine Club Brand Manual & Guidelines.
-##### I can share this if needed with Code Institute.
+##### I can share this manual if needed with Code Institute.
 ## Backend
 - Django 1.11 
 
@@ -225,7 +314,31 @@ The following requirements are left to be implemented in the future:
 
 # Testing
 
-##### URLS
+## Unit testing
+Apps in the project have their own automated tests for app configuration, views and forms.
+
+ Testing was also performed in the Django shell.
+
+ Used commands to run tests from a file in an app(example courses app):
+
+        (venv)D:\Python\Django_Projects\ClubulAlpinRoman> python manage.py test courses.test_apps
+
+Used commands to run tests from the django shell:
+
+        (venv)D:\Python\Django_Projects\ClubulAlpinRoman> python manage.py shell
+        >>> from django.contrib.auth.models import User
+        >>> from django.test.utils import setup_test_environment
+        >>> from django.test import Client
+        >>> setup_test_environment()
+        >>> client = Client()
+        >>> response = c.get('/profile/')
+        302
+        >>> c.get('/profile/')
+        <HttpResponseRedirect status_code=302, "text/html; charset=utf-8", url="/login/?next=/profile/">
+        >>>exit()
+
+## URLS
+Manual tests performed
 1. Testing urls 
 
     1.1. Testing visible links while user is not logged in
@@ -322,6 +435,12 @@ The following requirements are left to be implemented in the future:
         iv. Try to add a post with information and verify it redirects to the new blog post.
         v. Try to access the main blog page and verify the new post is displayed first.
 
+##### Courses app
+        i. Try to access courses from navbar.
+        ii. Verify it redirects to the /courses app and all courses are displayed correctly.
+        iii. Try to access a course details from Read More button and verify it redirects to that specific course.
+        iv. Try to pay for the course and verify that it redirects to the courses template.
+
 ##### Products app
 
         i. Try to access Merchandise from navbar.
@@ -332,7 +451,7 @@ The following requirements are left to be implemented in the future:
     1.1 Add to cart
 
         i. Try to access add button without any input and verify it displays an error message.
-        ii. Try to access the add button and verify the Cart from the navbar displays a badge with one item and the user is redirected to the products page.
+        ii. Try to access the add button and verify the Cart from the navbar displays a badge with one item and the user is redirected to the products or courses page.
 
     1.2 View cart
 
@@ -365,15 +484,15 @@ The following requirements are left to be implemented in the future:
         viii. Try to access admin panel and verify that the user's information for the order is displayed, together with what he ordered.
 
 ##### Responsiveness
+ The project was tested with the following browsers locally: Chrome, Firefox, Internet Explorer 11.
 
-        The project was tested with the following browsers locally: Chrome, Firefox, Internet Explorer 11.
-        For checking how the project and pages flow for different devices, I used Chrome's developer's tools.
+ For checking how the project and pages flow for different devices, I used Chrome's developer's tools.
 
-        The project was tested after deployment to Heroku on Android and iPhone.
+ The project was tested after deployment to Heroku on Android and iPhone.
 
 # Deployment
 
-##### Heroku deployment
+## Heroku deployment
 
 [Install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
@@ -413,13 +532,13 @@ If by any chance you need to delete migrations folder and __pycache__ for an app
     python manage.py makemigrations --empty app-name.
 After, you can run makemigrations normally.
 
-I dad to delete phoneNumber field because it was causing error with Postgres, but because it was copied in the first migration, I had to think of different things to get this sorted.
+I had to delete phoneNumber field because it was causing error with Postgres, but because it was copied in the first migration, I had to think of different things to get this sorted.
 
 With some research, I have found this topic [How to force migrations to a DB if some tables already exists](https://stackoverflow.com/questions/43880426/how-to-force-migrations-to-a-db-if-some-tables-already-exist-in-django)
 
 
 
-##### Local installation 
+## Local installation 
 
 1. First clone the project
 
