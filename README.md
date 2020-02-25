@@ -75,8 +75,8 @@ This functionality is possible with Django admin panel, in which I registered th
 
     Here they can also reset their password by completing a form which requires valid email address(currently using personal email address to send emails from Django app , but will be switched in future with the Club's own email address).
     
-    Example: ![Password Reset](readme_img/password_reset_1.png)
-            ![Password Reset Info](readme_img/password_reset_2.png)
+    Example: ![Password Reset](https://github.com/Walachul/milestone4/blob/master/readme_img/password_reset_1.png)
+            ![Password Reset Info](https://github.com/Walachul/milestone4/blob/master/readme_img/password_reset_2.png)
 
 * Registration - Users who want to become members can register here. If they are already a member, they have a Sign In which will redirect them to login page.
 
