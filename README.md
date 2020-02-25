@@ -22,10 +22,10 @@ New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herok
 - [Credits](https://github.com/Walachul/milestone4#credits)
 # **User Experience**
 
-The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other clibbing events and workshops,  and also an admin(s) panel where they can check activity of the members, delete posts, check incoming orders from 
+The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other climbing events and workshops,  and also an admin panel where they can check activity of the members, delete posts, check incoming orders from users who bought merchandise or course. 
 
 
-One of the most important requirements that was asked for a new site was that to be mobile friendly, organized and to be accessible for anyone on every device they would use, so that was my main goal when started building it.
+One of the most important requirements that was asked from a new site was that to be mobile friendly, organized and to be accessible for anyone on every device they would use, so that was my main goal when started building it.
 
 The app had to be user friendly and colorful, and the information needed to be displayed in eye-friendly mode.
 
@@ -37,27 +37,28 @@ In general, a user who is not registered will visit the site if he is interested
 
 This type of user will generally want to find more information than what is displayed in the public section and more often he will want to become a member if he is not already one and get involved in the Club's activities and also do volunteering.
 
-He will be able to register and access to the blog and merchandise section(for now). 
+He will be able to register and access the available apps. 
 
-In the blog app, he will be able to add, edit and delete information with other users.
+In the blog app, he will be able to add, edit and delete information.
 
-In the merchandise app, he will be able to purchase custom made merchandise with the Romanian Alpine Club logo, using Stripe payment functionality.
+In the merchandise app/shop, he will be able to purchase custom made merchandise with the Romanian Alpine Club logo, using Stripe payment functionality.
 
-In the account app, he will be able update his profile information (name, address, profile picture) in order to get in future membership card automatically in his profile.
+In the courses app, he will be able to buy a course and participate on a given date.
+
+In the account app, he will be able update his profile information (name, address, profile picture), download his membership card, view history of orders if any.
 
 ##### Amateur User
 
-They share a passion for mountains, but they are not that hardcore.
+They share a passion for mountains.
 
 More often, they will want to search for information which interests them and will want to register and from time to time get involved in activies and hikes.
 
-They can also buy merchandise and update their profile information.
 
 ##### Administrator
 
-Another important requirement was that of the future website/app to have an administrator(or more), that can verify members information, what is the content they are posting about and to be able to monitor that activity.
+Another important requirement was that of the future website/app to have an administrator(or more), that can verify members information, what is the content they are posting and to be able to monitor the overall activity.
 
-Also, the administrator should be able to add other admins as well, and to check information of the members that are buying merchandise.
+Also, the administrator should be able to add other admins as well, and to check information of the members that are buying merchandise or courses.
 
 This functionality is possible with Django admin panel, in which I registered the required models from different apps.
 
