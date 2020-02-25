@@ -262,6 +262,12 @@ The following requirements by the Romanian Alpine Club members are left to be im
      - mail to admin(s) when someone buys merchandise, in order to be shipped to the address mentioned in the order form;
 
 
+# Database design
+
+![data_store_integration](https://user-images.githubusercontent.com/42890101/75296445-7d77d780-582d-11ea-99c3-1ec46bc94508.PNG)
+
+SQLite was used in the development process. Migrated to PostgreSQL when project was deployed to Heroku for production.
+
 # Technologies Used
 ## Frontend
 
