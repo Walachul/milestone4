@@ -13,6 +13,7 @@ New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herok
 - [User experience](https://github.com/Walachul/milestone4#user-experience)
 - [User stories](https://github.com/Walachul/milestone4#user-stories)
 - [Features](https://github.com/Walachul/milestone4#features)
+- [Database design](https://github.com/Walachul/milestone4#database-design)
 - [Technologies used](https://github.com/Walachul/milestone4#technologies-used)
 - [Testing](https://github.com/Walachul/milestone4#testing)
 - [Deployment](https://github.com/Walachul/milestone4#deployment)
