@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.core.files.storage import default_storage as storage
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from checkout.models import Order, OrderItem
@@ -122,7 +123,7 @@ def profile(request):
         # Create QR Code image
         qr_code = qr.make_image(fill="black", back_color="white")
         """Get Club's logo"""
-        pic = Image.open("static/img/logo/CAR_logo_membership_card.png", "r")
+        pic = Image.open("static/img/logo/CAR_logo_membership_card.PNG", "r")
         """Create new Image with Pillow"""
         img = Image.new("RGB", (510, 360), color="#FFFFFF")
         imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 40)
