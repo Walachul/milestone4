@@ -3,7 +3,7 @@
 # **Romanian Alpine Club**
 ## Full Stack Django Milestone project 4
 
-I have developed an application(platform) for the **Romanian Alpine Club** which meets modern web standars, can store information and is mobile friendly. A new website/application was needed in order to allow users(members) to register, share information and communicate, share events, buy personalized merchandise online, participate in courses organized by the Club and pay for them online. The application also meets the requirement of automatically creating a membership card for a new member, functionality which was upgraded by also adding a QR code with discounts from Club's parteners.
+At the request of the **Romanian Alpine Club**, I have developed an application which will go live and be a shared platform for guest users, members and admins. A new website/application was needed in order to allow users(members) to register, share information and communicate, share events, buy personalized merchandise online, participate in courses organized by the Club and pay for them online. The application also meets the requirement of automatically creating a membership card for a new member, functionality which was upgraded by also adding a QR code with discounts from Club's parteners.
 
 Old live site here:  [ClubulAlpinRoman](https://www.clubulalpinroman.net/)
 
@@ -21,9 +21,10 @@ New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herok
 - [Resources](https://github.com/Walachul/milestone4#resources)
 - [Content](https://github.com/Walachul/milestone4#content)
 - [Credits](https://github.com/Walachul/milestone4#credits)
+
 # **User Experience**
 
-The app/website is build first and foremost for the actual members of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other climbing events and workshops,  and also an admin panel where they can check activity of the members, delete posts, check incoming orders from users who bought merchandise or course. 
+The app/website is build primarily for the actual members and admins of the Romanian Alpine Club, who needed an upgrade to a platform, where they can login, interact, share information about hikes and other climbing events and workshops,  and also an admin panel where they can check activity of the members, delete posts, check incoming orders from users who bought merchandise or course. 
 
 
 One of the most important requirements that was asked from a new site was that to be mobile friendly, organized and to be accessible for anyone on every device they would use, so that was my main goal when started building it.
@@ -48,7 +49,7 @@ In the courses app, he will be able to buy a course and participate on a given d
 
 In the account app, he will be able update his profile information (name, address, profile picture), download his membership card, view history of orders if any.
 
-##### Amateur User
+##### Amateur/Guest User
 
 They share a passion for mountains.
 
@@ -90,7 +91,7 @@ This functionality is possible with Django admin panel, in which I registered th
 
 ## Users(accounts) app
 
-* Registration page - Allows users to register to the site by filling the registration form.(Username, email, full name, password, home address,) 
+* Registration page - Allows users to register to the site by filling the registration form (Username, email, full name, password, home address) 
 
   - Registration form - When submitting the form, the users will be prompted if the username or email is taken and to choose another one and if the passwords match. Also, they will be notified when they didn't fill a  field. When successful, a flash message will prompt the user that registration was successful and they can login.
 * Login - Allows users to login to the site and have access to the other apps created(users/profile, blog,  merchandise shop, courses, search), by going to the login page and typing their credentials(username and password).
@@ -125,7 +126,10 @@ This functionality is possible with Django admin panel, in which I registered th
     QR Code related to this membership card
     ![qr_code_test](https://user-images.githubusercontent.com/42890101/75280762-5d84eb80-580e-11ea-8d9d-e3ac3f6f763b.jpg)
 
-    Implementing QR code had its own research time, due to the fact that I wanted to add more data, but I got an error from Python which said insufficient data space allocated. After reading this article, [Information capacity and versions of the QR Code](https://www.qrcode.com/en/about/version.html), I increased version to 10 and QR code image was successfully implemented.
+    Implementing QR code had its own research time, due to the fact that I wanted to add more data, but I got an error from Python
+    
+         "QRCODE Version: error: qrcode.exceptions.DataOverflowError: Code length overflow. Data size (1092) > size available (152) ".
+    After reading this article, [Information capacity and versions of the QR Code](https://www.qrcode.com/en/about/version.html), I increased version to 10 and QR code image was successfully implemented.
 
 
   - History of orders - Member can view purchase information of merchandise or courses
@@ -155,7 +159,7 @@ This functionality is possible with Django admin panel, in which I registered th
 
     The courses app was implemented after the merchandise app. The challenge faced after implementing the models and views was the payment method, because I wanted to use the same checkout app for two different products(Courses and Merchandise items). A user can add 1 course to the basket and pay for it. After researching on how to implement this feature, I found this article [Modeling polymorphism django python](https://realpython.com/modeling-polymorphism-django-python/#concrete-base-model), which recommends several methods for creating a polymorphic model. After analyzing my project and needs, I have decided to create a **concrete base model**, due to its nature of being created in the database table and in order to reference multiple products with common fields(in my case title and price are common for the Merchandise model in the products app and Courses model in the courses app) and also to get a total price of the items from cart.
 
-    Polymorphic Product conrete base model
+    **Polymorphic Product concrete base model**
 
         class Product(models.Model):
             title = models.CharField(max_length=200, default="")
@@ -169,7 +173,7 @@ This functionality is possible with Django admin panel, in which I registered th
     How the Courses model looks in the database:
     ![courses_courses](https://user-images.githubusercontent.com/42890101/75283285-d5edab80-5812-11ea-803a-a006c1526e50.PNG)
 
-    product_ptr_id acts as both primary key in the Courses table and foreign key in the concrete base model.
+    **product_ptr_id**  acts as both primary key in the Courses table and foreign key in the concrete base model.
 
     And the Courses model from models file:
 
@@ -198,7 +202,7 @@ This functionality is possible with Django admin panel, in which I registered th
   
     The next challenge was to modify **add_to_cart view** in order to get the cart items stored in session and redirect the user to a corresponding template after purchasing an item from Merchandise shop or Course from courses app, instead of always redirecting to merchandise template. Researching the django error code from debug, I found that if I can get the key of the item stored in session, that represents the ID of the item in the database, based on known value, I can do a query check to see if that item is in Merchandise table or Courses table.
 
-    After researching and testing different methods, I found this response from stackoverflow, [Get key by value in dictionary](https://stackoverflow.com/questions/8023306/get-key-by-value-in-dictionary), which separates dict's values in a list, finds the position of that value(cart[id] in my case) and gets the key at that position in the keys list, and applied to my project as follows:
+    After researching and testing different methods, I found this response from stackoverflow, [Get key by value in dictionary](https://stackoverflow.com/questions/8023306/get-key-by-value-in-dictionary), which separates the a dictionary's values in a list, finds the position of that value(cart[id] in my case) and gets the key at that position in the keys list, and applied to my project as follows:
        
         itemInCart = list(cart.keys())[list(cart.values()).index(cart[id])]
 
@@ -218,7 +222,7 @@ This functionality is possible with Django admin panel, in which I registered th
 
 ## Products app
 
- * Merchandise page - by navigating to the Merchandise button in the navigation bar, the user is able to visit the items template, where they can add to cart and buy items.
+ * Merchandise page - by navigating to the Merchandise button in the navigation bar, the user is able to visit the items template, where they can add to cart and buy several different items. An admin can add additional items from the admin panel.
 
 ## Cart app
 
@@ -301,8 +305,8 @@ SQLite was used in the development process. Migrated to PostgreSQL when project 
 
     The Romanian Alpine Logo was edited with GIMP v2 so that the elements will be white and background transparent.
 
-##### For elements such as typography, colors, logo, font etc. I was given the Romanian Alpine Club Brand Manual & Guidelines.
-##### I can share this manual if needed with Code Institute.
+##### For elements such as typography, colors, logo, font etc. I was following the Romanian Alpine Club Brand Manual & Guidelines.
+
 ## Backend
 - Django 1.11 
 
