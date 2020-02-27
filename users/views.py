@@ -125,9 +125,15 @@ def profile(request):
         """Get Club's logo from amazon s3"""
         s3 = boto3.resource("s3", region_name="eu-north-1")
         bucket = s3.Bucket("car-files")
+        # Logo
         membership_logo = bucket.Object("static/img/logo/CAR_logo_membership_card.PNG")
         membership_logo_stream = io.BytesIO()
         membership_logo.download_fileobj(membership_logo_stream)
+        # Get Font Montserrat-Black from S3
+        membership_font = bucket.Object("static/fonts/Montserrat-Black.ttf")
+        membership_font_stream = io.BytesIO()
+        membership_font.download_fileobj(membership_font_stream)
+
         pic = Image.open(membership_logo_stream, "r")
         """Create new Image with Pillow"""
         img = Image.new("RGB", (510, 360), color="#FFFFFF")
