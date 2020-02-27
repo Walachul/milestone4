@@ -21,7 +21,7 @@
                     class="text-capitalize profileTextInfo">{{ user.profile.homeAddress }}</span></p>
             <p class="profileText text-left text-uppercase">Member since: <span
                     class="text-capitalize profileTextInfo">{{ user.date_joined | date:"d-m-Y"}}</span></p>
-            <p class="profileText text-left text-uppercase">Membership card:
+            <p class="my-4 profileText text-left text-uppercase">Membership card:
 
                 <!-- Button trigger modal -->
                 <a type="button" href="{{user.profile.membershipCard.url}}" data-toggle="modal" data-target="#card">
