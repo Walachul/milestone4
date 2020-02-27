@@ -14,6 +14,7 @@ New site living on Heroku: [RomanianAlpineClub](https://clubul-alpin-roman.herok
 - [User stories](https://github.com/Walachul/milestone4#user-stories)
 - [Features](https://github.com/Walachul/milestone4#features)
 - [Database design](https://github.com/Walachul/milestone4#database-design)
+- [Wireframes](https://github.com/Walachul/milestone4#database-design)
 - [Technologies used](https://github.com/Walachul/milestone4#technologies-used)
 - [Testing](https://github.com/Walachul/milestone4#testing)
 - [Deployment](https://github.com/Walachul/milestone4#deployment)
@@ -120,6 +121,13 @@ This functionality is possible with Django admin panel, in which I registered th
         
     To implement the membership card it took lots of research and trial&error + usage of django shell on how to create an image with Python and Pillow package, how to insert data from the user into it and how to position everything in the image. When the card was completed in the profile view and I could check it the local files, I realized that it was not a Django file, but a PIL image, which could not be saved in the membershipCard field from Profile Model. After some other research days, I tweaked the code from these two posts on stackoverflow( 1.[How to save pillow image object to Django ImageField](https://stackoverflow.com/questions/32945292/how-to-save-pillow-image-object-to-django-imagefield); 2. [How to convert PIL image to Django File](https://stackoverflow.com/questions/3723220/how-do-you-convert-a-pil-image-to-a-django-file) ) and I was succesful, while the card was saved accordingly to the folder and stored in S3 bucket.
     
+    Another challenge was generating the membership card after the project beying deployed to Heroku. 
+    By testing locally and re-enabling Debug in production, I found that Heroku was not finding the path to the Logo which was used for the creation of the membership card, altough the logo.png was stored in the s3 bucket, and thus getting a 500 error for the profile page.
+
+    After some trial&error and research, I found the stackoverflow question: [How to read image file from s3 bucket directly into memory](https://stackoverflow.com/questions/44043036/how-to-read-image-file-from-s3-bucket-directly-into-memory#47910352), which helped me get the logo from the bucket.
+
+    After this, membership card was generated successfully in production on Heroku platform.
+
     Example Membership Card
         ![membership_card](https://user-images.githubusercontent.com/42890101/75280365-96709080-580d-11ea-9de1-abb640ac0f1b.PNG)
 
@@ -202,7 +210,7 @@ This functionality is possible with Django admin panel, in which I registered th
   
     The next challenge was to modify **add_to_cart view** in order to get the cart items stored in session and redirect the user to a corresponding template after purchasing an item from Merchandise shop or Course from courses app, instead of always redirecting to merchandise template. Researching the django error code from debug, I found that if I can get the key of the item stored in session, that represents the ID of the item in the database, based on known value, I can do a query check to see if that item is in Merchandise table or Courses table.
 
-    After researching and testing different methods, I found this response from stackoverflow, [Get key by value in dictionary](https://stackoverflow.com/questions/8023306/get-key-by-value-in-dictionary), which separates the a dictionary's values in a list, finds the position of that value(cart[id] in my case) and gets the key at that position in the keys list, and applied to my project as follows:
+    After researching and testing different methods, I found this response from stackoverflow, [Get key by value in dictionary](https://stackoverflow.com/questions/8023306/get-key-by-value-in-dictionary), which separates the dictionary's values in a list, finds the position of that value(cart[id] in my case) and gets the key at that position in the keys list, and applied to my project as follows:
        
         itemInCart = list(cart.keys())[list(cart.values()).index(cart[id])]
 
@@ -272,6 +280,29 @@ The following requirements by the Romanian Alpine Club members are left to be im
 ![data_store_integration](https://user-images.githubusercontent.com/42890101/75296445-7d77d780-582d-11ea-99c3-1ec46bc94508.PNG)
 
 SQLite was used in the development process. Migrated to PostgreSQL when project was deployed to Heroku for production.
+
+# Wireframes
+![1-Homepage](https://user-images.githubusercontent.com/42890101/75480328-5f32e880-59a1-11ea-81ac-df370acaa0ae.png)
+
+![2-Home-page-tablet-mode](https://user-images.githubusercontent.com/42890101/75480390-7d004d80-59a1-11ea-85d5-1d143c7f7852.png)
+
+![3-Login-mobile](https://user-images.githubusercontent.com/42890101/75480423-8e495a00-59a1-11ea-8865-9bffc2e6e230.png)
+
+![4-Login-tablet](https://user-images.githubusercontent.com/42890101/75480436-96a19500-59a1-11ea-98ad-6819f1201415.png)
+
+![5-Register-mobile](https://user-images.githubusercontent.com/42890101/75480467-a620de00-59a1-11ea-9219-76965e4e647d.png)
+
+![6-Register-tablet](https://user-images.githubusercontent.com/42890101/75480483-b042dc80-59a1-11ea-9ec9-f610bd0d5439.png)
+
+![7-Profile-page-mobile](https://user-images.githubusercontent.com/42890101/75480511-bc2e9e80-59a1-11ea-8858-575c7ef801b8.png)
+
+![8-Profile-page-tablet](https://user-images.githubusercontent.com/42890101/75480535-c2bd1600-59a1-11ea-8ac1-b24f474c6c72.png)
+
+![9-Courses-Merchandise-mobile](https://user-images.githubusercontent.com/42890101/75480574-cf416e80-59a1-11ea-86e1-9496c6039655.png)
+
+![10-Merchandise-tablet](https://user-images.githubusercontent.com/42890101/75483650-97d5c080-59a7-11ea-8c5a-40fc097eeb61.png)
+
+![11-COURSE-DETAILS-mobile](https://user-images.githubusercontent.com/42890101/75483675-a328ec00-59a7-11ea-81bb-cb4e5852d714.png)
 
 # Technologies Used
 ## Frontend
@@ -495,7 +526,7 @@ Manual tests performed
         vii. Verify Stripe dashboard and check that correct payment is displayd with the user's email.
         viii. Try to access admin panel and verify that the user's information for the order is displayed, together with what he ordered.
 
-##### Responsiveness
+## Responsiveness
  The project was tested with the following browsers locally: Chrome, Firefox, Internet Explorer 11.
 
  For checking how the project and pages flow for different devices, I used Chrome's developer's tools.
