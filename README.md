@@ -695,7 +695,6 @@ Credit is due to the following names.
  - Youtuber JustDjango
  - Youtuber Mike Hibbert
  - [PythonProgramming](https://pythonprogramming.net/)
- - [DjangoGirls](https://djangogirls.org/)
  - Python Crash Course book
 
 # License
