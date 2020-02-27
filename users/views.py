@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
-from django.core.files.storage import default_storage as storage
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from checkout.models import Order, OrderItem
 from PIL import Image, ImageDraw, ImageFont
 import io
+import boto3
 import qrcode
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
@@ -122,8 +122,13 @@ def profile(request):
         qr.make(fit=False)
         # Create QR Code image
         qr_code = qr.make_image(fill="black", back_color="white")
-        """Get Club's logo"""
-        pic = Image.open("static/img/logo/CAR_logo_membership_card.PNG", "r")
+        """Get Club's logo from amazon s3"""
+        s3 = boto3.resource("s3", region_name="eu-north-1")
+        bucket = s3.Bucket("car-files")
+        membership_logo = bucket.Object("static/img/logo/CAR_logo_membership_card.PNG")
+        membership_logo_stream = io.BytesIO()
+        membership_logo.download_fileobj(membership_logo_stream)
+        pic = Image.open(membership_logo_stream, "r")
         """Create new Image with Pillow"""
         img = Image.new("RGB", (510, 360), color="#FFFFFF")
         imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 40)
