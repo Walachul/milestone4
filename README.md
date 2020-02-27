@@ -282,26 +282,38 @@ The following requirements by the Romanian Alpine Club members are left to be im
 SQLite was used in the development process. Migrated to PostgreSQL when project was deployed to Heroku for production.
 
 # Wireframes
+
+##### Home page mobile view
 ![1-Homepage](https://user-images.githubusercontent.com/42890101/75480328-5f32e880-59a1-11ea-81ac-df370acaa0ae.png)
 
+##### Home page tablet view
 ![2-Home-page-tablet-mode](https://user-images.githubusercontent.com/42890101/75480390-7d004d80-59a1-11ea-85d5-1d143c7f7852.png)
 
+##### Login page mobile view
 ![3-Login-mobile](https://user-images.githubusercontent.com/42890101/75480423-8e495a00-59a1-11ea-8865-9bffc2e6e230.png)
 
+##### Login page tablet view
 ![4-Login-tablet](https://user-images.githubusercontent.com/42890101/75480436-96a19500-59a1-11ea-98ad-6819f1201415.png)
 
+##### Register page mobile view
 ![5-Register-mobile](https://user-images.githubusercontent.com/42890101/75480467-a620de00-59a1-11ea-9219-76965e4e647d.png)
 
+##### Register page tablet view
 ![6-Register-tablet](https://user-images.githubusercontent.com/42890101/75480483-b042dc80-59a1-11ea-9ec9-f610bd0d5439.png)
 
+##### Profile page mobile view
 ![7-Profile-page-mobile](https://user-images.githubusercontent.com/42890101/75480511-bc2e9e80-59a1-11ea-8858-575c7ef801b8.png)
 
+##### Profile page tablet view
 ![8-Profile-page-tablet](https://user-images.githubusercontent.com/42890101/75480535-c2bd1600-59a1-11ea-8ac1-b24f474c6c72.png)
 
+##### Merchandise/Courses page mobile view
 ![9-Courses-Merchandise-mobile](https://user-images.githubusercontent.com/42890101/75480574-cf416e80-59a1-11ea-86e1-9496c6039655.png)
 
+##### Merchandise page tablet view
 ![10-Merchandise-tablet](https://user-images.githubusercontent.com/42890101/75483650-97d5c080-59a7-11ea-8c5a-40fc097eeb61.png)
 
+##### Course page mobile view
 ![11-COURSE-DETAILS-mobile](https://user-images.githubusercontent.com/42890101/75483675-a328ec00-59a7-11ea-81bb-cb4e5852d714.png)
 
 # Technologies Used
@@ -335,6 +347,8 @@ SQLite was used in the development process. Migrated to PostgreSQL when project 
 - Logo 
 
     The Romanian Alpine Logo was edited with GIMP v2 so that the elements will be white and background transparent.
+
+- Wireframes [Wireframe CC](https://wireframe.cc/)
 
 ##### For elements such as typography, colors, logo, font etc. I was following the Romanian Alpine Club Brand Manual & Guidelines.
 
