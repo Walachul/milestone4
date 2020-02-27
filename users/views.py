@@ -137,7 +137,7 @@ def profile(request):
         pic = Image.open(membership_logo_stream, "r")
         """Create new Image with Pillow"""
         img = Image.new("RGB", (510, 360), color="#FFFFFF")
-        imgFont = ImageFont.truetype("static/fonts/Montserrat-Black.ttf", 40)
+        imgFont = ImageFont.truetype(membership_font_stream, 40)
         offset1 = (40, 40)
         offset2 = (277, 200)
         """Insert data into the new image"""
